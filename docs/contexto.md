@@ -2,12 +2,22 @@
 
 Texto descritivo com a visão geral do projeto abordado. Inclui o contexto, o problema, os objetivos, a justificativa e o público-alvo do projeto.
 
+Este projeto consiste em uma plataforma para freelance que conecta profissionais autônomos de desenvolvimento de software a clientes que buscam por serviços específicos. A plataforma permite que os profissionais se cadastrem e ofereçam seus serviços, enquanto os clientes podem buscar por profissionais e solicitar orçamentos. A plataforma também oferece um sistema de avaliação e comentários para que os clientes possam avaliar os serviços prestados pelos profissionais.
+
+A estrutura do projeto se dará através de 3 frentes: Uma API que irá conter toda a régra de negócio, um frontend web e um aplicativo mobile para os profissionais autônomos e clientes, que consome a API que retorna as informações necessárias. Desta forma nós oferecemos acessibilidade, versatilidade e confiabilidade para os usuários.
+
 ## Problema
 Nesse momento você deve apresentar o problema que a sua aplicação deve  resolver. No entanto, não é a hora de comentar sobre a aplicação.
 
 Descreva também o contexto em que essa aplicação será usada, se  houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de  fato existir, pois ainda não é a hora de apresentar requisitos  detalhados ou projetos.
 
 Nesse momento, o grupo pode optar por fazer uso  de ferramentas como Design Thinking, que permite um olhar de ponta a ponta para o problema.
+
+
+
+O grande problema de que queremos resolver é a inacessibilidade a profissionais freelancers que atuam da forma específica que o cliente necessita. Hoje em dia é muito comum que empresas e pessoas físicas busquem por profissionais autônomos para desenvolverem projetos específicos, mas nem sempre é fácil encontrar um profissional que atenda às necessidades e trabalhe da forma que o cliente necessita. Além disso, muitos profissionais autônomos têm dificuldade em encontrar clientes que necessitem de seus serviços, sendo que na maioria das vezes que encontram é quando são indicados, mas e quando essa indicação não ocorre?
+
+A plataforma visa resolver esse problema, conectando profissionais autônomos a clientes que buscam por serviços específicos e separados por categorias. Nossa aplicação conta com um sistema de avaliação, que qualifica ambos e faz com que os serviços prestados por aquele autônomo possa ser mais divulgado para possíveis novos cliente, e o cliente que avalia o autônomo, também é avaliado por ele, fazendo com que o autônomo saiba se o cliente é um bom pagador, se é um cliente que dá muitos problemas, etc.
 
 > **Links Úteis**:
 > - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
