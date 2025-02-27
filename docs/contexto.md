@@ -22,13 +22,12 @@ A falta de uma plataforma eficiente para conectar freelancers e clientes pode le
 
 ## Objetivos
 
-Objetivo Geral: Desenvolver um sistema web de marketplace para freelancers, permitindo a conexão eficiente entre profissionais autônomos e clientes, sem intermediar a comunicação ou a negociação entre as partes.
+#### Objetivo Geral: 
+Desenvolver um sistema web de marketplace para freelancers, permitindo a conexão eficiente entre profissionais autônomos e clientes, sem intermediar a comunicação ou a negociação entre as partes.
 
-Objetivos Específicos:
-
-Desenvolver uma Plataforma Centralizada de Conexão – Criar um sistema web que permita a conexão entre freelancers e clientes de forma estruturada e intuitiva, facilitando o processo de busca por profissionais qualificados.
-
-Garantir Acessibilidade e Gratuidade – Disponibilizar a plataforma de forma gratuita para usuários, permitindo que freelancers e clientes se conectem sem custos adicionais.
+#### Objetivos Específicos:
+- Desenvolver uma Plataforma Centralizada de Conexão – Criar um sistema web que permita a conexão entre freelancers e clientes de forma estruturada e intuitiva, facilitando o processo de busca por profissionais qualificados.
+- Garantir Acessibilidade e Gratuidade – Disponibilizar a plataforma de forma gratuita para usuários, permitindo que freelancers e clientes se conectem sem custos adicionais.
 
 ## Justificativa
 
