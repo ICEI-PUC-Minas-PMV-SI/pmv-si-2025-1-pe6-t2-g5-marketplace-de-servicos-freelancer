@@ -6,7 +6,7 @@
 
 `SEMESTRE: 6º`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+O projeto em desenvolvimento visa criar um marketplace web gratuito para conectar empresas e contratantes a profissionais freelancers do setor de tecnologia. O sistema facilitará a busca por especialistas qualificados, garantindo que cada profissional encontre oportunidades alinhadas ao seu perfil e habilidades.
 
 ## Integrantes
 
