@@ -5,16 +5,13 @@ O avanço da tecnologia tem transformado os processos de contratação de servi�
 Sistemas de informação são fundamentais para otimizar a intermediação entre freelancers e clientes. Este trabalho propõe o desenvolvimento de uma plataforma de freelancers que facilita a busca por profissionais qualificados, permitindo a conexão entre eles sem intermediar a comunicação ou transações financeiras.
 
 A plataforma será estruturada em três frentes principais:
-
-API – Responsável por toda a lógica de negócio, garantindo a integração entre os diferentes módulos da plataforma.
-
-Frontend Web – Interface para clientes e freelancers gerenciarem perfis e buscas.
-
-Aplicativo Mobile – Oferece acessibilidade e mobilidade para os usuários, permitindo a gestão dos serviços de forma eficiente.
+- API – Responsável por toda a lógica de negócio, garantindo a integração entre os diferentes módulos da plataforma.
+- Frontend Web – Interface para clientes e freelancers gerenciarem perfis e buscas.
+- Aplicativo Mobile – Oferece acessibilidade e mobilidade para os usuários, permitindo a gestão dos serviços de forma eficiente.
 
 Por meio dessa abordagem, o marketplace proporcionará confiabilidade, acessibilidade e versatilidade, garantindo um ambiente gratuito e eficiente para freelancers e clientes.
 
-Referências:
+#### Referências:
 Davenport, T. H., & Short, J. E. (1990). The New Industrial Engineering: Information Technology and Business Process Redesign. Sloan Management Review, 31(4), 11-27.
 Margetts, H., & Dunleavy, P. (2013). The Impact of the Internet on Governance: A Review. Government & Opposition, 48(2), 225-253.
 Parker, G. G., Van Alstyne, M. W., & Choudary, S. P. (2016). Platform Revolution: How Networked Markets Are Transforming the Economy and How to Make Them Work for You. W.W. Norton & Company.
@@ -42,7 +39,7 @@ A criação desta plataforma é motivada pela necessidade de oferecer um ambient
 O público-alvo da plataforma compreende dois grupos principais:
 
 - **Freelancers:** Profissionais autônomos que desejam divulgar seus serviços e captar clientes de forma mais eficiente.
-- **Clientes:** Empresas e indivíduos que necessitam contratar serviços especializados e buscam um meio confiável para encontrar profissionais qualificados.
+- **Contratantes:** Empresas e indivíduos que necessitam contratar serviços especializados e buscam um meio confiável para encontrar profissionais qualificados.
 
 Esses usuários possuem diferentes níveis de familiaridade com tecnologia, sendo essencial oferecer uma interface intuitiva e acessível, garantindo uma experiência fluida para todos.
 
@@ -54,8 +51,8 @@ Esses usuários possuem diferentes níveis de familiaridade com tecnologia, send
 |--------|------------------------------------------------------------------------------------------|------------|--------------|
 | RF-001 | Permitir o cadastro de freelancers                                                       | ALTA       | A definir    |   
 | RF-002 | Permitir o cadastro de contratantes                                                      | ALTA       | A definir    |
-| RF-003 | Permitir o cadastro projetos                                                             | ALTA       | A definir    |
-| RF-004 | Gerenciar cadastros(freelancers, contratantes e projetos)                                | ALTA       | A definir    |
+| RF-003 | Permitir o cadastro dos projetos                                                             | ALTA       | A definir    |
+| RF-004 | Gerenciar cadastros (freelancers, contratantes e projetos)                                | ALTA       | A definir    |
 | RF-005 | Permitir a busca por freelancers por habilidade do prestador de serviços (contratante)   | ALTA       | A definir    |
 | RF-006 | Permitir a busca de projetos por necessidade do contratante (freelancer)                 | ALTA       | A definir    |
 
@@ -74,50 +71,48 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 | ID | Restrição                                                    |
 |----|--------------------------------------------------------------|
-| 01 | Não haverá intermediação de pagamentos                       |
-| 02 | A comunicação entre usuários será livre, sem intermediação   |
-| 03 | Falta de capital monetário para o desenvolvimento do projeto |
+| RES-001 | Não haverá intermediação de pagamentos                       |
+| RES-002 | A comunicação entre usuários será livre, sem intermediação   |
+| RES-003 | Falta de capital monetário para o desenvolvimento do projeto |
 
 ## Catálogo de Serviços
 
-# 1. Visão Geral
+### 1. Visão Geral
 
 Este catálogo apresenta os serviços oferecidos pela plataforma de marketplace para freelancers, destacando as funcionalidades disponíveis para freelancers e contratantes. O objetivo é proporcionar uma conexão eficiente entre profissionais autônomos e clientes, sem intermediação de comunicação ou transações financeiras.
 
-# 2. Serviços Disponíveis
+### 2. Serviços Disponíveis
 
-### 2.1 Cadastro e Gerenciamento de Perfis
+#### 2.1 Cadastro e Gerenciamento de Perfis
 
 - **Cadastro de Freelancers**: Permite que profissionais criem um perfil com suas informações, habilidades e portfólio.
 - **Cadastro de Contratantes**: Empresas e indivíduos podem criar perfis para buscar freelancers.
 - **Edição de Perfil**: Atualização de informações, incluindo descrição, habilidades e experiência.
 - **Gerenciamento de Perfis**: Possibilidade de ativar ou desativar o perfil na plataforma.
 
-### 2.2 Busca e Filtros
+#### 2.2 Busca e Filtros
 
 - **Busca por Freelancers**: Contratantes podem buscar profissionais por nome, habilidade ou localização.
 - **Busca por Projetos**: Freelancers podem pesquisar oportunidades de trabalho por categoria e descrição.
 - **Filtros Avançados**: Permite refinar buscas por experiência, preço e disponibilidade.
 
-### 2.3 Publicação e Gerenciamento de Projetos
+#### 2.3 Publicação e Gerenciamento de Projetos
 
 - **Criação de Projetos**: Contratantes podem cadastrar projetos com descrição detalhada e requisitos.
 - **Edição de Projetos**: Permite atualizar informações dos projetos publicados.
 - **Exclusão de Projetos**: Possibilidade de remover projetos da plataforma.
 
-### 2.4 Segurança e Acessibilidade
+#### 2.4 Segurança e Acessibilidade
 
 - **Autenticação Segura**: Login e registro por e-mail e senha, com suporte para autenticação de dois fatores.
 - **Privacidade de Dados**: Proteção das informações dos usuários conforme normas de segurança.
 - **Interface Responsiva**: Compatibilidade com dispositivos desktop e mobile.
 
-# 3. Benefícios
+### 3. Benefícios
 
 - **Acesso Gratuito**: Plataforma sem cobrança para freelancers e contratantes.
 - **Conexão Direta**: Comunicação aberta entre profissionais e clientes.
 - **Eficiência**: Facilidade na busca e contratação de serviços especializados.
-
-Este catálogo será atualizado conforme novas funcionalidades forem implementadas na plataforma.
 
 ## Arquitetura da Solução
 
@@ -138,8 +133,6 @@ A implementação da solução utilizará as seguintes tecnologias:
 - **Aplicativo Mobile:** React Native
 - **Banco de Dados:** PostgreSQL
 - **Hospedagem:** AWS
-- 
-- 
 
 ## Hospedagem
 
