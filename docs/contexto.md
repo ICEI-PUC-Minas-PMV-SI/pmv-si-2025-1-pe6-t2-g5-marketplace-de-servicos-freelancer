@@ -1,126 +1,147 @@
 # Introdução
 
-Texto descritivo com a visão geral do projeto abordado. Inclui o contexto, o problema, os objetivos, a justificativa e o público-alvo do projeto.
+NOME DO PROJETO: TalentLink
 
-Este projeto consiste em uma plataforma para freelance que conecta profissionais autônomos de desenvolvimento de software a clientes que buscam por serviços específicos. A plataforma permite que os profissionais se cadastrem e ofereçam seus serviços, enquanto os clientes podem buscar por profissionais e solicitar orçamentos. A plataforma também oferece um sistema de avaliação e comentários para que os clientes possam avaliar os serviços prestados pelos profissionais.
+O avanço da tecnologia tem transformado os processos de contratação de serviços, aprimorando a eficiência e a comunicação entre profissionais e clientes (Davenport & Short, 1990). No setor de serviços digitais, estratégias focadas na experiência do usuário e na confiabilidade da plataforma são essenciais para garantir a satisfação e a fidelização dos clientes. Neste contexto, marketplaces de freelancers desempenham um papel crucial ao conectar profissionais autônomos a empresas e indivíduos que necessitam de serviços especializados (Parker, Van Alstyne & Choudary, 2016).
 
-A estrutura do projeto se dará através de 3 frentes: Uma API que irá conter toda a régra de negócio, um frontend web e um aplicativo mobile para os profissionais autônomos e clientes, que consome a API que retorna as informações necessárias. Desta forma nós oferecemos acessibilidade, versatilidade e confiabilidade para os usuários.
+Sistemas de informação são fundamentais para otimizar a intermediação entre freelancers e clientes. Este trabalho propõe o desenvolvimento de uma plataforma de freelancers que facilita a busca por profissionais qualificados, permitindo a conexão entre eles sem intermediar a comunicação ou transações financeiras.
+
+A plataforma será estruturada em três frentes principais:
+
+API – Responsável por toda a lógica de negócio, garantindo a integração entre os diferentes módulos da plataforma.
+
+Frontend Web – Interface para clientes e freelancers gerenciarem perfis e buscas.
+
+Aplicativo Mobile – Oferece acessibilidade e mobilidade para os usuários, permitindo a gestão dos serviços de forma eficiente.
+
+Por meio dessa abordagem, o marketplace proporcionará confiabilidade, acessibilidade e versatilidade, garantindo um ambiente gratuito e eficiente para freelancers e clientes.
+
+Referências:
+Davenport, T. H., & Short, J. E. (1990). The New Industrial Engineering: Information Technology and Business Process Redesign. Sloan Management Review, 31(4), 11-27.
+Margetts, H., & Dunleavy, P. (2013). The Impact of the Internet on Governance: A Review. Government & Opposition, 48(2), 225-253.
+Parker, G. G., Van Alstyne, M. W., & Choudary, S. P. (2016). Platform Revolution: How Networked Markets Are Transforming the Economy and How to Make Them Work for You. W.W. Norton & Company.
 
 ## Problema
-Nesse momento você deve apresentar o problema que a sua aplicação deve  resolver. No entanto, não é a hora de comentar sobre a aplicação.
 
-Descreva também o contexto em que essa aplicação será usada, se  houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de  fato existir, pois ainda não é a hora de apresentar requisitos  detalhados ou projetos.
-
-Nesse momento, o grupo pode optar por fazer uso  de ferramentas como Design Thinking, que permite um olhar de ponta a ponta para o problema.
-
-
-
-O grande problema de que queremos resolver é a inacessibilidade a profissionais freelancers que atuam da forma específica que o cliente necessita. Hoje em dia é muito comum que empresas e pessoas físicas busquem por profissionais autônomos para desenvolverem projetos específicos, mas nem sempre é fácil encontrar um profissional que atenda às necessidades e trabalhe da forma que o cliente necessita. Além disso, muitos profissionais autônomos têm dificuldade em encontrar clientes que necessitem de seus serviços, sendo que na maioria das vezes que encontram é quando são indicados, mas e quando essa indicação não ocorre?
-
-A plataforma visa resolver esse problema, conectando profissionais autônomos a clientes que buscam por serviços específicos e separados por categorias. Nossa aplicação conta com um sistema de avaliação, que qualifica ambos e faz com que os serviços prestados por aquele autônomo possa ser mais divulgado para possíveis novos cliente, e o cliente que avalia o autônomo, também é avaliado por ele, fazendo com que o autônomo saiba se o cliente é um bom pagador, se é um cliente que dá muitos problemas, etc.
-
-> **Links Úteis**:
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+A falta de uma plataforma eficiente para conectar freelancers e clientes pode levar a dificuldades na busca por profissionais qualificados e na divulgação de serviços, resultando em oportunidades perdidas para ambos os lados. Atualmente, muitos freelancers dependem de redes sociais e recomendações informais para captar clientes, um processo que pode ser ineficiente e limitado. Sem uma estrutura centralizada e confiável, clientes enfrentam dificuldades para encontrar prestadores de serviços adequados, e freelancers lutam para se destacar em um mercado competitivo.
 
 ## Objetivos
 
-Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. 
+Objetivo Geral: Desenvolver um sistema web de marketplace para freelancers, permitindo a conexão eficiente entre profissionais autônomos e clientes, sem intermediar a comunicação ou a negociação entre as partes.
 
-Apresente também alguns (pelo menos 2) objetivos específicos dependendo de onde você vai querer concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
- 
-> **Links Úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+Objetivos Específicos:
+
+Desenvolver uma Plataforma Centralizada de Conexão – Criar um sistema web que permita a conexão entre freelancers e clientes de forma estruturada e intuitiva, facilitando o processo de busca por profissionais qualificados.
+
+Garantir Acessibilidade e Gratuidade – Disponibilizar a plataforma de forma gratuita para usuários, permitindo que freelancers e clientes se conectem sem custos adicionais.
 
 ## Justificativa
 
-Descreva a importância ou a motivação para trabalhar com esta aplicação que você escolheu. Indique as razões pelas quais você escolheu seus objetivos específicos ou as razões para aprofundar em certos aspectos do software.
-
-O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
-
-> **Links Úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+A criação desta plataforma é motivada pela necessidade de oferecer um ambiente centralizado e eficiente para a conexão entre freelancers e clientes. A atual fragmentação do mercado, onde profissionais dependem de redes sociais e indicações informais, limita a visibilidade e acessibilidade dos serviços prestados. Ao desenvolver um marketplace gratuito, buscamos democratizar o acesso a oportunidades, promovendo a transparência e a confiança na contratação de serviços.
 
 ## Público-Alvo
 
-Descreva quem serão as pessoas que usarão a sua aplicação indicando os diferentes perfis. O objetivo aqui não é definir quem serão os clientes ou quais serão os papéis dos usuários na aplicação. A ideia é, dentro do possível, conhecer um pouco mais sobre o perfil dos usuários: conhecimentos prévios, relação com a tecnologia, relações
-hierárquicas, etc.
+O público-alvo da plataforma compreende dois grupos principais:
 
-Adicione informações sobre o público-alvo por meio de uma descrição textual, diagramas de personas e mapa de stakeholders.
+- **Freelancers:** Profissionais autônomos que desejam divulgar seus serviços e captar clientes de forma mais eficiente.
+- **Clientes:** Empresas e indivíduos que necessitam contratar serviços especializados e buscam um meio confiável para encontrar profissionais qualificados.
 
-> **Links Úteis**:
-> - [Público-alvo](https://blog.hotmart.com/pt-br/publico-alvo/)
-> - [Como definir o público alvo](https://exame.com/pme/5-dicas-essenciais-para-definir-o-publico-alvo-do-seu-negocio/)
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+Esses usuários possuem diferentes níveis de familiaridade com tecnologia, sendo essencial oferecer uma interface intuitiva e acessível, garantindo uma experiência fluida para todos.
 
-# Especificações do Projeto
-
-## Requisitos
-
-As tabelas que se seguem apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto. Para determinar a prioridade de requisitos, aplicar uma técnica de priorização de requisitos e detalhar como a técnica foi aplicada.
+## Especificações do Projeto
 
 ### Requisitos Funcionais
 
-|ID    | Descrição do Requisito  | Prioridade |
-|------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas | ALTA | 
-|RF-002| Emitir um relatório de tarefas no mês   | MÉDIA |
+| ID     | Descrição do Requisito                                                                   | Prioridade | Responsáveis |
+|--------|------------------------------------------------------------------------------------------|------------|--------------|
+| RF-001 | Permitir o cadastro de freelancers                                                       | ALTA       | A definir    |   
+| RF-002 | Permitir o cadastro de contratantes                                                      | ALTA       | A definir    |
+| RF-003 | Permitir o cadastro projetos                                                             | ALTA       | A definir    |
+| RF-004 | Gerenciar cadastros(freelancers, contratantes e projetos)                                | ALTA       | A definir    |
+| RF-005 | Permitir a busca por freelancers por habilidade do prestador de serviços (contratante)   | ALTA       | A definir    |
+| RF-006 | Permitir a busca de projetos por necessidade do contratante (freelancer)                 | ALTA       | A definir    |
 
-### Requisitos não Funcionais
+### Requisitos Não Funcionais
 
-|ID     | Descrição do Requisito  |Prioridade |
-|-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo para rodar em um dispositivos móvel | MÉDIA | 
-|RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA | 
-
-Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
-
-- [Requisitos Funcionais
- (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
- correspondem a uma funcionalidade que deve estar presente na
-  plataforma (ex: cadastro de usuário).
-- [Requisitos Não Funcionais
-  (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
-  correspondem a uma característica técnica, seja de usabilidade,
-  desempenho, confiabilidade, segurança ou outro (ex: suporte a
-  dispositivos iOS e Android).
-Lembre-se que cada requisito deve corresponder à uma e somente uma
-característica alvo da sua solução. Além disso, certifique-se de que
-todos os aspectos capturados nas Histórias de Usuário foram cobertos.
+| ID      | Descrição do Requisito                                                                     | Prioridade |
+|---------|--------------------------------------------------------------------------------------------|------------|
+| RNF-001 | O sistema deve ser responsivo para dispositivos móveis                                     | ALTA       |
+| RNF-002 | O tempo de resposta para busca deve ser inferior a 2s                                      | MÉDIA      |
+| RNF-003 | A plataforma deve garantir segurança na autenticação dos usuários                          | ALTA       |
+| RNF-004 | O sistema deve ser intuitivo e fácil de usar, garantindo uma boa experiência aos usuários. | MÉDIA      |
 
 ## Restrições
 
 O projeto está restrito pelos itens apresentados na tabela a seguir.
 
-|ID| Restrição                                             |
-|--|-------------------------------------------------------|
-|01| O projeto deverá ser entregue até o final do semestre |
-|02| Não pode ser desenvolvido um módulo de backend        |
+| ID | Restrição                                                    |
+|----|--------------------------------------------------------------|
+| 01 | Não haverá intermediação de pagamentos                       |
+| 02 | A comunicação entre usuários será livre, sem intermediação   |
+| 03 | Falta de capital monetário para o desenvolvimento do projeto |
 
-Enumere as restrições à sua solução. Lembre-se de que as restrições geralmente limitam a solução candidata.
+## Catálogo de Serviços
 
-> **Links Úteis**:
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
+# 1. Visão Geral
 
-# Catálogo de Serviços
+Este catálogo apresenta os serviços oferecidos pela plataforma de marketplace para freelancers, destacando as funcionalidades disponíveis para freelancers e contratantes. O objetivo é proporcionar uma conexão eficiente entre profissionais autônomos e clientes, sem intermediação de comunicação ou transações financeiras.
 
-Descreva aqui todos os serviços que serão disponibilizados pelo seu projeto, detalhando suas características e funcionalidades.
+# 2. Serviços Disponíveis
 
-# Arquitetura da Solução
+### 2.1 Cadastro e Gerenciamento de Perfis
 
-Definição de como o software é estruturado em termos dos componentes que fazem parte da solução e do ambiente de hospedagem da aplicação.
+- **Cadastro de Freelancers**: Permite que profissionais criem um perfil com suas informações, habilidades e portfólio.
+- **Cadastro de Contratantes**: Empresas e indivíduos podem criar perfis para buscar freelancers.
+- **Edição de Perfil**: Atualização de informações, incluindo descrição, habilidades e experiência.
+- **Gerenciamento de Perfis**: Possibilidade de ativar ou desativar o perfil na plataforma.
+
+### 2.2 Busca e Filtros
+
+- **Busca por Freelancers**: Contratantes podem buscar profissionais por nome, habilidade ou localização.
+- **Busca por Projetos**: Freelancers podem pesquisar oportunidades de trabalho por categoria e descrição.
+- **Filtros Avançados**: Permite refinar buscas por experiência, preço e disponibilidade.
+
+### 2.3 Publicação e Gerenciamento de Projetos
+
+- **Criação de Projetos**: Contratantes podem cadastrar projetos com descrição detalhada e requisitos.
+- **Edição de Projetos**: Permite atualizar informações dos projetos publicados.
+- **Exclusão de Projetos**: Possibilidade de remover projetos da plataforma.
+
+### 2.4 Segurança e Acessibilidade
+
+- **Autenticação Segura**: Login e registro por e-mail e senha, com suporte para autenticação de dois fatores.
+- **Privacidade de Dados**: Proteção das informações dos usuários conforme normas de segurança.
+- **Interface Responsiva**: Compatibilidade com dispositivos desktop e mobile.
+
+# 3. Benefícios
+
+- **Acesso Gratuito**: Plataforma sem cobrança para freelancers e contratantes.
+- **Conexão Direta**: Comunicação aberta entre profissionais e clientes.
+- **Eficiência**: Facilidade na busca e contratação de serviços especializados.
+
+Este catálogo será atualizado conforme novas funcionalidades forem implementadas na plataforma.
+
+## Arquitetura da Solução
+
+A solução será estruturada nos seguintes componentes:
+
+1. **API** – Responsável por toda a lógica de negócio, garantindo a integração entre os diferentes módulos da plataforma.
+2. **Frontend Web** – Interface para clientes e freelancers gerenciarem perfis e buscas.
+3. **Aplicativo Mobile** – Oferece acessibilidade e mobilidade para os usuários, permitindo a gestão dos serviços de forma eficiente.
 
 ![arq](https://github.com/user-attachments/assets/b9402e05-8445-47c3-9d47-f11696e38a3d)
 
-
 ## Tecnologias Utilizadas
 
-Descreva aqui qual(is) tecnologias você vai usar para resolver o seu problema, ou seja, implementar a sua solução. Liste todas as tecnologias envolvidas, linguagens a serem utilizadas, serviços web, frameworks, bibliotecas, IDEs de desenvolvimento, e ferramentas.
+A implementação da solução utilizará as seguintes tecnologias:
 
-Apresente também uma figura explicando como as tecnologias estão relacionadas ou como uma interação do usuário com o sistema vai ser conduzida, por onde ela passa até retornar uma resposta ao usuário.
+- **Backend:** .NET Core para a API
+- **Frontend Web:** React.js
+- **Aplicativo Mobile:** React Native
+- **Banco de Dados:** PostgreSQL
+- **Hospedagem:** AWS
+- 
+- 
 
 ## Hospedagem
 
