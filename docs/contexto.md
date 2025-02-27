@@ -1,7 +1,5 @@
 # Introdução
 
-NOME DO PROJETO: TalentLink
-
 O avanço da tecnologia tem transformado os processos de contratação de serviços, aprimorando a eficiência e a comunicação entre profissionais e clientes (Davenport & Short, 1990). No setor de serviços digitais, estratégias focadas na experiência do usuário e na confiabilidade da plataforma são essenciais para garantir a satisfação e a fidelização dos clientes. Neste contexto, marketplaces de freelancers desempenham um papel crucial ao conectar profissionais autônomos a empresas e indivíduos que necessitam de serviços especializados (Parker, Van Alstyne & Choudary, 2016).
 
 Sistemas de informação são fundamentais para otimizar a intermediação entre freelancers e clientes. Este trabalho propõe o desenvolvimento de uma plataforma de freelancers que facilita a busca por profissionais qualificados, permitindo a conexão entre eles sem intermediar a comunicação ou transações financeiras.
