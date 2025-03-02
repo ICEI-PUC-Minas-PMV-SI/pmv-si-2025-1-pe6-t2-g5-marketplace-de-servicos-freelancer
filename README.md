@@ -10,16 +10,17 @@ O projeto em desenvolvimento visa criar um marketplace web gratuito para conecta
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
-* Nome completo do aluno 5
-* Nome completo do aluno 6
+* André Calebe Santos de Andrade
+* Fábio Rezende Dias Silva
+* Gabriel Amorim de Almeida Custodio
+* Giselle Lucy Souza Coelho
+* Henrique Avelar Amaral
+* Hudson Suvalsky Vieira
+* Pedro Márcio Xavier Guimarães
 
 ## Orientador
 
-* Nome completo do professor 1
+* Kléber Jacques Ferreira de Souza
 
 # Planejamento
 
