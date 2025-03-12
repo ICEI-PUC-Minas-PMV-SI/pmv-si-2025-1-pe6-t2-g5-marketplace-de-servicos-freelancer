@@ -46,14 +46,18 @@ Esses usuários possuem diferentes níveis de familiaridade com tecnologia, send
 
 ### Requisitos Funcionais
 
-| ID     | Descrição do Requisito                                                                   | Prioridade | Responsáveis |
-|--------|------------------------------------------------------------------------------------------|------------|--------------|
-| RF-001 | Permitir o cadastro de freelancers                                                       | ALTA       | A definir    |   
-| RF-002 | Permitir o cadastro de contratantes                                                      | ALTA       | A definir    |
-| RF-003 | Permitir o cadastro dos projetos                                                             | ALTA       | A definir    |
-| RF-004 | Gerenciar cadastros (freelancers, contratantes e projetos)                                | ALTA       | A definir    |
-| RF-005 | Permitir a busca por freelancers por habilidade do prestador de serviços (contratante)   | ALTA       | A definir    |
-| RF-006 | Permitir a busca de projetos por necessidade do contratante (freelancer)                 | ALTA       | A definir    |
+| ID     | Descrição do Requisito                                                                 | Prioridade | Responsáveis |
+|--------|----------------------------------------------------------------------------------------|------------|--------------|
+| RF-001 | Permitir a autenticação de usuários                                                    | ALTA       | A definir    |   
+| RF-002 | Permitir o cadastro de freelancers                                                     | ALTA       | A definir    |   
+| RF-003 | Permitir o cadastro de contratantes                                                    | ALTA       | A definir    |
+| RF-004 | Permitir o cadastro dos projetos                                                       | ALTA       | A definir    |
+| RF-005 | Gerenciar cadastros (freelancers, contratantes e projetos)                             | ALTA       | A definir    |
+| RF-006 | Permitir a busca por freelancers por habilidade do prestador de serviços (contratante) | ALTA       | A definir    |
+| RF-007 | Permitir a busca de projetos por necessidade do contratante (freelancer)               | ALTA       | A definir    |
+| RF-008 | Implementar um sistema de favoritos para que usuários possam salvar perfis e projetos  | MÉDIA      | A definir    |
+| RF-009 | Criar um Match Temporário entre Prestador de Serviço e Contratante                     | MÉDIA      | A definir    |
+
 
 ### Requisitos Não Funcionais
 
@@ -63,13 +67,14 @@ Esses usuários possuem diferentes níveis de familiaridade com tecnologia, send
 | RNF-002 | O tempo de resposta para busca deve ser inferior a 2s                                      | MÉDIA      |
 | RNF-003 | A plataforma deve garantir segurança na autenticação dos usuários                          | ALTA       |
 | RNF-004 | O sistema deve ser intuitivo e fácil de usar, garantindo uma boa experiência aos usuários. | MÉDIA      |
+| RNF-005 | Implementar um modo escuro para melhor acessibilidade e conforto visual                    | MÉDIA      |
 
 ## Restrições
 
 O projeto está restrito pelos itens apresentados na tabela a seguir.
 
-| ID | Restrição                                                    |
-|----|--------------------------------------------------------------|
+| ID      | Restrição                                                    |
+|---------|--------------------------------------------------------------|
 | RES-001 | Não haverá intermediação de pagamentos                       |
 | RES-002 | A comunicação entre usuários será livre, sem intermediação   |
 | RES-003 | Falta de capital monetário para o desenvolvimento do projeto |
