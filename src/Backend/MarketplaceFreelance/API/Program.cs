@@ -1,5 +1,8 @@
 using System.Text;
+using Application.Services;
+using Infrastructure.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
@@ -20,7 +23,11 @@ static void ConfigurarInjecaoDeDependencia(WebApplicationBuilder builder)
 {
     builder.Services
     .AddSingleton(builder.Configuration)
-    .AddSingleton(builder.Environment);
+    .AddSingleton(builder.Environment)
+    .AddScoped<TokenService>();
+
+    builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 }
 
 // Configura o serviços da API.
@@ -73,13 +80,20 @@ static void ConfigurarServices(WebApplicationBuilder builder)
     {
         x.RequireHttpsMetadata = false;
         x.SaveToken = true;
+        
+        var secretKey = builder.Configuration["KeySecret"];
+        if (string.IsNullOrEmpty(secretKey))
+        {
+            throw new ArgumentNullException($"KeySecret não pode ser nulo ou vazio!");
+        }
         x.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["KeySecret"])),
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["KeySecret"] ?? string.Empty)),
             ValidateIssuer = false,
             ValidateAudience = false
         };
+
     });
 }
 
