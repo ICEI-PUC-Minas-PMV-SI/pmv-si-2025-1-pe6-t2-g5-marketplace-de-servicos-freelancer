@@ -1,6 +1,9 @@
 using System.Text;
 using Application.Services;
+using Core.Interfaces;
 using Infrastructure.Data;
+using Infrastructure.Mapper;
+using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -21,12 +24,17 @@ app.Run();
 // Metodo que configrua as injeções de dependencia do projeto.
 static void ConfigurarInjecaoDeDependencia(WebApplicationBuilder builder)
 {
+    builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    builder.Services.AddAutoMapper(typeof(ContratanteProfile).Assembly);
+
+    
     builder.Services
     .AddSingleton(builder.Configuration)
     .AddSingleton(builder.Environment)
-    .AddScoped<TokenService>();
-
-    builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    .AddScoped<TokenService>()
+    .AddScoped<AuthService>()
+    .AddScoped<ContratanteService>()
+    .AddScoped<IContratanteRepository, ContratanteRepository>();
 
 }
 

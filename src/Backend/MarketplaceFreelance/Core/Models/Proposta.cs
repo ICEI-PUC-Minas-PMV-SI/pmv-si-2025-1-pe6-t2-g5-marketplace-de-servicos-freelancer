@@ -5,19 +5,19 @@ using Core.Models;
 public class Proposta
 {
 	[Key]  
-	public int Id { get; set; }
+	public long Id { get; set; }
 	
 	[ForeignKey("Freelancer")]  
-	public int FreelancerId { get; set; }
+	public long FreelancerId { get; set; }
 	public Freelancer Freelancer { get; set; }
 
 	[ForeignKey("Contratante")]  
-	public int ContratanteId { get; set; }
+	public long ContratanteId { get; set; }
 	
 	public Contratante Contratante { get; set; }
 
 	[ForeignKey("Projeto")] 
-	public int? ProjetoId { get; set; }  
+	public long? ProjetoId { get; set; }  
 	public Projeto Projeto { get; set; }
 
 	[Required]

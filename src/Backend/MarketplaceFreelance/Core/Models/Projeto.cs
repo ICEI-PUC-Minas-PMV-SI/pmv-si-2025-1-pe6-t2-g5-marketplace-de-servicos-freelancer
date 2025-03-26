@@ -8,10 +8,10 @@ public class Projeto
 {
 	[Key]
 	[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-	public int ProjetoId { get; set; }
+	public long ProjetoId { get; set; }
 
 	[Required]
-	public int ContratanteId { get; set; }
+	public long ContratanteId { get; set; }
 
 	[ForeignKey(nameof(ContratanteId))]
 	public Contratante? Contratante { get; set; }
@@ -21,7 +21,7 @@ public class Projeto
 
 	[Required]
 	[MaxLength(20)]
-	public required string Nome { get; set; }
+	public required string Nome { get; set; } = string.Empty;
 
 	[Required]
 	public DateTime DataInicio { get; set; }
@@ -32,10 +32,10 @@ public class Projeto
 	public DateTime? DataFim { get; set; }
 
 	[MaxLength(200)]
-	public string? Descricao { get; set; }
+	public string? Descricao { get; set; } = string.Empty;
 
 	[MaxLength(100)]
-	public string? Escopo { get; set; }
+	public string? Escopo { get; set; } = string.Empty;
 
 	public ICollection<Proposta>? Propostas { get; set; }
 }

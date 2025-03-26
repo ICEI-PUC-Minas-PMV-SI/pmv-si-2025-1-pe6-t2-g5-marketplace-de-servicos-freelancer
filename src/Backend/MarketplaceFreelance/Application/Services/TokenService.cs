@@ -9,7 +9,7 @@ namespace Application.Services;
 
 public class TokenService(IConfiguration configuration)
 {
-	public string GerarToken(UsuarioBase usuarioBase)
+	protected internal string GerarToken(UsuarioBase usuarioBase)
 	{
 		var tokenHandler = new JwtSecurityTokenHandler();
 		var key = Encoding.UTF8.GetBytes(configuration["KeySecret"] ?? throw new InvalidOperationException());

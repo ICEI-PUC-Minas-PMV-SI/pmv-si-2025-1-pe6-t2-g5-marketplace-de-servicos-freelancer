@@ -9,5 +9,7 @@ public class ContratanteProfile : Profile
 	public ContratanteProfile()
 	{
 		CreateMap<Contratante, ContratanteDTO>().ReverseMap();
+		CreateMap<Contratante, UsuarioBase>().ReverseMap();
+		
 	}
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Models;
@@ -7,11 +8,11 @@ public class Freelancer
 {
 	[Key]
 	[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-	public int FreelancerId { get; set; }
+	public long FreelancerId { get; set; }
 
 	[Required]
 	[MaxLength(50)]
-	public required string Nome { get; set; }
+	public required string Nome { get; set; } = string.Empty;
 
 	[Required]
 	public DateTime DataNascimento { get; set; }
@@ -22,19 +23,23 @@ public class Freelancer
 
 	[Required]
 	[MaxLength(20)]
-	public required string Especialidade { get; set; }
+	public required string Especialidade { get; set; } = string.Empty;
 
 	[Required]
 	[MaxLength(20)]
-	public required string Telefone { get; set; }
+	public required string Telefone { get; set; } = string.Empty;
 
 	[Required]
 	[MaxLength(20)]
 	[EmailAddress]
-	public required string Email { get; set; }
+	public required string Email { get; set; } = string.Empty;
+	
+	[Required]
+	[PasswordPropertyText]
+	public required string Senha { get; set; } = string.Empty;
 
 	[MaxLength(200)]
-	public string? Descricao { get; set; }
+	public string? Descricao { get; set; } = string.Empty;
 
 	public int? Upvote { get; set; }
 

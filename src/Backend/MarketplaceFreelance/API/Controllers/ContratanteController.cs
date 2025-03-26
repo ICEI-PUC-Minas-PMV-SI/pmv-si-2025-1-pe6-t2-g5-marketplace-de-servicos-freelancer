@@ -1,6 +1,8 @@
-﻿using Application.Services;
+﻿using System.Security.Authentication;
+using Application.Services;
 using AutoMapper;
 using Core.DTO.Contratante;
+using Core.DTO.Universal;
 using Core.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,8 +11,26 @@ namespace API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ContratanteController(ContratanteService contratanteService, IMapper mapper) : ControllerBase
+public class ContratanteController(ContratanteService contratanteService, IMapper mapper, AuthService authService) : ControllerBase
 {
+	[HttpPost]
+	[Route("login")]
+	[AllowAnonymous]
+	public async Task<IActionResult> Autenticar(LoginRequest request)
+	{
+		try
+		{
+			return Ok(await authService.Autenticar(request));
+		}
+		catch (AuthenticationException e)
+		{
+			return Unauthorized(e.Message);
+		}
+		catch (Exception e)
+		{
+			return new ObjectResult(new { StatusCode = 500, e.Message });
+		}
+	}
 	[HttpPost]
 	[Authorize]
 	public async Task<IActionResult> CadastrarContratante(ContratanteDTO contratante)
@@ -32,6 +52,21 @@ public class ContratanteController(ContratanteService contratanteService, IMappe
 		try
 		{
 			return Ok(await contratanteService.BuscarContratantePorId(id));
+		}
+		catch (Exception e)
+		{
+			throw new Exception($"Erro: {e.Message}");
+		}
+	}
+	
+	[HttpGet]
+	[Route("buscar-por-cpf/{cpf}")]
+	[Authorize]
+	public async Task<IActionResult> BuscarContratantePorCPF(string cpf)
+	{
+		try
+		{
+			return Ok(await contratanteService.BuscarContratantePorCPF(cpf));
 		}
 		catch (Exception e)
 		{
