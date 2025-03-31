@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class CriacaoTabelasBanco : Migration
+    public partial class TabelasBanco : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -62,10 +62,12 @@ namespace Infrastructure.Migrations
                     ProjetoId = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     ContratanteId = table.Column<long>(type: "bigint", nullable: false),
+                    IdPropostaAceita = table.Column<long>(type: "bigint", nullable: true),
                     DataRegistro = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    DataInativacao = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     Nome = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
-                    DataInicio = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Status = table.Column<int>(type: "integer", nullable: false),
+                    DataInicio = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     DataFim = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     Descricao = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: true),
                     Escopo = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true)
@@ -82,33 +84,31 @@ namespace Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Proposta",
+                name: "Propostas",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    FreelancerId = table.Column<long>(type: "bigint", nullable: false),
-                    ContratanteId = table.Column<long>(type: "bigint", nullable: false),
                     ProjetoId = table.Column<long>(type: "bigint", nullable: true),
+                    FreelancerId = table.Column<long>(type: "bigint", nullable: false),
+                    DataRegistro = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Status = table.Column<int>(type: "integer", nullable: false),
+                    DataAceite = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    Valor = table.Column<decimal>(type: "numeric", nullable: false),
+                    DiasUteisDuracao = table.Column<int>(type: "integer", nullable: false),
                     Aprovado = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Proposta", x => x.Id);
+                    table.PrimaryKey("PK_Propostas", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Proposta_Contratantes_ContratanteId",
-                        column: x => x.ContratanteId,
-                        principalTable: "Contratantes",
-                        principalColumn: "ContratanteId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Proposta_Freelancers_FreelancerId",
+                        name: "FK_Propostas_Freelancers_FreelancerId",
                         column: x => x.FreelancerId,
                         principalTable: "Freelancers",
                         principalColumn: "FreelancerId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Proposta_Projetos_ProjetoId",
+                        name: "FK_Propostas_Projetos_ProjetoId",
                         column: x => x.ProjetoId,
                         principalTable: "Projetos",
                         principalColumn: "ProjetoId",
@@ -121,35 +121,51 @@ namespace Infrastructure.Migrations
                 column: "ContratanteId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Proposta_ContratanteId",
-                table: "Proposta",
-                column: "ContratanteId");
+                name: "IX_Projetos_IdPropostaAceita",
+                table: "Projetos",
+                column: "IdPropostaAceita");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Proposta_FreelancerId",
-                table: "Proposta",
+                name: "IX_Propostas_FreelancerId",
+                table: "Propostas",
                 column: "FreelancerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Proposta_ProjetoId",
-                table: "Proposta",
+                name: "IX_Propostas_ProjetoId",
+                table: "Propostas",
                 column: "ProjetoId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Projetos_Propostas_IdPropostaAceita",
+                table: "Projetos",
+                column: "IdPropostaAceita",
+                principalTable: "Propostas",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Restrict);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Projetos_Contratantes_ContratanteId",
+                table: "Projetos");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Projetos_Propostas_IdPropostaAceita",
+                table: "Projetos");
+
             migrationBuilder.DropTable(
-                name: "Proposta");
+                name: "Contratantes");
+
+            migrationBuilder.DropTable(
+                name: "Propostas");
 
             migrationBuilder.DropTable(
                 name: "Freelancers");
 
             migrationBuilder.DropTable(
                 name: "Projetos");
-
-            migrationBuilder.DropTable(
-                name: "Contratantes");
         }
     }
 }

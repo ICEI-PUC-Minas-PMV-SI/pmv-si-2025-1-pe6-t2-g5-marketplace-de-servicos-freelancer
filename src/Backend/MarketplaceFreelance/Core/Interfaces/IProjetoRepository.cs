@@ -1,14 +1,18 @@
-﻿using Core.Models;
+﻿using Core.DTO.Projeto;
+using Core.Models;
 
 namespace Core.Interfaces;
 
 public interface IProjetoRepository
 {
 	//Quem cadastra o projeto é o contratante
-	Task<Projeto> CadastrarProjeto(Projeto projeto); 
+	Task<ProjetoCadastroDTO> CadastrarProjeto(ProjetoCadastroDTO projeto); 
 	
 	//Quem busca o projeto é o freelancer
-	Task<Projeto> BuscarProjetoPorId(int id); 
+	Task<Projeto> BuscarProjetoPorId(long id); 
+	
+	//Quem busca o projeto é o freelancer
+	Task<Projeto> BuscarProjetoPorNome(string nome); 
 	
 	//Quem lista os projetos é o freelancer
 	Task<IEnumerable<Projeto>> ListarProjetos(); 
@@ -17,8 +21,8 @@ public interface IProjetoRepository
 	Task<IEnumerable<Projeto>> BuscarProjetosPorCategoria(string categoria); 
 	
 	//Quem atualiza o projeto é o contratante
-	Task<bool> AtualizarProjeto(Projeto projeto); 
+	Task<Projeto> AtualizarProjeto(ProjetoDTO projeto); 
 	
 	//Quem exclui o projeto é o contratante
-	Task<bool> ExcluirProjeto(int id); 
+	Task ExcluirProjeto(long id); 
 }

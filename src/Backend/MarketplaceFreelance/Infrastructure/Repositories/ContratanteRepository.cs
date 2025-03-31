@@ -1,4 +1,5 @@
-﻿using Core.Interfaces;
+﻿using Core.DTO.Contratante;
+using Core.Interfaces;
 using Core.Models;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -9,11 +10,21 @@ public class ContratanteRepository(AppDbContext contexto) : IContratanteReposito
 {
 	public async Task<Contratante> InserirContratante(Contratante contratante)
 	{
-		var result = await BuscarContratantePorCPF(contratante.CPF);
-		
-		if (result != null)
+		var contratanteExistente = await contexto.Contratantes
+		.Where(c => (c.CPF == contratante.CPF || c.Email == contratante.Email) && c.DataInativacao == null)
+		.FirstOrDefaultAsync();
+
+		if (contratanteExistente != null)
 		{
-			throw new InvalidOperationException("Já há um usuário cadastrado com esse CPF: " + contratante.CPF);
+			if (contratanteExistente.CPF == contratante.CPF)
+			{
+				throw new InvalidOperationException($"Já há um usuário cadastrado com esse CPF");
+			}
+        
+			if (contratanteExistente.Email == contratante.Email)
+			{
+				throw new InvalidOperationException($"Já há um usuário cadastrado com esse e-mail");
+			}
 		}
 
 		await contexto.AddAsync(contratante);
@@ -21,6 +32,8 @@ public class ContratanteRepository(AppDbContext contexto) : IContratanteReposito
 
 		return contratante;
 	}
+
+
 
 	public async Task<Contratante> BuscarContratantePorId(int id)
 	{
@@ -42,16 +55,16 @@ public class ContratanteRepository(AppDbContext contexto) : IContratanteReposito
 		return await contexto.Contratantes.AsNoTracking().Where(contratante => contratante.DataInativacao == null).OrderBy(contratante => contratante.ContratanteId).ToListAsync() ?? throw new InvalidOperationException();
 	}
 
-	public async Task<Contratante> EditarContratante(int id)
+	public async Task<Contratante> EditarContratante(ContratanteUpdateDTO contratante)
 	{
-		Contratante entidadeBanco = await BuscarContratantePorId(id);
+		Contratante entidadeBanco = await BuscarContratantePorEmail(contratante.Email);
 
-		contexto.Contratantes.Entry(entidadeBanco).CurrentValues.SetValues(id);
+		contexto.Contratantes.Entry(entidadeBanco).CurrentValues.SetValues(contratante);
 		contexto.Contratantes.Update(entidadeBanco);
 
 		await contexto.SaveChangesAsync();
 
-		return await BuscarContratantePorId(id);
+		return await BuscarContratantePorEmail(contratante.Email);
 	}
 
 	public async Task ExcluirContratante(int id)
@@ -60,8 +73,8 @@ public class ContratanteRepository(AppDbContext contexto) : IContratanteReposito
 
 		entidadeBanco.DataInativacao = DateTime.Now;
 
-		contexto.Entry(entidadeBanco).CurrentValues.SetValues(entidadeBanco);
-		contexto.Update(entidadeBanco);
+		contexto.Contratantes.Entry(entidadeBanco).CurrentValues.SetValues(entidadeBanco);
+		contexto.Contratantes.Update(entidadeBanco);
 		await contexto.SaveChangesAsync();
 	}
 }

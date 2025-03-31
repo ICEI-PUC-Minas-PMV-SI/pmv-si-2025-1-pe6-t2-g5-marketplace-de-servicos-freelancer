@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250326024859_CriacaoTabelasBanco")]
-    partial class CriacaoTabelasBanco
+    [Migration("20250328224024_TabelasBanco")]
+    partial class TabelasBanco
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -140,6 +140,9 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime?>("DataFim")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<DateTime?>("DataInativacao")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<DateTime>("DataInicio")
                         .HasColumnType("timestamp with time zone");
 
@@ -154,6 +157,9 @@ namespace Infrastructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
+                    b.Property<long?>("IdPropostaAceita")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -166,10 +172,12 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("ContratanteId");
 
+                    b.HasIndex("IdPropostaAceita");
+
                     b.ToTable("Projetos");
                 });
 
-            modelBuilder.Entity("Proposta", b =>
+            modelBuilder.Entity("Core.Models.Proposta", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -180,8 +188,14 @@ namespace Infrastructure.Migrations
                     b.Property<bool>("Aprovado")
                         .HasColumnType("boolean");
 
-                    b.Property<long>("ContratanteId")
-                        .HasColumnType("bigint");
+                    b.Property<DateTime?>("DataAceite")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("DataRegistro")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("DiasUteisDuracao")
+                        .HasColumnType("integer");
 
                     b.Property<long>("FreelancerId")
                         .HasColumnType("bigint");
@@ -189,15 +203,19 @@ namespace Infrastructure.Migrations
                     b.Property<long?>("ProjetoId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("Id");
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
 
-                    b.HasIndex("ContratanteId");
+                    b.Property<decimal>("Valor")
+                        .HasColumnType("numeric");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("FreelancerId");
 
                     b.HasIndex("ProjetoId");
 
-                    b.ToTable("Proposta");
+                    b.ToTable("Propostas");
                 });
 
             modelBuilder.Entity("Core.Models.Projeto", b =>
@@ -208,17 +226,18 @@ namespace Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("Core.Models.Proposta", "PropostaAceita")
+                        .WithMany()
+                        .HasForeignKey("IdPropostaAceita")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.Navigation("Contratante");
+
+                    b.Navigation("PropostaAceita");
                 });
 
-            modelBuilder.Entity("Proposta", b =>
+            modelBuilder.Entity("Core.Models.Proposta", b =>
                 {
-                    b.HasOne("Core.Models.Contratante", "Contratante")
-                        .WithMany()
-                        .HasForeignKey("ContratanteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Core.Models.Freelancer", "Freelancer")
                         .WithMany("Propostas")
                         .HasForeignKey("FreelancerId")
@@ -229,8 +248,6 @@ namespace Infrastructure.Migrations
                         .WithMany("Propostas")
                         .HasForeignKey("ProjetoId")
                         .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("Contratante");
 
                     b.Navigation("Freelancer");
 

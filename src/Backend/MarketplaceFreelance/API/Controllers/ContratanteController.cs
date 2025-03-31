@@ -11,7 +11,7 @@ namespace API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ContratanteController(ContratanteService contratanteService, IMapper mapper, AuthService authService) : ControllerBase
+public class ContratanteController(ContratanteService contratanteService, IMapper mapper, AuthService authService) : BaseController
 {
 	[HttpPost]
 	[Route("login")]
@@ -24,15 +24,15 @@ public class ContratanteController(ContratanteService contratanteService, IMappe
 		}
 		catch (AuthenticationException e)
 		{
-			return Unauthorized(e.Message);
+			return Unauthorized(RetornarModelUnauthorized(e));
 		}
 		catch (Exception e)
 		{
-			return new ObjectResult(new { StatusCode = 500, e.Message });
+			return BadRequest(RetornarModelBadRequest(e));
 		}
 	}
 	[HttpPost]
-	[Authorize]
+	// [Authorize]
 	public async Task<IActionResult> CadastrarContratante(ContratanteDTO contratante)
 	{
 		try
@@ -41,7 +41,7 @@ public class ContratanteController(ContratanteService contratanteService, IMappe
 		}
 		catch (Exception e)
 		{
-			throw new Exception($"Erro: {e.Message}");
+			return BadRequest(RetornarModelBadRequest(e));
 		}
 	}
 	
@@ -55,7 +55,7 @@ public class ContratanteController(ContratanteService contratanteService, IMappe
 		}
 		catch (Exception e)
 		{
-			throw new Exception($"Erro: {e.Message}");
+			return NotFound(RetornarModelNotFound(e));
 		}
 	}
 	
@@ -70,7 +70,7 @@ public class ContratanteController(ContratanteService contratanteService, IMappe
 		}
 		catch (Exception e)
 		{
-			throw new Exception($"Erro: {e.Message}");
+			return NotFound(RetornarModelNotFound(e));
 		}
 	}
 	
@@ -84,21 +84,21 @@ public class ContratanteController(ContratanteService contratanteService, IMappe
 		}
 		catch (Exception e)
 		{
-			throw new Exception($"Erro: {e.Message}");
+			return NotFound(RetornarModelNotFound(e));
 		}
 	}
 	
 	[HttpPut("{id}")]
 	[Authorize]
-	public async Task<IActionResult> AtualizarContratante(int id)
+	public async Task<IActionResult> AtualizarContratante(ContratanteUpdateDTO contratante)
 	{
 		try
 		{
-			return Ok(await contratanteService.AtualizarContratante(id));
+			return Ok(await contratanteService.AtualizarContratante(contratante));
 		}
 		catch (Exception e)
 		{
-			throw new Exception($"Erro: {e.Message}");
+			return BadRequest(RetornarModelBadRequest(e));
 		}
 	}
 	
@@ -113,7 +113,7 @@ public class ContratanteController(ContratanteService contratanteService, IMappe
 		}
 		catch (Exception e)
 		{
-			throw new Exception($"Erro: {e.Message}");
+			return BadRequest(RetornarModelBadRequest(e));
 		}
 	}
 	

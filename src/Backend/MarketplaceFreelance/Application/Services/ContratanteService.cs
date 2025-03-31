@@ -1,5 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using Core.DTO.Contratante;
 using Core.Interfaces;
 using Core.Models;
 
@@ -29,9 +30,9 @@ public class ContratanteService(IContratanteRepository contratanteRepository)
 	{
 		return await contratanteRepository.ListarContratantes();
 	}	
-	public async Task<Contratante> AtualizarContratante(int id)
+	public async Task<Contratante> AtualizarContratante(ContratanteUpdateDTO contratante)
 	{
-		return await contratanteRepository.EditarContratante(id);
+		return await contratanteRepository.EditarContratante(contratante);
 	}	
 	public async Task ExcluirContratante(int id)
 	{

@@ -1,4 +1,5 @@
-﻿using Core.Models;
+﻿using Core.DTO.Contratante;
+using Core.Models;
 
 namespace Core.Interfaces;
 
@@ -9,6 +10,6 @@ public interface IContratanteRepository
 	Task<Contratante> BuscarContratantePorCPF(string cpf);
 	Task<Contratante> BuscarContratantePorEmail(string email);
 	Task<IEnumerable<Contratante>> ListarContratantes();
-	Task<Contratante> EditarContratante(int id);
+	Task<Contratante> EditarContratante(ContratanteUpdateDTO contratante);
 	Task ExcluirContratante(int id);
 }

@@ -34,7 +34,9 @@ static void ConfigurarInjecaoDeDependencia(WebApplicationBuilder builder)
     .AddScoped<TokenService>()
     .AddScoped<AuthService>()
     .AddScoped<ContratanteService>()
-    .AddScoped<IContratanteRepository, ContratanteRepository>();
+    .AddScoped<ProjetoService>()
+    .AddScoped<IContratanteRepository, ContratanteRepository>()
+    .AddScoped<IProjetoRepository, ProjetoRepository>();
 
 }
 
@@ -111,11 +113,13 @@ static void ConfigurarAplicacao(WebApplication app)
     app.UseDeveloperExceptionPage()
         .UseRouting();
 
+    app.UseStaticFiles();
     app.UseSwagger()
         .UseSwaggerUI(c =>
         {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "MarketplaceFreelance.Api v1");
                 c.RoutePrefix = string.Empty;
+                c.InjectStylesheet("/swagger-ui/dark-mode.css"); // Adiciona um CSS customizado
         });
 
     app.UseCors(x => x
