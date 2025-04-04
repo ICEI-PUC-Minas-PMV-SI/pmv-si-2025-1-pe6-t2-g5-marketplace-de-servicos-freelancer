@@ -36,6 +36,7 @@ static void ConfigurarInjecaoDeDependencia(WebApplicationBuilder builder)
     .AddScoped<ContratanteService>()
     .AddScoped<ProjetoService>()
     .AddScoped<IContratanteRepository, ContratanteRepository>()
+    .AddScoped<IFreelancerRepository, FreelancerRepository>()
     .AddScoped<IProjetoRepository, ProjetoRepository>();
 
 }

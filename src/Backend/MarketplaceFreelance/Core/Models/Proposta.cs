@@ -1,11 +1,27 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Core.Enums;
+using Microsoft.AspNetCore.Mvc.Diagnostics;
 
 namespace Core.Models;
 
 public class Proposta
 {
+	public Proposta(Freelancer freelancer, Projeto projeto, decimal valor, int diasUteisDuracao, DateTime dataRegistro, int count)
+	{
+		Freelancer = freelancer;
+		Projeto = projeto;
+		Valor = valor;
+		DiasUteisDuracao = diasUteisDuracao;
+		DataRegistro = dataRegistro;
+
+		Id = count++;
+		ProjetoId = projeto.ProjetoId;
+		FreelancerId = freelancer.FreelancerId;
+		Status = PropostaStatus.Pendente;
+		Aprovado = false;
+	}
+
 	[Key]  
 	public long Id { get; set; }
 

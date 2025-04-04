@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Core.Models;
 
 public class Freelancer
-{
+{	
 	[Key]
 	[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 	public long FreelancerId { get; set; }
@@ -15,11 +15,14 @@ public class Freelancer
 	public required string Nome { get; set; } = string.Empty;
 
 	[Required]
+    public required string CPF { get; set; } = string.Empty;
+
+	[Required]
 	public DateTime DataNascimento { get; set; }
 
 	[Required]
 	public DateTime DataRegistro { get; set; } = DateTime.UtcNow;
-	public DateTime DataInativacao { get; set; }
+	public DateTime? DataInativacao { get; set; }
 
 	[Required]
 	[MaxLength(20)]
@@ -42,6 +45,9 @@ public class Freelancer
 	public string? Descricao { get; set; } = string.Empty;
 
 	public int? Upvote { get; set; }
+
+	[Required]
+	public string Habilidade { get; set; }
 
 	public ICollection<Proposta>? Propostas { get; set; }
 }

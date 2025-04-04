@@ -15,7 +15,7 @@ public interface IProjetoRepository
 	Task<Projeto> BuscarProjetoPorNome(string nome); 
 	
 	//Quem lista os projetos é o freelancer
-	Task<IEnumerable<Projeto>> ListarProjetos(); 
+	Task<List<Projeto>> ListarProjetos(); 
 	
 	//Quem busca os projetos é o freelancer
 	Task<IEnumerable<Projeto>> BuscarProjetosPorCategoria(string categoria); 
