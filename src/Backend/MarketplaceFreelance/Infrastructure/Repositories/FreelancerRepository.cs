@@ -50,7 +50,7 @@ public class FreelancerRepository(AppDbContext contexto) : IFreelancerRepository
 
 	public async Task<IEnumerable<Freelancer>> BuscarFreelancersPorHabilidade(string habilidade)
 	{
-		return await contexto.Freelancers.AsNoTracking().Where(freelancer => freelancer.Habilidade == habilidade && freelancer.DataInativacao == null).OrderBy(freelancer => freelancer.FreelancerId).ToListAsync() ?? throw new InvalidOperationException();;
+		return await contexto.Freelancers.AsNoTracking().Where(freelancer => freelancer.Especialidade == habilidade && freelancer.DataInativacao == null).OrderBy(freelancer => freelancer.FreelancerId).ToListAsync() ?? throw new InvalidOperationException();;
 	}
 
     public async Task<Freelancer> EditarFreelancer(FreelancerUpdateDTO freelancer)

@@ -1,7 +1,6 @@
 ﻿using System.Security.Authentication;
 using Application.Services;
 using Core.DTO.Projeto;
-using Core.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

@@ -33,8 +33,6 @@ public class ContratanteRepository(AppDbContext contexto) : IContratanteReposito
 		return contratante;
 	}
 
-
-
 	public async Task<Contratante> BuscarContratantePorId(int id)
 	{
 		return await contexto.Contratantes.AsNoTracking().FirstOrDefaultAsync(contratante => contratante.ContratanteId == id && contratante.DataInativacao == null) ?? throw new InvalidOperationException();

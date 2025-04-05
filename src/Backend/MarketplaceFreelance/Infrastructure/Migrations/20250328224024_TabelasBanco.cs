@@ -40,9 +40,10 @@ namespace Infrastructure.Migrations
                     FreelancerId = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Nome = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    CPF = table.Column<string>(type: "text", nullable: false),
                     DataNascimento = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     DataRegistro = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    DataInativacao = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    DataInativacao = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     Especialidade = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
                     Telefone = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
                     Email = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
@@ -95,8 +96,7 @@ namespace Infrastructure.Migrations
                     Status = table.Column<int>(type: "integer", nullable: false),
                     DataAceite = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     Valor = table.Column<decimal>(type: "numeric", nullable: false),
-                    DiasUteisDuracao = table.Column<int>(type: "integer", nullable: false),
-                    Aprovado = table.Column<bool>(type: "boolean", nullable: false)
+                    DiasUteisDuracao = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {

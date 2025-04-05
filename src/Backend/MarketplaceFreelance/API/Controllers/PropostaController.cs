@@ -2,6 +2,7 @@ using System.Security.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using API.Controllers;
+using Application.Services;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -37,6 +38,24 @@ public class PropostaController(PropostaService propostaService) : BaseControlle
                 return Ok($"O profissional {nomeFreelancer} não fez uma proposta para o projeto {nomeProjeto}.");
 
             return Ok(await proposta);
+        }
+        catch (AuthenticationException e)
+        {
+            return Unauthorized(RetornarModelUnauthorized(e));
+        }
+        catch (Exception e)
+        {
+            return BadRequest(RetornarModelBadRequest(e));
+        }
+    }
+    
+    [HttpPut("aceitar-proposta/{propostaId}")]
+    [Authorize(Policy = "ContratantePolicy")]
+    public async Task<IActionResult> AceitarProposta(long propostaId)
+    {
+        try
+        {
+            return Ok(await propostaService.AceitarProposta(propostaId));
         }
         catch (AuthenticationException e)
         {

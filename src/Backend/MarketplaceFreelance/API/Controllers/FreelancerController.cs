@@ -11,7 +11,7 @@ namespace API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class FreelancerController(AuthService authService, FreelancerService freelancerService, IMapper mapper) : BaseController
+public class FreelancerController(AuthService<Freelancer> authService, FreelancerService freelancerService, IMapper mapper) : BaseController
 {
     [HttpPost]
 	[Route("login")]
@@ -47,7 +47,7 @@ public class FreelancerController(AuthService authService, FreelancerService fre
 	}
 
 	[HttpGet("{id}")]
-	[Authorize]
+	[Authorize(Policy = "FreelancerPolicy")]
 	public async Task<IActionResult> BuscarFreelancerPorId(int id)
 	{
 		try
@@ -61,7 +61,7 @@ public class FreelancerController(AuthService authService, FreelancerService fre
 	}
 	
 	[HttpGet("buscar-por-email/{email}")]
-	[Authorize]
+	[Authorize(Policy = "FreelancerPolicy")]
 	public async Task<IActionResult> BuscarFreelancerPorEmail(string email)
 	{
 		try
@@ -75,7 +75,7 @@ public class FreelancerController(AuthService authService, FreelancerService fre
 	}
 	
 	[HttpGet]
-	[Authorize]
+	[Authorize(Policy = "FreelancerPolicy")]
 	public async Task<IActionResult> ListarFreelancers()
 	{
 		try
@@ -89,7 +89,7 @@ public class FreelancerController(AuthService authService, FreelancerService fre
 	}
 	
 	[HttpPut("{id}")]
-	[Authorize]
+	[Authorize(Policy = "FreelancerPolicy")]
 	public async Task<IActionResult> AtualizarFreelancer(FreelancerUpdateDTO freelancer)
 	{
 		try
@@ -103,7 +103,7 @@ public class FreelancerController(AuthService authService, FreelancerService fre
 	}
 	
 	[HttpDelete("{id}")]
-	[Authorize]
+	[Authorize(Policy = "FreelancerPolicy")]
 	public async Task<IActionResult> ExcluirFreelancer(int id)
 	{
 		try

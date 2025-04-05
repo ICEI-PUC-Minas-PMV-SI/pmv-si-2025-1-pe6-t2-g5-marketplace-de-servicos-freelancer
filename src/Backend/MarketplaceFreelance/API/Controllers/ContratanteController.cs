@@ -11,7 +11,7 @@ namespace API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ContratanteController(ContratanteService contratanteService, IMapper mapper, AuthService authService) : BaseController
+public class ContratanteController(ContratanteService contratanteService, IMapper mapper, AuthService<Contratante> authService) : BaseController
 {
 	[HttpPost]
 	[Route("login")]
@@ -46,7 +46,7 @@ public class ContratanteController(ContratanteService contratanteService, IMappe
 	}
 	
 	[HttpGet("{id}")]
-	[Authorize]
+	[Authorize(Policy = "ContratantePolicy")]
 	public async Task<IActionResult> BuscarContratantePorId(int id)
 	{
 		try
@@ -61,7 +61,7 @@ public class ContratanteController(ContratanteService contratanteService, IMappe
 	
 	[HttpGet]
 	[Route("buscar-por-cpf/{cpf}")]
-	[Authorize]
+	[Authorize(Policy = "ContratantePolicy")]
 	public async Task<IActionResult> BuscarContratantePorCPF(string cpf)
 	{
 		try
@@ -75,7 +75,7 @@ public class ContratanteController(ContratanteService contratanteService, IMappe
 	}
 	
 	[HttpGet]
-	[Authorize]
+	[Authorize(Policy = "ContratantePolicy")]
 	public async Task<IActionResult> ListarContratantes()
 	{
 		try
@@ -89,7 +89,7 @@ public class ContratanteController(ContratanteService contratanteService, IMappe
 	}
 	
 	[HttpPut("{id}")]
-	[Authorize]
+	[Authorize(Policy = "ContratantePolicy")]
 	public async Task<IActionResult> AtualizarContratante(ContratanteUpdateDTO contratante)
 	{
 		try
@@ -103,7 +103,7 @@ public class ContratanteController(ContratanteService contratanteService, IMappe
 	}
 	
 	[HttpDelete("{id}")]
-	[Authorize]
+	[Authorize(Policy = "ContratantePolicy")]
 	public async Task<IActionResult> ExcluirContratante(int id)
 	{
 		try

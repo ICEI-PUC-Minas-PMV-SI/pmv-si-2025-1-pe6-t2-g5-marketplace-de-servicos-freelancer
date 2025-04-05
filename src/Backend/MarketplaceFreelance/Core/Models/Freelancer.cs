@@ -46,8 +46,5 @@ public class Freelancer
 
 	public int? Upvote { get; set; }
 
-	[Required]
-	public string Habilidade { get; set; }
-
 	public ICollection<Proposta>? Propostas { get; set; }
 }

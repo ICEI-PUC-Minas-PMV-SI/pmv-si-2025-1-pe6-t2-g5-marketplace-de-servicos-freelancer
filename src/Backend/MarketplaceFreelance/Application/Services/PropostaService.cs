@@ -1,22 +1,47 @@
-using AutoMapper;
+using Core.Enums;
 using Core.Interfaces;
 using Core.Models;
 
-public class PropostaService(IPropostaRepository propostaRepository, IFreelancerRepository freelancerRepository, IProjetoRepository projetoRepository)
+namespace Application.Services;
+
+public class PropostaService(IPropostaRepository propostaRepository)
 {
-    public async Task<Proposta> CadastrarProposta(PropostaCadastroDTO propostaDto)
+	public async Task<PropostaCadastroDTO> CadastrarProposta(PropostaCadastroDTO propostaDto)
 	{
-        var freelancer = freelancerRepository.BuscarFreelancerPorId(propostaDto.FreelancerId);
-        var projeto = projetoRepository.BuscarProjetoPorNome(propostaDto.NomeProjeto);
-        var projetos = projetoRepository.ListarProjetos().Result;
-
-        var proposta = new Proposta(freelancer.Result, projeto.Result, propostaDto.Valor, propostaDto.DiasUteisDuracao, propostaDto.DataRegistro, projetos.Count);
-
-		return await propostaRepository.CriarProposta(proposta);
+		return await propostaRepository.CriarProposta(propostaDto);
 	}
 
-    public async Task<Proposta?> BuscarPropostaPorFreelancer(string nomeFreelancer, string nomeProjeto)
-    {
-        return await propostaRepository.BuscarPropostaPorFreelancer(nomeFreelancer, nomeProjeto);
-    }
+	public async Task<Proposta?> BuscarPropostaPorFreelancer(string nomeFreelancer, string nomeProjeto)
+	{
+		return await propostaRepository.BuscarPropostaPorFreelancer(nomeFreelancer, nomeProjeto);
+	}
+
+	public async Task<Proposta> AceitarProposta(long propostaId)
+	{
+		var proposta = await propostaRepository.BuscarPorId(propostaId);
+		if (proposta == null)
+		{
+			throw new KeyNotFoundException("Proposta não encontrada.");
+		}
+
+		proposta.Status = PropostaStatus.Aceita;
+		proposta.DataAceite = DateTime.UtcNow;
+
+		await RejeitarOutrasPropostas(proposta.ProjetoId, propostaId);
+		await propostaRepository.AtualizarProposta(proposta);
+		return proposta;
+	}
+
+	private async Task RejeitarOutrasPropostas(long? projetoId, long propostaAceitaId)
+	{
+		var outrasPropostas = await propostaRepository.BuscarPropostasPorProjeto(projetoId);
+		foreach (var proposta in outrasPropostas)
+		{
+			if (proposta.Id != propostaAceitaId && proposta.DataInativacao == null)
+			{
+				proposta.Status = PropostaStatus.Rejeitada;
+				await propostaRepository.AtualizarProposta(proposta);
+			}
+		}
+	}
 }

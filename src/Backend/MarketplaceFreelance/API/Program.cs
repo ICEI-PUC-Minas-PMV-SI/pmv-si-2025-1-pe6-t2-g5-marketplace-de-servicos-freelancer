@@ -1,6 +1,7 @@
 using System.Text;
 using Application.Services;
 using Core.Interfaces;
+using Core.Models;
 using Infrastructure.Data;
 using Infrastructure.Mapper;
 using Infrastructure.Repositories;
@@ -32,13 +33,17 @@ static void ConfigurarInjecaoDeDependencia(WebApplicationBuilder builder)
     .AddSingleton(builder.Configuration)
     .AddSingleton(builder.Environment)
     .AddScoped<TokenService>()
-    .AddScoped<AuthService>()
+    .AddScoped<TokenService>()
+    .AddScoped<AuthService<Contratante>>()
+    .AddScoped<AuthService<Freelancer>>()    
     .AddScoped<ContratanteService>()
     .AddScoped<ProjetoService>()
+    .AddScoped<FreelancerService>()
+    .AddScoped<PropostaService>()
     .AddScoped<IContratanteRepository, ContratanteRepository>()
     .AddScoped<IFreelancerRepository, FreelancerRepository>()
+    .AddScoped<IPropostaRepository, PropostaRepository>()
     .AddScoped<IProjetoRepository, ProjetoRepository>();
-
 }
 
 // Configura o serviços da API.
@@ -100,11 +105,17 @@ static void ConfigurarServices(WebApplicationBuilder builder)
         x.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["KeySecret"] ?? string.Empty)),
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["KeySecret"]!)),
             ValidateIssuer = false,
             ValidateAudience = false
         };
-
+    });
+    
+    
+    builder.Services.AddAuthorization(options =>
+    {
+        options.AddPolicy("ContratantePolicy", policy => policy.RequireClaim("UserType", "Contratante"));
+        options.AddPolicy("FreelancerPolicy", policy => policy.RequireClaim("UserType", "Freelancer"));
     });
 }
 
@@ -131,7 +142,7 @@ static void ConfigurarAplicacao(WebApplication app)
 
     app.UseAuthorization();
 
-    app.UseEndpoints(endpoints => endpoints.MapControllers());
-
+    app.MapControllers();
+    
     app.MapControllers();
 }
