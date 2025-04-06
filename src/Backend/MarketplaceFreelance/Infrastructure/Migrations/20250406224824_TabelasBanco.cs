@@ -95,6 +95,7 @@ namespace Infrastructure.Migrations
                     DataRegistro = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Status = table.Column<int>(type: "integer", nullable: false),
                     DataAceite = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    DataInativacao = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     Valor = table.Column<decimal>(type: "numeric", nullable: false),
                     DiasUteisDuracao = table.Column<int>(type: "integer", nullable: false)
                 },

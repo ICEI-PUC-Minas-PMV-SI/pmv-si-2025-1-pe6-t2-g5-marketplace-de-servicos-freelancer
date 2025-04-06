@@ -1,0 +1,1192 @@
+{
+	"info": {
+		"_postman_id": "9a6cbe82-6d88-43f8-9140-57080b91a823",
+		"name": "Testar Freelance API",
+		"description": "# About this collection\n\nThis collection helps you set up contract tests to ensure that two separate systems are compatible and can communicate with one another.\n\n## **Using the collection**\n\n**Step 1:** Send the sample requests and view the response and test results.\n\n**Step 2:** Replace the sample request URLs with your desired API endpoints.\n\n**Step 3:** Customize the tests in the \"Tests\" tab if needed. Don't forget to save your changes.\n\n### Resources\n\n[Scripting in Postman](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/)\n\n[Test script examples](https://learning.postman.com/docs/writing-scripts/script-references/test-examples/)\n\n[Postman Sandbox API reference](https://learning.postman.com/docs/sending-requests/grpc/postman-sandbox-api/#writing-assertions)\n\n[Using the Collection Runner](https://learning.postman.com/docs/collections/running-collections/intro-to-collection-runs/)\n\n[  \n](https://postman.postman.co/documentation/24552533-5bead607-0197-4e1d-87d4-3160bc7631c1?entity=&branch=&version=)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7750654"
+	},
+	"item": [
+		{
+			"name": "Contratante Criar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Código de retorno é 200.\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = JSON.parse(pm.response.text());",
+							"",
+							"// Validate that the response has an arg object",
+							"pm.test(\"Retorno possui um Contratante ID valido.\", function () {",
+							"    pm.expect(jsonData).to.have.property('contratanteId');",
+							"});",
+							"",
+							"postman.setEnvironmentVariable(\"contratante_id\", jsonData.contratanteId);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Nome de Teste\",\r\n  \"email\": \"teste@email.com\",\r\n  \"telefone\": \"31932323232\",\r\n  \"cpf\": \"123456789\",\r\n  \"senha\": \"pass123\",\r\n  \"dataNascimento\": \"1991-04-05T17:55:38.153Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5204/api/Contratante",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5204",
+					"path": [
+						"api",
+						"Contratante"
+					]
+				},
+				"description": "The tests in this request validate that:\n\n- the response code is 200\n- the response is a JSON object\n- the response has an 'arg' object\n- the response has 'headers' object\n- the response has a 'URL' property"
+			},
+			"response": []
+		},
+		{
+			"name": "Contratante Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Código de retorno é 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"\r",
+							"// Validate that the response has an arg object\r",
+							"pm.test(\"Retorno possui um Token valido.\", function () {\r",
+							"    pm.expect(jsonData).to.have.property('token');\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"postman.setEnvironmentVariable(\"contratante_bearer_token\", jsonData.token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"teste@email.com\",\r\n  \"senha\": \"pass123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5204/api/Contratante/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5204",
+					"path": [
+						"api",
+						"Contratante",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Contratante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Código de retorno é 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"\r",
+							"// Validate that the response has an arg object\r",
+							"pm.test(\"Retorno possui um ID valido.\", function () {\r",
+							"    pm.expect(jsonData).to.have.property('contratanteId');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{contratante_bearer_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5204/api/Contratante/{{contratante_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5204",
+					"path": [
+						"api",
+						"Contratante",
+						"{{contratante_id}}"
+					]
+				},
+				"description": "The tests in this request validate that:\n\n- the response code is 200\n- the response is a JSON object\n- the response has an 'arg' object\n- the response has 'headers' object\n- the response has a 'URL' property"
+			},
+			"response": []
+		},
+		{
+			"name": "Contratante Busca CPF",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Código de retorno é 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"\r",
+							"// Validate that the response has an arg object\r",
+							"pm.test(\"Retorno possui um ID valido.\", function () {\r",
+							"    pm.expect(jsonData).to.have.property('contratanteId');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{contratante_bearer_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5204/api/Contratante/buscar-por-cpf/123456789",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5204",
+					"path": [
+						"api",
+						"Contratante",
+						"buscar-por-cpf",
+						"123456789"
+					]
+				},
+				"description": "The tests in this request validate that:\n\n- the response code is 200\n- the response is a JSON object\n- the response has an 'arg' object\n- the response has 'headers' object\n- the response has a 'URL' property"
+			},
+			"response": []
+		},
+		{
+			"name": "Contratante Update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Código de retorno é 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"\r",
+							"pm.test(\"Retorno possui nome alterado\", function () {\r",
+							"    pm.expect(jsonData.nome).to.eql(\"Outro Nome\");\r",
+							"});\r",
+							"pm.test(\"Retorno possui email alterado\", function () {\r",
+							"    pm.expect(jsonData.email).to.eql(\"novo_teste@email.com\");\r",
+							"});\r",
+							"pm.test(\"Retorno possui telefone alterado\", function () {\r",
+							"    pm.expect(jsonData.telefone).to.eql(\"55932323232\");\r",
+							"});\r",
+							"pm.test(\"Retorno possui senha alterado\", function () {\r",
+							"    pm.expect(jsonData.senha).to.eql(\"pass456\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{contratante_bearer_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Outro Nome\",\r\n  \"email\": \"novo_teste@email.com\",\r\n  \"telefone\": \"55932323232\",\r\n  \"senha\": \"pass456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5204/api/Contratante/{{contratante_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5204",
+					"path": [
+						"api",
+						"Contratante",
+						"{{contratante_id}}"
+					]
+				},
+				"description": "The tests in this request validate that:\n\n- the response code is 200\n- the response is a JSON object\n- the response has an 'arg' object\n- the response has 'headers' object\n- the response has a 'URL' property"
+			},
+			"response": []
+		},
+		{
+			"name": "Freelancer Criar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Código de retorno é 200.\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = JSON.parse(pm.response.text());",
+							"",
+							"// Validate that the response has an arg object",
+							"pm.test(\"Retorno possui um Freelancer ID valido.\", function () {",
+							"    pm.expect(jsonData).to.have.property('freelancerId');",
+							"});",
+							"",
+							"postman.setEnvironmentVariable(\"freelancer_id\", jsonData.freelancerId);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Nome do Freelancer\",\r\n  \"email\": \"freelancer@teste.com\",\r\n  \"telefone\": \"2755999999\",\r\n  \"cpf\": \"123456\",\r\n  \"senha\": \"pass123\",\r\n  \"dataNascimento\": \"1975-04-06T19:13:12.323Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5204/api/Freelancer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5204",
+					"path": [
+						"api",
+						"Freelancer"
+					]
+				},
+				"description": "The tests in this request validate that:\n\n- the response code is 200\n- the response is a JSON object\n- the response has an 'arg' object\n- the response has 'headers' object\n- the response has a 'URL' property"
+			},
+			"response": []
+		},
+		{
+			"name": "Freelancer Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Código de retorno é 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"\r",
+							"// Validate that the response has an arg object\r",
+							"pm.test(\"Retorno possui um Token valido.\", function () {\r",
+							"    pm.expect(jsonData).to.have.property('token');\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"postman.setEnvironmentVariable(\"freelancer_bearer_token\", jsonData.token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"freelancer@teste.com\",\r\n  \"senha\": \"pass123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5204/api/Freelancer/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5204",
+					"path": [
+						"api",
+						"Freelancer",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Freelancer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Código de retorno é 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"\r",
+							"// Validate that the response has an arg object\r",
+							"pm.test(\"Retorno possui um ID valido.\", function () {\r",
+							"    pm.expect(jsonData).to.have.property('freelancerId');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{freelancer_bearer_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5204/api/Freelancer/{{freelancer_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5204",
+					"path": [
+						"api",
+						"Freelancer",
+						"{{freelancer_id}}"
+					]
+				},
+				"description": "The tests in this request validate that:\n\n- the response code is 200\n- the response is a JSON object\n- the response has an 'arg' object\n- the response has 'headers' object\n- the response has a 'URL' property"
+			},
+			"response": []
+		},
+		{
+			"name": "Freelancer Buscar Email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Código de retorno é 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"\r",
+							"// Validate that the response has an arg object\r",
+							"pm.test(\"Retorno possui um ID valido.\", function () {\r",
+							"    pm.expect(jsonData).to.have.property('freelancerId');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{freelancer_bearer_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5204/api/Freelancer/buscar-por-email/freelancer@teste.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5204",
+					"path": [
+						"api",
+						"Freelancer",
+						"buscar-por-email",
+						"freelancer@teste.com"
+					]
+				},
+				"description": "The tests in this request validate that:\n\n- the response code is 200\n- the response is a JSON object\n- the response has an 'arg' object\n- the response has 'headers' object\n- the response has a 'URL' property"
+			},
+			"response": []
+		},
+		{
+			"name": "Freelancer Update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Código de retorno é 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"\r",
+							"pm.test(\"Retorno possui nome alterado\", function () {\r",
+							"    pm.expect(jsonData.nome).to.eql(\"Novo Nome do Freelancer\");\r",
+							"});\r",
+							"pm.test(\"Retorno possui email alterado\", function () {\r",
+							"    pm.expect(jsonData.email).to.eql(\"novofree@teste.com\");\r",
+							"});\r",
+							"pm.test(\"Retorno possui telefone alterado\", function () {\r",
+							"    pm.expect(jsonData.telefone).to.eql(\"3155999999\");\r",
+							"});\r",
+							"pm.test(\"Retorno possui senha alterado\", function () {\r",
+							"    pm.expect(jsonData.senha).to.eql(\"pass456\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{freelancer_bearer_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Novo Nome do Freelancer\",\r\n  \"email\": \"novofree@teste.com\",\r\n  \"telefone\": \"3155999999\",\r\n  \"senha\": \"pass456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5204/api/Freelancer/{{freelancer_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5204",
+					"path": [
+						"api",
+						"Freelancer",
+						"{{freelancer_id}}"
+					]
+				},
+				"description": "The tests in this request validate that:\n\n- the response code is 200\n- the response is a JSON object\n- the response has an 'arg' object\n- the response has 'headers' object\n- the response has a 'URL' property"
+			},
+			"response": []
+		},
+		{
+			"name": "Projeto Criar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Código de retorno é 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"\r",
+							"pm.test(\"Retorno possui um Projeto ID valido.\", function () {\r",
+							"    pm.expect(jsonData).to.have.property('projetoId');\r",
+							"});\r",
+							"\r",
+							"postman.setEnvironmentVariable(\"projeto_id\", jsonData.projetoId);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{contratante_bearer_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Projeto Teste\",\r\n    \"descricao\": \"Apenas um projeto de Teste\",\r\n    \"escopo\": \"Fazer aqueles testes\",\r\n    \"contratanteId\": {{contratante_id}},\r\n    \"dataInicio\": \"2025-04-06T20:25:59.362Z\",\r\n    \"dataFim\": \"2025-04-06T20:25:59.362Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5204/api/Projeto",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5204",
+					"path": [
+						"api",
+						"Projeto"
+					]
+				},
+				"description": "The tests in this request validate that:\n\n- the response code is 200\n- the response is a JSON object\n- the response has an 'arg' object\n- the response has 'headers' object\n- the response has a 'URL' property"
+			},
+			"response": []
+		},
+		{
+			"name": "Projeto Update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Código de retorno é 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"\r",
+							"pm.test(\"Retorno possui nome alterado\", function () {\r",
+							"    pm.expect(jsonData.nome).to.eql(\"Novo Nome\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{contratante_bearer_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Novo Nome\",\r\n    \"descricao\": \"Apenas um projeto de Teste\",\r\n    \"escopo\": \"Fazer aqueles testes\",\r\n    \"contratanteId\": {{contratante_id}},\r\n    \"dataInicio\": \"2025-04-06T20:54:47.981Z\",\r\n    \"dataFim\": \"2025-04-06T20:54:47.981Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5204/api/Projeto/{{projeto_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5204",
+					"path": [
+						"api",
+						"Projeto",
+						"{{projeto_id}}"
+					]
+				},
+				"description": "The tests in this request validate that:\n\n- the response code is 200\n- the response is a JSON object\n- the response has an 'arg' object\n- the response has 'headers' object\n- the response has a 'URL' property"
+			},
+			"response": []
+		},
+		{
+			"name": "Projeto Buscar Nome",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Código de retorno é 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"\r",
+							"pm.test(\"Retorno possui nome alterado\", function () {\r",
+							"    pm.expect(jsonData.nome).to.eql(\"Novo Nome\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{contratante_bearer_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5204/api/Projeto/nome/Novo Nome",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5204",
+					"path": [
+						"api",
+						"Projeto",
+						"nome",
+						"Novo Nome"
+					]
+				},
+				"description": "The tests in this request validate that:\n\n- the response code is 200\n- the response is a JSON object\n- the response has an 'arg' object\n- the response has 'headers' object\n- the response has a 'URL' property"
+			},
+			"response": []
+		},
+		{
+			"name": "Proposta Criar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Código de retorno é 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"\r",
+							"pm.test(\"Retorno possui um Projeto ID valido.\", function () {\r",
+							"    pm.expect(jsonData).to.have.property('projetoId');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Retorno possui um Freelancer ID valido.\", function () {\r",
+							"    pm.expect(jsonData).to.have.property('freelancerId');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Retorno possui um Proposta ID valido.\", function () {\r",
+							"    pm.expect(jsonData).to.have.property('propostaId');\r",
+							"});\r",
+							"\r",
+							"postman.setEnvironmentVariable(\"proposta_id\", jsonData.propostaId);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{contratante_bearer_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"projetoId\": {{projeto_id}},\r\n  \"freelancerId\": {{freelancer_id}},\r\n  \"dataRegistro\": \"2025-04-06T21:21:14.599Z\",\r\n  \"valor\": 1200,\r\n  \"diasUteisDuracao\": 14\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5204/api/Proposta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5204",
+					"path": [
+						"api",
+						"Proposta"
+					]
+				},
+				"description": "The tests in this request validate that:\n\n- the response code is 200\n- the response is a JSON object\n- the response has an 'arg' object\n- the response has 'headers' object\n- the response has a 'URL' property"
+			},
+			"response": []
+		},
+		{
+			"name": "Proposta Aceitar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Código de retorno é 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"\r",
+							"pm.test(\"Retorno possui um Projeto ID valido.\", function () {\r",
+							"    pm.expect(jsonData).to.have.property('projetoId');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Retorno possui um Freelancer ID valido.\", function () {\r",
+							"    pm.expect(jsonData).to.have.property('freelancerId');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{contratante_bearer_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5204/api/Proposta/aceitar-proposta/{{proposta_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5204",
+					"path": [
+						"api",
+						"Proposta",
+						"aceitar-proposta",
+						"{{proposta_id}}"
+					]
+				},
+				"description": "The tests in this request validate that:\n\n- the response code is 200\n- the response is a JSON object\n- the response has an 'arg' object\n- the response has 'headers' object\n- the response has a 'URL' property"
+			},
+			"response": []
+		},
+		{
+			"name": "Projeto Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Código de retorno é 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{contratante_bearer_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5204/api/Projeto/{{projeto_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5204",
+					"path": [
+						"api",
+						"Projeto",
+						"{{projeto_id}}"
+					]
+				},
+				"description": "The tests in this request validate that:\n\n- the response code is 200\n- the response is a JSON object\n- the response has an 'arg' object\n- the response has 'headers' object\n- the response has a 'URL' property"
+			},
+			"response": []
+		},
+		{
+			"name": "Contratante Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Código de retorno é 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{contratante_bearer_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5204/api/Contratante/{{contratante_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5204",
+					"path": [
+						"api",
+						"Contratante",
+						"{{contratante_id}}"
+					]
+				},
+				"description": "The tests in this request validate that:\n\n- the response code is 200\n- the response is a JSON object\n- the response has an 'arg' object\n- the response has 'headers' object\n- the response has a 'URL' property"
+			},
+			"response": []
+		},
+		{
+			"name": "Freelancer Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Código de retorno é 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{freelancer_bearer_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5204/api/Freelancer/{{freelancer_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5204",
+					"path": [
+						"api",
+						"Freelancer",
+						"{{freelancer_id}}"
+					]
+				},
+				"description": "The tests in this request validate that:\n\n- the response code is 200\n- the response is a JSON object\n- the response has an 'arg' object\n- the response has 'headers' object\n- the response has a 'URL' property"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://postman-echo.com"
+		}
+	]
+}

@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250328224024_TabelasBanco")]
+    [Migration("20250406224824_TabelasBanco")]
     partial class TabelasBanco
     {
         /// <inheritdoc />
@@ -81,7 +81,11 @@ namespace Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("FreelancerId"));
 
-                    b.Property<DateTime>("DataInativacao")
+                    b.Property<string>("CPF")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("DataInativacao")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("DataNascimento")
@@ -185,10 +189,10 @@ namespace Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<bool>("Aprovado")
-                        .HasColumnType("boolean");
-
                     b.Property<DateTime?>("DataAceite")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("DataInativacao")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("DataRegistro")
