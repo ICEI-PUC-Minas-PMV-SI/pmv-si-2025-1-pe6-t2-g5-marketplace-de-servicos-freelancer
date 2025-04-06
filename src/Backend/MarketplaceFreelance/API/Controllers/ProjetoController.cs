@@ -100,13 +100,13 @@ public class ProjetoController(ProjetoService projetoService) : BaseController
         }
     }
     
-    [HttpPut]
+    [HttpPut("{id}")]
     [Authorize]
-    public async Task<IActionResult> AtualizarProjeto(ProjetoDTO projeto)
+    public async Task<IActionResult> AtualizarProjeto(ProjetoCadastroDTO projeto, int id)
     {
         try
         {
-            return Ok(await projetoService.AtualizarProjeto(projeto));
+            return Ok(await projetoService.AtualizarProjeto(projeto, id));
         }
         catch (AuthenticationException e)
         {

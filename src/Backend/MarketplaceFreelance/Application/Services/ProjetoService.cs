@@ -6,7 +6,7 @@ namespace Application.Services;
 
 public class ProjetoService(IProjetoRepository projetoRepository)
 {
-	public async Task<ProjetoCadastroDTO> CadastrarProjeto(ProjetoCadastroDTO projeto)
+	public async Task<ProjetoResponseDTO> CadastrarProjeto(ProjetoCadastroDTO projeto)
 	{
 		return await projetoRepository.CadastrarProjeto(projeto);
 	}
@@ -27,9 +27,9 @@ public class ProjetoService(IProjetoRepository projetoRepository)
 	{
 		return await projetoRepository.ListarProjetos();
 	}	
-	public async Task<Projeto> AtualizarProjeto(ProjetoDTO projeto)
+	public async Task<Projeto> AtualizarProjeto(ProjetoCadastroDTO projeto, int id)
 	{
-		return await projetoRepository.AtualizarProjeto(projeto);
+		return await projetoRepository.AtualizarProjeto(projeto, id);
 	}	
 	public async Task ExcluirProjeto(long id)
 	{

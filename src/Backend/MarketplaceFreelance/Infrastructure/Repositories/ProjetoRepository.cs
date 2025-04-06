@@ -10,12 +10,12 @@ namespace Infrastructure.Repositories;
 
 public class ProjetoRepository(AppDbContext contexto, IMapper mapper) : IProjetoRepository
 {
-	public async Task<ProjetoCadastroDTO> CadastrarProjeto(ProjetoCadastroDTO projeto)
+	public async Task<ProjetoResponseDTO> CadastrarProjeto(ProjetoCadastroDTO projeto)
 	{
 		await contexto.Projetos.AddAsync(mapper.Map<Projeto>(projeto));
 		await contexto.SaveChangesAsync();
 
-		return projeto;
+		return mapper.Map<ProjetoResponseDTO>(projeto);
 	}
 
 	public async Task<Projeto> BuscarProjetoPorId(long id)
@@ -38,16 +38,16 @@ public class ProjetoRepository(AppDbContext contexto, IMapper mapper) : IProjeto
 		return await contexto.Projetos.AsNoTracking().Where(projeto => projeto.Escopo == categoria && projeto.Status != ProjetoStatus.Finalizado && projeto.Status != ProjetoStatus.EmAndamento && projeto.Status != ProjetoStatus.Finalizado && projeto.DataInativacao == null).OrderBy(projeto => projeto.ProjetoId).ToListAsync() ?? throw new InvalidOperationException();
 	}
 
-	public async Task<Projeto> AtualizarProjeto(ProjetoDTO projeto)
+	public async Task<Projeto> AtualizarProjeto(ProjetoCadastroDTO projeto, int id)
 	{
-		Projeto entidadeBanco = await BuscarProjetoPorId(projeto.ProjetoId);
+		Projeto entidadeBanco = await BuscarProjetoPorId(id);
 
 		contexto.Projetos.Entry(entidadeBanco).CurrentValues.SetValues(projeto);
 		contexto.Projetos.Update(entidadeBanco);
 
 		await contexto.SaveChangesAsync();
 
-		return await BuscarProjetoPorId(projeto.ProjetoId);
+		return await BuscarProjetoPorId(id);
 	}
 
 	public async Task ExcluirProjeto(long id)

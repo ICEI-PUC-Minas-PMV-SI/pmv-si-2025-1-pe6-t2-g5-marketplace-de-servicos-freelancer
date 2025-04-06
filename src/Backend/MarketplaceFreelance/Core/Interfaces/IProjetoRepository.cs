@@ -6,7 +6,7 @@ namespace Core.Interfaces;
 public interface IProjetoRepository
 {
 	//Quem cadastra o projeto é o contratante
-	Task<ProjetoCadastroDTO> CadastrarProjeto(ProjetoCadastroDTO projeto); 
+	Task<ProjetoResponseDTO> CadastrarProjeto(ProjetoCadastroDTO projeto); 
 	
 	//Quem busca o projeto é o freelancer
 	Task<Projeto> BuscarProjetoPorId(long id); 
@@ -21,7 +21,7 @@ public interface IProjetoRepository
 	Task<IEnumerable<Projeto>> BuscarProjetosPorCategoria(string categoria); 
 	
 	//Quem atualiza o projeto é o contratante
-	Task<Projeto> AtualizarProjeto(ProjetoDTO projeto); 
+	Task<Projeto> AtualizarProjeto(ProjetoCadastroDTO projeto, int id); 
 	
 	//Quem exclui o projeto é o contratante
 	Task ExcluirProjeto(long id); 
