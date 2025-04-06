@@ -7,6 +7,7 @@ namespace Core.Models;
 public class Proposta
 {
 	[Key]  
+	[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 	public long Id { get; set; }
 
 	[ForeignKey(nameof(Projeto))]

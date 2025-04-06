@@ -7,13 +7,15 @@ using Microsoft.EntityFrameworkCore;
 
 public class PropostaRepository(AppDbContext contexto, IMapper mapper) : IPropostaRepository
 {
-    public async Task<PropostaCadastroDTO> CriarProposta(PropostaCadastroDTO proposta)
+    public async Task<PropostaResponseDTO> CriarProposta(PropostaCadastroDTO proposta)
     {
-        await contexto.Propostas.AddAsync(mapper.Map<Proposta>(proposta));
+        var propostaEntity = mapper.Map<Proposta>(proposta);
+        await contexto.Propostas.AddAsync(propostaEntity);
         await contexto.SaveChangesAsync();
-        return proposta;
-    }
 
+        return mapper.Map<PropostaResponseDTO>(propostaEntity);
+    }
+    
     public async Task<Proposta?> BuscarPropostaPorFreelancer(string nomeFreelancer, string nomeProjeto)
     {
         return await contexto.Propostas

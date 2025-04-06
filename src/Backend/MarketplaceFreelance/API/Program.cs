@@ -27,6 +27,9 @@ static void ConfigurarInjecaoDeDependencia(WebApplicationBuilder builder)
 {
     builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
     builder.Services.AddAutoMapper(typeof(ContratanteProfile).Assembly);
+    builder.Services.AddAutoMapper(typeof(FreelancerProfile).Assembly);
+    builder.Services.AddAutoMapper(typeof(ProjetoProfile).Assembly);
+    builder.Services.AddAutoMapper(typeof(PropostaProfile).Assembly);
 
     
     builder.Services

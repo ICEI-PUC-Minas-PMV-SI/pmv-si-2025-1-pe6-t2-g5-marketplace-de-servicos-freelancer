@@ -6,7 +6,7 @@ namespace Application.Services;
 
 public class PropostaService(IPropostaRepository propostaRepository)
 {
-	public async Task<PropostaCadastroDTO> CadastrarProposta(PropostaCadastroDTO propostaDto)
+	public async Task<PropostaResponseDTO> CadastrarProposta(PropostaCadastroDTO propostaDto)
 	{
 		return await propostaRepository.CriarProposta(propostaDto);
 	}
