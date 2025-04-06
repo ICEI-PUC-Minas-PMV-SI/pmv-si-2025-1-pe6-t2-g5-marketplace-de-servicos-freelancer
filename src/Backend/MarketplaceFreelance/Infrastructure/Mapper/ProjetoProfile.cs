@@ -9,6 +9,7 @@ public class ProjetoProfile : Profile
 	public ProjetoProfile()
 	{
 		CreateMap<Projeto, ProjetoDTO>().ReverseMap();
+		CreateMap<Projeto, ProjetoResponseDTO>().ReverseMap();
 		CreateMap<Projeto, ProjetoCadastroDTO>().ReverseMap();
 		CreateMap<ProjetoCadastroDTO, ProjetoDTO>().ReverseMap();
 		CreateMap<ProjetoCadastroDTO, ProjetoResponseDTO>().ReverseMap();

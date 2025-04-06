@@ -12,10 +12,11 @@ public class ProjetoRepository(AppDbContext contexto, IMapper mapper) : IProjeto
 {
 	public async Task<ProjetoResponseDTO> CadastrarProjeto(ProjetoCadastroDTO projeto)
 	{
-		await contexto.Projetos.AddAsync(mapper.Map<Projeto>(projeto));
+		var projetoEntity = mapper.Map<Projeto>(projeto);
+		await contexto.Projetos.AddAsync(projetoEntity);
 		await contexto.SaveChangesAsync();
 
-		return mapper.Map<ProjetoResponseDTO>(projeto);
+		return mapper.Map<ProjetoResponseDTO>(projetoEntity);
 	}
 
 	public async Task<Projeto> BuscarProjetoPorId(long id)
