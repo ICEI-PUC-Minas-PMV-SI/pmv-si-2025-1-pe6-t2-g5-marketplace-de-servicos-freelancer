@@ -45,7 +45,7 @@ public class PropostaRepository(AppDbContext contexto, IMapper mapper) : IPropos
             throw new KeyNotFoundException("Proposta não encontrada.");
         }
 
-        proposta.DataInativacao = DateTime.Now;
+        proposta.DataInativacao = DateTime.UtcNow;
         contexto.Propostas.Update(proposta);
         await contexto.SaveChangesAsync();
     }

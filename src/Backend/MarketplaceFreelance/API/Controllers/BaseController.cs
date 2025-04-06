@@ -12,7 +12,7 @@ public class BaseController : ControllerBase
 		StatusCode = 400,
 		Title = "Bad Request",
 		Message = e.Message,
-		Date = DateTime.Now
+		Date = DateTime.UtcNow
 		};
 	}
 	
@@ -23,7 +23,7 @@ public class BaseController : ControllerBase
 		StatusCode = 404,
 		Title = "Not Found",
 		Message = e.Message,
-		Date = DateTime.Now
+		Date = DateTime.UtcNow
 		};
 	}
 	
@@ -34,7 +34,7 @@ public class BaseController : ControllerBase
 		StatusCode = 401,
 		Title = "Unauthorized",
 		Message = e.Message,
-		Date = DateTime.Now
+		Date = DateTime.UtcNow
 		};
 	}
 	
@@ -46,7 +46,7 @@ public class BaseController : ControllerBase
 		StatusCode = 500,
 		Title = "Internal Server Error",
 		Message = e.Message,
-		Date = DateTime.Now
+		Date = DateTime.UtcNow
 		};
 	}
 	

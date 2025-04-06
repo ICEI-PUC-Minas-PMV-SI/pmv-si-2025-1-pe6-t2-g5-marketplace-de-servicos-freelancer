@@ -90,11 +90,11 @@ public class FreelancerController(AuthService<Freelancer> authService, Freelance
 	
 	[HttpPut("{id}")]
 	[Authorize(Policy = "FreelancerPolicy")]
-	public async Task<IActionResult> AtualizarFreelancer(FreelancerUpdateDTO freelancer)
+	public async Task<IActionResult> AtualizarFreelancer(FreelancerUpdateDTO freelancer, int id)
 	{
 		try
 		{
-			return Ok(await freelancerService.EditarFreelancer(freelancer));
+			return Ok(await freelancerService.EditarFreelancer(freelancer, id));
 		}
 		catch (Exception e)
 		{

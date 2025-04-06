@@ -54,7 +54,7 @@ public class ProjetoRepository(AppDbContext contexto, IMapper mapper) : IProjeto
 	{
 		var entidadeBanco = await BuscarProjetoPorId(id);
 
-		entidadeBanco.DataInativacao = DateTime.Now;
+		entidadeBanco.DataInativacao = DateTime.UtcNow;
 
 		contexto.Projetos.Entry(entidadeBanco).CurrentValues.SetValues(entidadeBanco);
 		contexto.Projetos.Update(entidadeBanco);

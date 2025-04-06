@@ -29,9 +29,9 @@ public class FreelancerService(IFreelancerRepository freelancerRepository)
 		return await freelancerRepository.ListarFreelancers();
 	}
 
-	public async Task<Freelancer> EditarFreelancer(FreelancerUpdateDTO freelancer)
+	public async Task<Freelancer> EditarFreelancer(FreelancerUpdateDTO freelancer, int id)
 	{
-		return await freelancerRepository.EditarFreelancer(freelancer);
+		return await freelancerRepository.EditarFreelancer(freelancer, id);
 	}
 
 	public async Task ExcluirFreelancer(int id)

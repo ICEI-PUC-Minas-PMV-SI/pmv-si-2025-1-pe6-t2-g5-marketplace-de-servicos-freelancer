@@ -90,11 +90,11 @@ public class ContratanteController(ContratanteService contratanteService, IMappe
 	
 	[HttpPut("{id}")]
 	[Authorize(Policy = "ContratantePolicy")]
-	public async Task<IActionResult> AtualizarContratante(ContratanteUpdateDTO contratante)
+	public async Task<IActionResult> AtualizarContratante(ContratanteUpdateDTO contratante, int id)
 	{
 		try
 		{
-			return Ok(await contratanteService.AtualizarContratante(contratante));
+			return Ok(await contratanteService.AtualizarContratante(contratante, id));
 		}
 		catch (Exception e)
 		{

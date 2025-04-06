@@ -53,9 +53,9 @@ public class ContratanteRepository(AppDbContext contexto) : IContratanteReposito
 		return await contexto.Contratantes.AsNoTracking().Where(contratante => contratante.DataInativacao == null).OrderBy(contratante => contratante.ContratanteId).ToListAsync() ?? throw new InvalidOperationException();
 	}
 
-	public async Task<Contratante> EditarContratante(ContratanteUpdateDTO contratante)
+	public async Task<Contratante> EditarContratante(ContratanteUpdateDTO contratante, int id)
 	{
-		Contratante entidadeBanco = await BuscarContratantePorEmail(contratante.Email);
+		Contratante entidadeBanco = await BuscarContratantePorId(id);
 
 		contexto.Contratantes.Entry(entidadeBanco).CurrentValues.SetValues(contratante);
 		contexto.Contratantes.Update(entidadeBanco);
@@ -69,7 +69,7 @@ public class ContratanteRepository(AppDbContext contexto) : IContratanteReposito
 	{
 		Contratante entidadeBanco = await BuscarContratantePorId(id);
 
-		entidadeBanco.DataInativacao = DateTime.Now;
+		entidadeBanco.DataInativacao = DateTime.UtcNow;
 
 		contexto.Contratantes.Entry(entidadeBanco).CurrentValues.SetValues(entidadeBanco);
 		contexto.Contratantes.Update(entidadeBanco);

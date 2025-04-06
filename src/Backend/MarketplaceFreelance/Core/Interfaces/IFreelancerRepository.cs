@@ -19,7 +19,7 @@ public interface IFreelancerRepository
 	//Quem busca os freelancers é o contratante
 	Task<IEnumerable<Freelancer>> BuscarFreelancersPorHabilidade(string habilidade);
 
-	Task<Freelancer> EditarFreelancer(FreelancerUpdateDTO contratante);
+	Task<Freelancer> EditarFreelancer(FreelancerUpdateDTO contratante, int id);
 
 	Task ExcluirFreelancer(int id);
 }

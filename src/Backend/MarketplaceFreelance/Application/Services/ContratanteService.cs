@@ -30,9 +30,9 @@ public class ContratanteService(IContratanteRepository contratanteRepository)
 	{
 		return await contratanteRepository.ListarContratantes();
 	}	
-	public async Task<Contratante> AtualizarContratante(ContratanteUpdateDTO contratante)
+	public async Task<Contratante> AtualizarContratante(ContratanteUpdateDTO contratante, int id)
 	{
-		return await contratanteRepository.EditarContratante(contratante);
+		return await contratanteRepository.EditarContratante(contratante, id);
 	}	
 	public async Task ExcluirContratante(int id)
 	{

@@ -10,6 +10,6 @@ public interface IContratanteRepository
 	Task<Contratante> BuscarContratantePorCPF(string cpf);
 	Task<Contratante> BuscarContratantePorEmail(string email);
 	Task<IEnumerable<Contratante>> ListarContratantes();
-	Task<Contratante> EditarContratante(ContratanteUpdateDTO contratante);
+	Task<Contratante> EditarContratante(ContratanteUpdateDTO contratante, int id);
 	Task ExcluirContratante(int id);
 }

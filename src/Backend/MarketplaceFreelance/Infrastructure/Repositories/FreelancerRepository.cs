@@ -53,9 +53,9 @@ public class FreelancerRepository(AppDbContext contexto) : IFreelancerRepository
 		return await contexto.Freelancers.AsNoTracking().Where(freelancer => freelancer.Especialidade == habilidade && freelancer.DataInativacao == null).OrderBy(freelancer => freelancer.FreelancerId).ToListAsync() ?? throw new InvalidOperationException();;
 	}
 
-    public async Task<Freelancer> EditarFreelancer(FreelancerUpdateDTO freelancer)
+    public async Task<Freelancer> EditarFreelancer(FreelancerUpdateDTO freelancer, int id)
     {
-        Freelancer entidadeBanco = await BuscarFreelancerPorEmail(freelancer.Email);
+        Freelancer entidadeBanco = await BuscarFreelancerPorId(id);
 
 		contexto.Freelancers.Entry(entidadeBanco).CurrentValues.SetValues(freelancer);
 		contexto.Freelancers.Update(entidadeBanco);
@@ -69,7 +69,7 @@ public class FreelancerRepository(AppDbContext contexto) : IFreelancerRepository
     {
         Freelancer entidadeBanco = await BuscarFreelancerPorId(id);
 
-		entidadeBanco.DataInativacao = DateTime.Now;
+		entidadeBanco.DataInativacao = DateTime.UtcNow;
 
 		contexto.Freelancers.Entry(entidadeBanco).CurrentValues.SetValues(entidadeBanco);
 		contexto.Freelancers.Update(entidadeBanco);
