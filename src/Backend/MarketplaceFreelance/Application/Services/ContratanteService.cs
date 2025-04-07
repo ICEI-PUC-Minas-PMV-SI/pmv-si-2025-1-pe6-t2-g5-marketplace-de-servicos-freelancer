@@ -32,7 +32,7 @@ public class ContratanteService(IContratanteRepository contratanteRepository)
 	}	
 	public async Task<Contratante> AtualizarContratante(ContratanteUpdateDTO contratante, int id)
 	{
-		GerarHashSenha(contratante.Senha);
+		contratante.Senha = GerarHashSenha(contratante.Senha);
 		return await contratanteRepository.EditarContratante(contratante, id);
 	}	
 	public async Task ExcluirContratante(int id)

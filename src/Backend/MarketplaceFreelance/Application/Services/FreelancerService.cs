@@ -31,6 +31,7 @@ public class FreelancerService(IFreelancerRepository freelancerRepository)
 
 	public async Task<Freelancer> EditarFreelancer(FreelancerUpdateDTO freelancer, int id)
 	{
+		freelancer.Senha = GerarHashSenha(freelancer.Senha);
 		return await freelancerRepository.EditarFreelancer(freelancer, id);
 	}
 
