@@ -9,7 +9,6 @@ public class FreelancerProfile : Profile
 {
 	public FreelancerProfile()
 	{
-		CreateMap<Freelancer, FreelancerDTO>().ReverseMap();
 		CreateMap<Freelancer, UsuarioBase>().ReverseMap();
 		
 	}

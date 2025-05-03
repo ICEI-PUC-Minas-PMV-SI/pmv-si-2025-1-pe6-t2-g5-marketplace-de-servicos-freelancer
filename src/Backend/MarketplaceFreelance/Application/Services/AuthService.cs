@@ -5,55 +5,40 @@ using Core.Models;
 
 namespace Application.Services;
 
-public class AuthService<T>(ContratanteService contratanteService, FreelancerService freelancerService, TokenService tokenService, IMapper mapper) where T : class
+public class AuthService(UsuarioService usuarioService, ContratanteService contratanteService, FreelancerService freelancerService, TokenService tokenService, IMapper mapper)
 {
-    public async Task<LoginResponse> Autenticar(LoginRequest usuario)
-    {
-        object user = typeof(T) == typeof(Contratante)
-        ? await contratanteService.BuscarContratantePorEmail(usuario.Email)
-        : await freelancerService.BuscarFreelancerPorEmail(usuario.Email);
+	public async Task<LoginResponse> Autenticar(LoginRequest usuario)
+	{
+		var userType = await usuarioService.BuscarTipoUsuario(usuario.Email);
 
-        var hashSenha = contratanteService.GerarHashSenha(usuario.Senha);
+		var user = userType switch
+		{
+			"C" => await contratanteService.BuscarContratantePorEmail(usuario.Email),
+			"F" => await freelancerService.BuscarFreelancerPorEmail(usuario.Email) as UsuarioBase,
+			_ => throw new AuthenticationException("Tipo de usuário inválido")
+		};
 
-        if (typeof(T) == typeof(Contratante))
-        {
-            var contratante = (Contratante)user;
-            if (contratante.Senha != hashSenha)
-            {
-                throw new AuthenticationException("Usuário ou senha inválidos");
-            }
-            else if (contratante.DataInativacao != null)
-            {
-                throw new AuthenticationException("Este usuário está inativo.");
-            }
+		var hashSenhaDigitada = contratanteService.GerarHashSenha(usuario.Senha);
 
-            return new LoginResponse
-            {
-            Nome = contratante.Nome,
-            Id = contratante.ContratanteId,
-            Email = contratante.Email,
-            Token = tokenService.GerarToken<T>(mapper.Map<UsuarioBase>(contratante))
-            };
-        }
-        else
-        {
-            var freelancer = (Freelancer)user;
-            if (freelancer.Senha != hashSenha)
-            {
-                throw new AuthenticationException("Usuário ou senha inválidos");
-            }
-            else if (freelancer.DataInativacao != null)
-            {
-                throw new AuthenticationException("Este usuário está inativo.");
-            }
+		if (user.Senha != hashSenhaDigitada)
+		{
+			throw new AuthenticationException("Usuário ou senha inválidos.");
+		}
 
-            return new LoginResponse
-            {
-            Nome = freelancer.Nome,
-            Id = freelancer.FreelancerId,
-            Email = freelancer.Email,
-            Token = tokenService.GerarToken<T>(mapper.Map<UsuarioBase>(freelancer))
-            };
-        }
-    }
+		string token = userType switch
+		{
+			"C" => tokenService.GerarToken<Contratante>(mapper.Map<UsuarioBase>(user)),
+			"F" => tokenService.GerarToken<Freelancer>(mapper.Map<UsuarioBase>(user)),
+			_ => throw new AuthenticationException("Tipo de usuário inválido")
+		};
+		
+		return new LoginResponse
+		{
+			Nome = user.Nome,
+			Id = user.Id,
+			Email = user.Email,
+			Token = token
+		};
+	}
+
 }

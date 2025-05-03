@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250406224824_TabelasBanco")]
+    [Migration("20250430030615_TabelasBanco")]
     partial class TabelasBanco
     {
         /// <inheritdoc />
@@ -24,111 +24,6 @@ namespace Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
-
-            modelBuilder.Entity("Core.Models.Contratante", b =>
-                {
-                    b.Property<long>("ContratanteId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("ContratanteId"));
-
-                    b.Property<string>("CPF")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("DataInativacao")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("DataNascimento")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("DataRegistro")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
-
-                    b.Property<string>("Senha")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Telefone")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)");
-
-                    b.Property<int?>("Upvote")
-                        .HasColumnType("integer");
-
-                    b.HasKey("ContratanteId");
-
-                    b.ToTable("Contratantes");
-                });
-
-            modelBuilder.Entity("Core.Models.Freelancer", b =>
-                {
-                    b.Property<long>("FreelancerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("FreelancerId"));
-
-                    b.Property<string>("CPF")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("DataInativacao")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("DataNascimento")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("DataRegistro")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Descricao")
-                        .HasMaxLength(200)
-                        .HasColumnType("character varying(200)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)");
-
-                    b.Property<string>("Especialidade")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
-
-                    b.Property<string>("Senha")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Telefone")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)");
-
-                    b.Property<int?>("Upvote")
-                        .HasColumnType("integer");
-
-                    b.HasKey("FreelancerId");
-
-                    b.ToTable("Freelancers");
-                });
 
             modelBuilder.Entity("Core.Models.Projeto", b =>
                 {
@@ -222,6 +117,86 @@ namespace Infrastructure.Migrations
                     b.ToTable("Propostas");
                 });
 
+            modelBuilder.Entity("Core.Models.UsuarioBase", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("CPF")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("DataInativacao")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("DataNascimento")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("DataRegistro")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("character varying(40)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
+
+                    b.Property<string>("TipoUsuario")
+                        .IsRequired()
+                        .HasMaxLength(13)
+                        .HasColumnType("character varying(13)");
+
+                    b.Property<int?>("Upvote")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Usuarios", (string)null);
+
+                    b.HasDiscriminator<string>("TipoUsuario").HasValue("UsuarioBase");
+
+                    b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("Core.Models.Contratante", b =>
+                {
+                    b.HasBaseType("Core.Models.UsuarioBase");
+
+                    b.HasDiscriminator().HasValue("C");
+                });
+
+            modelBuilder.Entity("Core.Models.Freelancer", b =>
+                {
+                    b.HasBaseType("Core.Models.UsuarioBase");
+
+                    b.Property<string>("Descricao")
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
+                    b.Property<string>("Especialidade")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("character varying(40)");
+
+                    b.HasDiscriminator().HasValue("F");
+                });
+
             modelBuilder.Entity("Core.Models.Projeto", b =>
                 {
                     b.HasOne("Core.Models.Contratante", "Contratante")
@@ -258,17 +233,17 @@ namespace Infrastructure.Migrations
                     b.Navigation("Projeto");
                 });
 
+            modelBuilder.Entity("Core.Models.Projeto", b =>
+                {
+                    b.Navigation("Propostas");
+                });
+
             modelBuilder.Entity("Core.Models.Contratante", b =>
                 {
                     b.Navigation("Projetos");
                 });
 
             modelBuilder.Entity("Core.Models.Freelancer", b =>
-                {
-                    b.Navigation("Propostas");
-                });
-
-            modelBuilder.Entity("Core.Models.Projeto", b =>
                 {
                     b.Navigation("Propostas");
                 });

@@ -49,5 +49,4 @@ public class BaseController : ControllerBase
 		Date = DateTime.UtcNow
 		};
 	}
-	
 }

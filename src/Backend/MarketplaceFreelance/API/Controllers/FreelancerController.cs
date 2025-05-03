@@ -3,6 +3,7 @@ using Application.Services;
 using AutoMapper;
 using Core.DTO.Freelancer;
 using Core.DTO.Universal;
+using Core.DTO.Usuario;
 using Core.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,30 +12,11 @@ namespace API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class FreelancerController(AuthService<Freelancer> authService, FreelancerService freelancerService, IMapper mapper) : BaseController
+public class FreelancerController(FreelancerService freelancerService, IMapper mapper) : BaseController
 {
     [HttpPost]
-	[Route("login")]
-	[AllowAnonymous]
-	public async Task<IActionResult> Autenticar(LoginRequest request)
-	{
-		try
-		{
-			return Ok(await authService.Autenticar(request));
-		}
-		catch (AuthenticationException e)
-		{
-			return Unauthorized(RetornarModelUnauthorized(e));
-		}
-		catch (Exception e)
-		{
-			return BadRequest(RetornarModelBadRequest(e));
-		}
-	}
-
-    [HttpPost]
 	// [Authorize]
-	public async Task<IActionResult> CadastrarFreelancer(FreelancerDTO freelancer)
+	public async Task<IActionResult> CadastrarFreelancer(UsuarioDTO freelancer)
 	{
 		try
 		{

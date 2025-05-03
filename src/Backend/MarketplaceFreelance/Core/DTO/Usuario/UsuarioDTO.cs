@@ -1,6 +1,6 @@
-﻿namespace Core.DTO.Contratante;
+﻿namespace Core.DTO.Usuario;
 
-public class ContratanteDTO
+public class UsuarioDTO 
 {
 	public required string Nome { get; set; }
 

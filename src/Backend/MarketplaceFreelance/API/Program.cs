@@ -25,28 +25,28 @@ app.Run();
 // Metodo que configrua as injeções de dependencia do projeto.
 static void ConfigurarInjecaoDeDependencia(WebApplicationBuilder builder)
 {
-    builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
-    builder.Services.AddAutoMapper(typeof(ContratanteProfile).Assembly);
-    builder.Services.AddAutoMapper(typeof(FreelancerProfile).Assembly);
-    builder.Services.AddAutoMapper(typeof(ProjetoProfile).Assembly);
-    builder.Services.AddAutoMapper(typeof(PropostaProfile).Assembly);
-
     
-    builder.Services
-    .AddSingleton(builder.Configuration)
-    .AddSingleton(builder.Environment)
-    .AddScoped<TokenService>()
-    .AddScoped<TokenService>()
-    .AddScoped<AuthService<Contratante>>()
-    .AddScoped<AuthService<Freelancer>>()    
-    .AddScoped<ContratanteService>()
-    .AddScoped<ProjetoService>()
-    .AddScoped<FreelancerService>()
-    .AddScoped<PropostaService>()
-    .AddScoped<IContratanteRepository, ContratanteRepository>()
-    .AddScoped<IFreelancerRepository, FreelancerRepository>()
-    .AddScoped<IPropostaRepository, PropostaRepository>()
-    .AddScoped<IProjetoRepository, ProjetoRepository>();
+    builder.Services.AddSingleton(builder.Configuration)
+                    .AddSingleton(builder.Environment)
+                    .AddDbContext<AppDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")))
+                    .AddAutoMapper(typeof(ContratanteProfile).Assembly)
+                    .AddAutoMapper(typeof(FreelancerProfile).Assembly)
+                    .AddAutoMapper(typeof(ProjetoProfile).Assembly)
+                    .AddAutoMapper(typeof(PropostaProfile).Assembly)
+                    .AddAutoMapper(typeof(UsuarioProfile).Assembly)
+                    .AddScoped<TokenService>()
+                    .AddScoped<AuthService>()
+                    .AddScoped<ContratanteService>()
+                    .AddScoped<ProjetoService>()
+                    .AddScoped<FreelancerService>()
+                    .AddScoped<PropostaService>()
+                    .AddScoped<UsuarioService>()
+                    .AddScoped<UsuarioRepository>()
+                    .AddScoped<IContratanteRepository, ContratanteRepository>()
+                    .AddScoped<IFreelancerRepository, FreelancerRepository>()
+                    .AddScoped<IPropostaRepository, PropostaRepository>()
+                    .AddScoped<IUsuarioRepository, UsuarioRepository>()
+                    .AddScoped<IProjetoRepository, ProjetoRepository>();
 }
 
 // Configura o serviços da API.

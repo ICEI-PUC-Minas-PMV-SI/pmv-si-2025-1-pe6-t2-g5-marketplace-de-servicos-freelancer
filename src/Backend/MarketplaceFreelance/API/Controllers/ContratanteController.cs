@@ -1,8 +1,7 @@
-﻿using System.Security.Authentication;
-using Application.Services;
+﻿using Application.Services;
 using AutoMapper;
 using Core.DTO.Contratante;
-using Core.DTO.Universal;
+using Core.DTO.Usuario;
 using Core.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,29 +10,11 @@ namespace API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ContratanteController(ContratanteService contratanteService, IMapper mapper, AuthService<Contratante> authService) : BaseController
+public class ContratanteController(ContratanteService contratanteService, IMapper mapper) : BaseController
 {
 	[HttpPost]
-	[Route("login")]
-	[AllowAnonymous]
-	public async Task<IActionResult> Autenticar(LoginRequest request)
-	{
-		try
-		{
-			return Ok(await authService.Autenticar(request));
-		}
-		catch (AuthenticationException e)
-		{
-			return Unauthorized(RetornarModelUnauthorized(e));
-		}
-		catch (Exception e)
-		{
-			return BadRequest(RetornarModelBadRequest(e));
-		}
-	}
-	[HttpPost]
 	// [Authorize]
-	public async Task<IActionResult> CadastrarContratante(ContratanteDTO contratante)
+	public async Task<IActionResult> CadastrarContratante(UsuarioDTO contratante)
 	{
 		try
 		{
@@ -41,7 +22,7 @@ public class ContratanteController(ContratanteService contratanteService, IMappe
 		}
 		catch (Exception e)
 		{
-			return BadRequest(RetornarModelBadRequest(e));
+			return BadRequest(e);
 		}
 	}
 	

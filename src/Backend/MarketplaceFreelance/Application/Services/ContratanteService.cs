@@ -11,6 +11,7 @@ public class ContratanteService(IContratanteRepository contratanteRepository)
 	public async Task<Contratante> CadastrarContratante(Contratante contratante)
 	{
 		contratante.Senha = GerarHashSenha(contratante.Senha);
+		contratante.TipoUsuario = "C";
 		return await contratanteRepository.InserirContratante(contratante);
 	}
 	public async Task<Contratante> BuscarContratantePorId(int id)

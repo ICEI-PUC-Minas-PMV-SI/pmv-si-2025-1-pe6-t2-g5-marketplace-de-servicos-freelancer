@@ -10,21 +10,22 @@ public class ContratanteRepository(AppDbContext contexto) : IContratanteReposito
 {
 	public async Task<Contratante> InserirContratante(Contratante contratante)
 	{
-		var contratanteExistente = await contexto.Contratantes
+		var usuarioExistente = await contexto.Usuarios
 		.Where(c => (c.CPF == contratante.CPF || c.Email == contratante.Email) && c.DataInativacao == null)
 		.FirstOrDefaultAsync();
 
-		if (contratanteExistente != null)
+		if (usuarioExistente != null)
 		{
-			if (contratanteExistente.CPF == contratante.CPF)
-			{
-				throw new InvalidOperationException($"Já há um usuário cadastrado com esse CPF");
-			}
-        
-			if (contratanteExistente.Email == contratante.Email)
-			{
-				throw new InvalidOperationException($"Já há um usuário cadastrado com esse e-mail");
-			}
+			var conflitos = new List<string>();
+
+			if (usuarioExistente.CPF == contratante.CPF)
+				conflitos.Add("CPF");
+
+			if (usuarioExistente.Email == contratante.Email)
+				conflitos.Add("E-mail");
+
+			if (conflitos.Any())
+				throw new InvalidOperationException($"Já há um usuário cadastrado com: {string.Join(", ", conflitos)}");
 		}
 
 		await contexto.AddAsync(contratante);
@@ -35,30 +36,48 @@ public class ContratanteRepository(AppDbContext contexto) : IContratanteReposito
 
 	public async Task<Contratante> BuscarContratantePorId(int id)
 	{
-		return await contexto.Contratantes.AsNoTracking().FirstOrDefaultAsync(contratante => contratante.ContratanteId == id && contratante.DataInativacao == null) ?? throw new InvalidOperationException();
+		return await contexto.Usuarios
+		       .OfType<Contratante>()
+		       .AsNoTracking()
+		       .FirstOrDefaultAsync(contratante => contratante.Id == id && contratante.DataInativacao == null)
+		       ?? throw new InvalidOperationException();
 	}
 
 	public async Task<Contratante> BuscarContratantePorCPF(string cpf)
 	{
-		return await contexto.Contratantes.AsNoTracking().FirstOrDefaultAsync(contratante => contratante.CPF == cpf && contratante.DataInativacao == null) ?? throw new InvalidOperationException();
+		return await contexto.Usuarios
+		       .OfType<Contratante>()
+		       .AsNoTracking()
+		       .FirstOrDefaultAsync(contratante => contratante.CPF == cpf && contratante.DataInativacao == null)
+		       ?? throw new InvalidOperationException();
 	}
 
 	public async Task<Contratante> BuscarContratantePorEmail(string email)
 	{
-		return await contexto.Contratantes.AsNoTracking().FirstOrDefaultAsync(contratante => contratante.Email == email && contratante.DataInativacao == null) ?? throw new InvalidOperationException();
+		return await contexto.Usuarios
+		       .OfType<Contratante>()
+		       .AsNoTracking()
+		       .FirstOrDefaultAsync(contratante => contratante.Email == email && contratante.DataInativacao == null)
+		       ?? throw new InvalidOperationException();
 	}
 
 	public async Task<IEnumerable<Contratante>> ListarContratantes()
 	{
-		return await contexto.Contratantes.AsNoTracking().Where(contratante => contratante.DataInativacao == null).OrderBy(contratante => contratante.ContratanteId).ToListAsync() ?? throw new InvalidOperationException();
+		return await contexto.Usuarios
+		       .OfType<Contratante>()
+		       .AsNoTracking()
+		       .Where(contratante => contratante.DataInativacao == null)
+		       .OrderBy(contratante => contratante.Id)
+		       .ToListAsync()
+		       ?? throw new InvalidOperationException();
 	}
 
 	public async Task<Contratante> EditarContratante(ContratanteUpdateDTO contratante, int id)
 	{
 		Contratante entidadeBanco = await BuscarContratantePorId(id);
 
-		contexto.Contratantes.Entry(entidadeBanco).CurrentValues.SetValues(contratante);
-		contexto.Contratantes.Update(entidadeBanco);
+		contexto.Usuarios.Entry(entidadeBanco).CurrentValues.SetValues(contratante);
+		contexto.Usuarios.Update(entidadeBanco);
 
 		await contexto.SaveChangesAsync();
 
@@ -71,8 +90,8 @@ public class ContratanteRepository(AppDbContext contexto) : IContratanteReposito
 
 		entidadeBanco.DataInativacao = DateTime.UtcNow;
 
-		contexto.Contratantes.Entry(entidadeBanco).CurrentValues.SetValues(entidadeBanco);
-		contexto.Contratantes.Update(entidadeBanco);
+		contexto.Usuarios.Entry(entidadeBanco).CurrentValues.SetValues(entidadeBanco);
+		contexto.Usuarios.Update(entidadeBanco);
 		await contexto.SaveChangesAsync();
 	}
 }

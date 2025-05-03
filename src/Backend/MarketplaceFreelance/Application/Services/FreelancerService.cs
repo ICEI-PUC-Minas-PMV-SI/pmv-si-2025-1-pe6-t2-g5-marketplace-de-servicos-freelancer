@@ -11,6 +11,7 @@ public class FreelancerService(IFreelancerRepository freelancerRepository)
     public async Task<Freelancer> CadastrarFreelancer(Freelancer freelancer)
 	{
 		freelancer.Senha = GerarHashSenha(freelancer.Senha);
+		freelancer.TipoUsuario = "F";
 		return await freelancerRepository.InserirFreelancer(freelancer);
 	}
 

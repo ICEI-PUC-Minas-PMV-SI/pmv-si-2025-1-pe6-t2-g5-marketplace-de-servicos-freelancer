@@ -5,8 +5,7 @@ namespace Infrastructure.Data;
 
 public class AppDbContext : DbContext
 {
-	public DbSet<Freelancer> Freelancers { get; set; }
-	public DbSet<Contratante> Contratantes { get; set; }
+	public DbSet<UsuarioBase> Usuarios { get; set; }
 	public DbSet<Projeto> Projetos { get; set; }
 	public DbSet<Proposta> Propostas { get; set; } // Agora no plural
 
@@ -16,46 +15,48 @@ public class AppDbContext : DbContext
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
-		// Freelancer
-		modelBuilder.Entity<Freelancer>()
-		.HasKey(f => f.FreelancerId);
-
-		// Contratante
-		modelBuilder.Entity<Contratante>()
-		.HasKey(c => c.ContratanteId);
+		// Configura o TPH
+		modelBuilder.Entity<UsuarioBase>()
+		.ToTable("Usuarios")
+		.HasDiscriminator<string>("TipoUsuario")
+		.HasValue<Contratante>("C")
+		.HasValue<Freelancer>("F");
 
 		// Projeto
 		modelBuilder.Entity<Projeto>()
-		.HasKey(p => p.ProjetoId);
+		.HasKey(projeto => projeto.ProjetoId);
 
 		modelBuilder.Entity<Projeto>()
-		.HasOne(p => p.Contratante)
-		.WithMany(c => c.Projetos)
-		.HasForeignKey(p => p.ContratanteId)
+		.HasOne(projeto => projeto.Contratante)
+		.WithMany(contratante => contratante.Projetos)
+		.HasForeignKey(projeto => projeto.ContratanteId)
 		.OnDelete(DeleteBehavior.Restrict);
 
 		// Proposta
 		modelBuilder.Entity<Proposta>()
-		.HasKey(p => p.Id);
+		.HasKey(proposta => proposta.Id);
 
 		modelBuilder.Entity<Proposta>()
-		.HasOne(p => p.Freelancer)
-		.WithMany(f => f.Propostas)
-		.HasForeignKey(p => p.FreelancerId)
+		.HasOne(proposta => proposta.Freelancer)
+		.WithMany(freelancer => freelancer.Propostas)
+		.HasForeignKey(proposta => proposta.FreelancerId)
 		.OnDelete(DeleteBehavior.Restrict);
 
 		// Relacionamento 1:N - Um projeto pode ter várias propostas
 		modelBuilder.Entity<Proposta>()
-		.HasOne(p => p.Projeto)
-		.WithMany(p => p.Propostas)
-		.HasForeignKey(p => p.ProjetoId)
+		.HasOne(proposta => proposta.Projeto)
+		.WithMany(projeto => projeto.Propostas)
+		.HasForeignKey(proposta => proposta.ProjetoId)
 		.OnDelete(DeleteBehavior.Restrict);
 
 		// Proposta Aceita - Apenas o ID será armazenado
 		modelBuilder.Entity<Projeto>()
-		.HasOne(p => p.PropostaAceita)
+		.HasOne(projeto => projeto.PropostaAceita)
 		.WithMany()
 		.HasForeignKey(p => p.IdPropostaAceita)
 		.OnDelete(DeleteBehavior.Restrict);
+		
+		modelBuilder.Entity<UsuarioBase>()
+		.HasQueryFilter(u => u.DataInativacao == null);
 	}
 }
