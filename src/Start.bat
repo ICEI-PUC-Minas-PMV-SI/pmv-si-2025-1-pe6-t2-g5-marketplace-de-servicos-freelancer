@@ -1,0 +1,3 @@
+﻿@echo off
+echo Iniciando o backend...
+start cmd /k "cd Backend/MarketplaceFreelance/API && dotnet clean && dotnet restore && dotnet watch run"

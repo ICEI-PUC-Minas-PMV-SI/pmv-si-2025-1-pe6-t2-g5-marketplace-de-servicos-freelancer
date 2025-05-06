@@ -1,22 +1,12 @@
 ﻿{
   "$schema": "https://json.schemastore.org/launchsettings.json",
   "profiles": {
-    "http": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": false,
-      "launchUrl": "MarketplaceFreelance",
-      "applicationUrl": "http://localhost:5204",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
     "https": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": false,
       "launchUrl": "MarketplaceFreelance",
-      "applicationUrl": "https://localhost:7292;http://localhost:5204",
+      "applicationUrl": "https://localhost:7292",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
