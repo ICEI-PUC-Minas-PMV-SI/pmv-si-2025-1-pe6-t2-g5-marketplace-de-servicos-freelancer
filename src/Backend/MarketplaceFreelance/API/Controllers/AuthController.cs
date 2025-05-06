@@ -8,7 +8,7 @@ namespace API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class AuthController(AuthService AuthService) : BaseController
+public class AuthController(AuthService authService) : BaseController
 {
 	[HttpPost]
 	[Route("login")]
@@ -17,18 +17,8 @@ public class AuthController(AuthService AuthService) : BaseController
 	{
 		try
 		{
-			try
-			{
-				var contratanteResult = await AuthService.Autenticar(request);
-				return Ok(contratanteResult);
-			}
-			catch (Exception)
-			{
-				
-			}
-
-			
-			return Unauthorized("Credenciais inválidas.");
+			var result = await authService.Autenticar(request);
+			return Ok(result);
 		}
 		catch (AuthenticationException e)
 		{
