@@ -140,7 +140,7 @@ public class ProjetoController(ProjetoService projetoService) : BaseController
     }
     
         
-    [HttpGet]
+    [HttpGet("/listarpendentes")]
     [Authorize]
     public async Task<IActionResult> ListarProjetosPendentes()
     {
