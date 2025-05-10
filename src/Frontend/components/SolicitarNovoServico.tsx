@@ -1,15 +1,28 @@
 import { Entypo } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useState } from 'react';
 import { View, Text, TextInput, Pressable, ScrollView, TouchableOpacity } from 'react-native';
 
 export const SolicitarNovoServico = ({ path }: { path: string }) => {
   const [form, setForm] = useState({
-    titulo: '',
+    nome: '',
     descricao: '',
-    categoria: '',
-    prazo: '',
-    orcamento: '',
+    escopo: '',
+    dataInicio: '2002-05-24T00:46:31.412Z',
+    dataFim: '2002-05-24T00:46:31.412Z',
+    valor: '',
   });
+
+  function clearProjetoForm() {
+    setForm({
+      nome: '',
+      descricao: '',
+      escopo: '',
+      dataInicio: '2002-05-24T00:46:31.412Z',
+      dataFim: '2002-05-24T00:46:31.412Z',
+      valor: '',
+    });
+  }
 
   const categorias = ['Desenvolvimento', 'Design', 'SEO e Marketing', 'Consultoria'];
 
@@ -20,23 +33,73 @@ export const SolicitarNovoServico = ({ path }: { path: string }) => {
     });
   };
 
-  const handleSubmit = () => {
-    console.log('Dados do formulário:', form);
-  };
+  async function getUserData() {
+    const userData = await AsyncStorage.getItem('userData');
+
+    if (userData) {
+      const parsed = JSON.parse(userData);
+
+      return parsed;
+    }
+  }
+
+  async function submitNewProject(form: any) {
+    let validForm = true;
+    Object.keys(form).forEach((key) => {
+      if (form[key]) return;
+      validForm = false;
+    });
+
+    if (!validForm) {
+      alert('Você deve preencher todos os campos solicitados.');
+      return;
+    }
+
+    const userData = await getUserData();
+
+    if (!userData.id || !userData.token) {
+      console.error('Não foi possivel obter contratanteId ou token de autenticação');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:7292/api/Projeto', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userData.token}`,
+        },
+        body: JSON.stringify({ ...form, contratanteId: userData.id }),
+      });
+
+      if (!response.ok) {
+        console.error(`Erro: ${response.status} ${response.statusText}`);
+      }
+
+      const data = await response.json();
+
+      alert('Projeto criado com sucesso.');
+      clearProjetoForm();
+      return data;
+    } catch (error) {
+      console.error('Erro ao enviar os dados:', error);
+      return null;
+    }
+  }
 
   return (
     <ScrollView className="w-screen bg-purple-500 sm:px-52 sm:py-32">
-      <View className="relative flex h-full w-full flex-col rounded-sm bg-white p-10 pt-48 pb-23 sm:p-24">
+      <View className="pb-23 relative flex h-full w-full flex-col rounded-sm bg-white p-10 pt-48 sm:p-24">
         <View className="absolute top-0 flex h-32 w-screen items-center justify-end border-b border-gray-200 pb-5 sm:hidden">
           <Text className="text-3xl font-light text-purple-500 sm:hidden">Talent Link</Text>
         </View>
         <View className="flex flex-col gap-6 space-y-4">
           <View className="flex flex-col">
             <Text className="mb-5 w-3/4 border-l-4 border-purple-500 pl-2 text-2xl font-bold text-purple-500">
-              Solicitação de Novo Serviço
+              Cadastro de novo projeto
             </Text>
             <Text className="text-lg text-purple-500">
-              Nesta tela, você pode solicitar um novo serviço personalizado conforme suas
+              Nesta tela, você pode cadastrar um novo projeto personalizado conforme suas
               necessidades. Basta preencher as informações abaixo para que freelancers qualificados
               possam visualizar seu pedido:
             </Text>
@@ -50,8 +113,8 @@ export const SolicitarNovoServico = ({ path }: { path: string }) => {
                 placeholder="Digite o título do serviço"
                 placeholderTextColor="#c084fc"
                 className="ml-2 flex-1 text-base text-purple-800 outline-none"
-                value={form.titulo}
-                onChangeText={(text) => handleChange('titulo', text)}
+                value={form.nome}
+                onChangeText={(text) => handleChange('nome', text)}
               />
             </View>
           </View>
@@ -80,13 +143,11 @@ export const SolicitarNovoServico = ({ path }: { path: string }) => {
                 <TouchableOpacity
                   key={option}
                   className={`flex-row items-center rounded-md border-2 px-4 py-2 ${
-                    form.categoria === option
-                      ? 'border-purple-500 bg-purple-100'
-                      : 'border-purple-300'
+                    form.escopo === option ? 'border-purple-500 bg-purple-100' : 'border-purple-300'
                   }`}
-                  onPress={() => handleChange('categoria', option)}>
+                  onPress={() => handleChange('escopo', option)}>
                   <View className="mr-2 h-5 w-5 items-center justify-center rounded-full border-2 border-purple-500">
-                    {form.categoria === option && (
+                    {form.escopo === option && (
                       <View className="h-2.5 w-2.5 rounded-full bg-purple-500" />
                     )}
                   </View>
@@ -97,15 +158,15 @@ export const SolicitarNovoServico = ({ path }: { path: string }) => {
           </View>
 
           <View className="flex flex-col items-start gap-4">
-            <Text className="text-lg font-semibold text-purple-500">Prazo Desejado:</Text>
+            <Text className="text-lg font-semibold text-purple-500">Data de deadline:</Text>
             <View className="w-full flex-row items-center rounded-md border-2 border-purple-500 bg-white px-4 py-3">
               <Entypo name="calendar" size={20} color="#c084fc" />
               <TextInput
                 placeholder="Ex: 30 dias"
                 placeholderTextColor="#c084fc"
                 className="ml-2 flex-1 text-base text-purple-800 outline-none"
-                value={form.prazo}
-                onChangeText={(text) => handleChange('prazo', text)}
+                value={form.dataFim}
+                onChangeText={(text) => handleChange('dataFim', text)}
                 keyboardType="numeric"
               />
             </View>
@@ -119,8 +180,8 @@ export const SolicitarNovoServico = ({ path }: { path: string }) => {
                 placeholder="Ex: R$ 500,00"
                 placeholderTextColor="#c084fc"
                 className="ml-2 flex-1 text-base text-purple-800 outline-none"
-                value={form.orcamento}
-                onChangeText={(text) => handleChange('orcamento', text)}
+                value={form.valor}
+                onChangeText={(text) => handleChange('valor', text)}
                 keyboardType="numeric"
               />
             </View>
@@ -130,7 +191,7 @@ export const SolicitarNovoServico = ({ path }: { path: string }) => {
         <View className="mt-8 flex flex-row justify-end">
           <Pressable
             className="items-center justify-center rounded-full bg-purple-500 px-10 py-2 shadow-md"
-            onPress={handleSubmit}>
+            onPress={() => submitNewProject(form)}>
             <Text className="text-lg font-semibold text-white">Solicitar</Text>
           </Pressable>
         </View>
