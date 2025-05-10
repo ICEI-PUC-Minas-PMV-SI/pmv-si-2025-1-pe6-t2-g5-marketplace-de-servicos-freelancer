@@ -15,7 +15,7 @@ public class ProjetoService(IProjetoRepository projetoRepository, IPropostaRepos
 		return await projetoRepository.BuscarProjetoPorId(id);
 	}
 	
-	public async Task<Projeto> BuscaProjetoPorContratanteId(long id)
+	public async Task<List<Projeto>?> BuscaProjetoPorContratanteId(long id)
 	{
 		return await projetoRepository.BuscarProjetoPorContratanteId(id);
 	}

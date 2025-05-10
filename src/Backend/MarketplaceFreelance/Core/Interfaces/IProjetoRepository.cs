@@ -12,7 +12,7 @@ public interface IProjetoRepository
 	Task<Projeto> BuscarProjetoPorId(long id); 
 	
 	//Quem busca o projeto é o freelancer
-	Task<Projeto> BuscarProjetoPorContratanteId(long id); 
+	Task<List<Projeto>?> BuscarProjetoPorContratanteId(long id); 
 	
 	//Quem busca o projeto é o freelancer
 	Task<Projeto> BuscarProjetoPorNome(string nome);
