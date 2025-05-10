@@ -4,7 +4,7 @@ using Core.Models;
 
 namespace Application.Services;
 
-public class ProjetoService(IProjetoRepository projetoRepository)
+public class ProjetoService(IProjetoRepository projetoRepository, IPropostaRepository propostaRepository)
 {
 	public async Task<ProjetoResponseDTO> CadastrarProjeto(ProjetoCadastroDTO projeto)
 	{
@@ -22,12 +22,32 @@ public class ProjetoService(IProjetoRepository projetoRepository)
 	{
 		return await projetoRepository.BuscarProjetosPorCategoria(categoria);
 	}
-	
 	public async Task<IEnumerable<Projeto>> ListarProjetos()
 	{
 		return await projetoRepository.ListarProjetos();
 	}	
-	public async Task<Projeto> AtualizarProjeto(ProjetoCadastroDTO projeto, int id)
+	public async Task AceitarProjeto(int projetoId, int freelancerId)
+	{
+		
+		var projeto = await projetoRepository.BuscarProjetoPorId(projetoId);
+		
+		var diasUteis = Enumerable.Range(0, (projeto.DataFim - projeto.DataInicio)?.Days ?? 0)
+		.Select(offset => projeto.DataInicio.AddDays(offset))
+		.Count(data => data.DayOfWeek != DayOfWeek.Saturday && data.DayOfWeek != DayOfWeek.Sunday);
+		
+		var proposta = await propostaRepository.CriarProposta(new PropostaCadastroDTO
+		{
+			ProjetoId = projetoId,
+			FreelancerId = freelancerId,
+			DataRegistro = DateTime.UtcNow,
+			Valor = projeto.Valor,
+			DiasUteisDuracao = diasUteis
+		});
+		
+		await propostaRepository.AceitarProposta(proposta.PropostaId, projetoId);
+		await projetoRepository.AceitarProjeto(projetoId, proposta.PropostaId );
+	}
+	public async Task<Projeto> AtualizarProjeto(Projeto projeto, int id)
 	{
 		return await projetoRepository.AtualizarProjeto(projeto, id);
 	}	

@@ -14,9 +14,9 @@ type ScreenContentProps = {
 export const ScreenContent = ({ title, path, children }: ScreenContentProps) => {
   return (
     <View>
-      <LoginRegister path={path} />
+      {/*<LoginRegister path={path} />*/}
       {/* <SolicitarNovoServico path={path} /> */}
-      {/* <ListagemServicos /> */}
+       <ListagemServicos /> 
       {children}
     </View>
   );

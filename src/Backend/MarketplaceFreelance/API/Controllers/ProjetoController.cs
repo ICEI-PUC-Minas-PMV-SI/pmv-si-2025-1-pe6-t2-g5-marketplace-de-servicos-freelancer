@@ -1,6 +1,7 @@
 ﻿using System.Security.Authentication;
 using Application.Services;
 using Core.DTO.Projeto;
+using Core.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,7 +28,26 @@ public class ProjetoController(ProjetoService projetoService) : BaseController
             return BadRequest(RetornarModelBadRequest(e));
         }
     }
-
+    
+    [HttpPost("/aceitar/{projetoId:long}/{freelancerId:long}")]
+    [Authorize]
+    public async Task<IActionResult> AceitarProjeto(int projetoId, int freelancerId)
+    {
+        try
+        {
+            await projetoService.AceitarProjeto(projetoId, freelancerId);
+            return Ok();
+        }
+        catch (AuthenticationException e)
+        {
+            return Unauthorized(RetornarModelUnauthorized(e));
+        }
+        catch (Exception e)
+        {
+            return BadRequest(RetornarModelBadRequest(e));
+        }
+    }
+    
     [HttpGet("{id:long}")]
     [Authorize]
     public async Task<IActionResult> BuscaProjetoPorId(long id)
@@ -100,9 +120,9 @@ public class ProjetoController(ProjetoService projetoService) : BaseController
         }
     }
     
-    [HttpPut("{id}")]
+    [HttpPatch("{id}")]
     [Authorize]
-    public async Task<IActionResult> AtualizarProjeto(ProjetoCadastroDTO projeto, int id)
+    public async Task<IActionResult> AtualizarProjeto(Projeto projeto, int id)
     {
         try
         {

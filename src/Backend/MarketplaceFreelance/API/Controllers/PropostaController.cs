@@ -1,8 +1,9 @@
 using System.Security.Authentication;
+using Application.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using API.Controllers;
-using Application.Services;
+
+namespace API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -49,13 +50,33 @@ public class PropostaController(PropostaService propostaService) : BaseControlle
         }
     }
     
-    [HttpPut("aceitar-proposta/{propostaId}")]
-    [Authorize(Policy = "ContratantePolicy")]
-    public async Task<IActionResult> AceitarProposta(long propostaId)
+    [HttpGet]
+    [Authorize]
+    public async Task<IActionResult> BuscarProposta()
     {
         try
         {
-            return Ok(await propostaService.AceitarProposta(propostaId));
+            var proposta = propostaService.BuscarProposta();
+
+            return Ok(await proposta);
+        }
+        catch (AuthenticationException e)
+        {
+            return Unauthorized(RetornarModelUnauthorized(e));
+        }
+        catch (Exception e)
+        {
+            return BadRequest(RetornarModelBadRequest(e));
+        }
+    }
+    
+    [HttpPatch("aceitar-proposta/{propostaId}/{projetoId}")]
+    [Authorize(Policy = "ContratantePolicy")]
+    public async Task<IActionResult> AceitarProposta(long propostaId, int projetoId)
+    {
+        try
+        {
+            return Ok(await propostaService.AceitarProposta(propostaId, projetoId));
         }
         catch (AuthenticationException e)
         {

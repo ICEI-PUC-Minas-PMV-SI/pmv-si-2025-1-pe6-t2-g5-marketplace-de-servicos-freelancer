@@ -15,33 +15,14 @@ public class PropostaService(IPropostaRepository propostaRepository)
 	{
 		return await propostaRepository.BuscarPropostaPorFreelancer(nomeFreelancer, nomeProjeto);
 	}
-
-	public async Task<Proposta> AceitarProposta(long propostaId)
+	
+	public async Task<List<Proposta>> BuscarProposta()
 	{
-		var proposta = await propostaRepository.BuscarPorId(propostaId);
-		if (proposta == null)
-		{
-			throw new KeyNotFoundException("Proposta não encontrada.");
-		}
-
-		proposta.Status = PropostaStatus.Aceita;
-		proposta.DataAceite = DateTime.UtcNow;
-
-		await RejeitarOutrasPropostas(proposta.ProjetoId, propostaId);
-		await propostaRepository.AtualizarProposta(proposta);
-		return proposta;
+		return await propostaRepository.BuscarPropostas();
 	}
 
-	private async Task RejeitarOutrasPropostas(long? projetoId, long propostaAceitaId)
+	public async Task<Proposta> AceitarProposta(long propostaId, int projetoId)
 	{
-		var outrasPropostas = await propostaRepository.BuscarPropostasPorProjeto(projetoId);
-		foreach (var proposta in outrasPropostas)
-		{
-			if (proposta.Id != propostaAceitaId && proposta.DataInativacao == null)
-			{
-				proposta.Status = PropostaStatus.Rejeitada;
-				await propostaRepository.AtualizarProposta(proposta);
-			}
-		}
+		return await propostaRepository.AceitarProposta(propostaId, projetoId);
 	}
 }

@@ -1,6 +1,6 @@
 public class PropostaResponseDTO
 {
-	public long PropostaId { get; set; }
+	public int PropostaId { get; set; }
 	public long ProjetoId { get; set; }
 	public long FreelancerId { get; set; }
 	public DateTime DataRegistro { get; set; } = DateTime.UtcNow;

@@ -35,6 +35,7 @@ public class AuthService(UsuarioService usuarioService, ContratanteService contr
 		return new LoginResponse
 		{
 			Nome = user.Nome,
+			TipoUsuario = user.TipoUsuario,
 			Id = user.Id,
 			Email = user.Email,
 			Token = token

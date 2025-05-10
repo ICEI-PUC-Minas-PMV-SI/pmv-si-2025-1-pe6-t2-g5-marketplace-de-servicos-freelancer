@@ -70,7 +70,7 @@ public class FreelancerController(FreelancerService freelancerService, IMapper m
 		}
 	}
 	
-	[HttpPut("{id}")]
+	[HttpPatch("{id}")]
 	[Authorize(Policy = "FreelancerPolicy")]
 	public async Task<IActionResult> AtualizarFreelancer(FreelancerUpdateDTO freelancer, int id)
 	{

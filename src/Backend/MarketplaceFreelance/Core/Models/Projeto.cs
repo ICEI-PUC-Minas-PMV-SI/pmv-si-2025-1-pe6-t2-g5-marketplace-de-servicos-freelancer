@@ -37,10 +37,13 @@ public class Projeto
 	[Required]
 	public DateTime DataInicio { get; set; }
 
-	public DateTime? DataFim { get; set; } // pcional
+	public DateTime? DataFim { get; set; } // opcional
 
 	[MaxLength(200)]
 	public string? Descricao { get; set; } = string.Empty;
+	
+	[Required]
+	public decimal Valor { get; set; }
 
 	[MaxLength(100)]
 	public string? Escopo { get; set; } = string.Empty;

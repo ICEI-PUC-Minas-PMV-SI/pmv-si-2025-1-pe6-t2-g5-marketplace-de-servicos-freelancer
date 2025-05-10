@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class TabelasBanco : Migration
+    public partial class adicionandoValorNoProjeto : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -51,6 +51,7 @@ namespace Infrastructure.Migrations
                     DataInicio = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     DataFim = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     Descricao = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: true),
+                    Valor = table.Column<decimal>(type: "numeric", nullable: false),
                     Escopo = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>

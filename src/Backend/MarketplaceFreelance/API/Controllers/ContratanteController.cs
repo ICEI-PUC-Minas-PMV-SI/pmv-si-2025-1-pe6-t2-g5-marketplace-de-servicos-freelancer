@@ -69,7 +69,7 @@ public class ContratanteController(ContratanteService contratanteService, IMappe
 		}
 	}
 	
-	[HttpPut("{id}")]
+	[HttpPatch("{id}")]
 	[Authorize(Policy = "ContratantePolicy")]
 	public async Task<IActionResult> AtualizarContratante(ContratanteUpdateDTO contratante, int id)
 	{
