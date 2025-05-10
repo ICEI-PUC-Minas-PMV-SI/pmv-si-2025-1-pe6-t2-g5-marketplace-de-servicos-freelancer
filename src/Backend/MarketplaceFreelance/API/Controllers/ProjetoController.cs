@@ -65,6 +65,25 @@ public class ProjetoController(ProjetoService projetoService) : BaseController
             return BadRequest(RetornarModelBadRequest(e));
         }
     }
+    
+    [HttpGet("idcontratante/{id}")]
+    [Authorize]
+    public async Task<IActionResult> BuscaProjetoPorContratanteId(int id)
+    {
+        try
+        {
+            return Ok(await projetoService.BuscaProjetoPorContratanteId(id));
+        }
+        catch (AuthenticationException e)
+        {
+            return Unauthorized(RetornarModelUnauthorized(e));
+        }
+        catch (Exception e)
+        {
+            return BadRequest(RetornarModelBadRequest(e));
+        }
+    }
+
 
     [HttpGet("categoria/{categoria}")]
     [Authorize]
@@ -109,6 +128,25 @@ public class ProjetoController(ProjetoService projetoService) : BaseController
         try
         {
             return Ok(await projetoService.ListarProjetos());
+        }
+        catch (AuthenticationException e)
+        {
+            return Unauthorized(RetornarModelUnauthorized(e));
+        }
+        catch (Exception e)
+        {
+            return BadRequest(RetornarModelBadRequest(e));
+        }
+    }
+    
+        
+    [HttpGet]
+    [Authorize]
+    public async Task<IActionResult> ListarProjetosPendentes()
+    {
+        try
+        {
+            return Ok(await projetoService.ListarProjetosPendentes());
         }
         catch (AuthenticationException e)
         {

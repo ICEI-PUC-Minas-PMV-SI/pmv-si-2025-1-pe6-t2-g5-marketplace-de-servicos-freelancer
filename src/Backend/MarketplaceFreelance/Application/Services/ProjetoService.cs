@@ -14,6 +14,11 @@ public class ProjetoService(IProjetoRepository projetoRepository, IPropostaRepos
 	{
 		return await projetoRepository.BuscarProjetoPorId(id);
 	}
+	
+	public async Task<Projeto> BuscaProjetoPorContratanteId(long id)
+	{
+		return await projetoRepository.BuscarProjetoPorContratanteId(id);
+	}
 	public async Task<Projeto> BuscarProjetoPorNome(string nome)
 	{
 		return await projetoRepository.BuscarProjetoPorNome(nome);
@@ -25,6 +30,11 @@ public class ProjetoService(IProjetoRepository projetoRepository, IPropostaRepos
 	public async Task<IEnumerable<Projeto>> ListarProjetos()
 	{
 		return await projetoRepository.ListarProjetos();
+	}
+	
+	public async Task<IEnumerable<Projeto>> ListarProjetosPendentes()
+	{
+		return await projetoRepository.ListarProjetosPendentes();
 	}	
 	public async Task AceitarProjeto(int projetoId, int freelancerId)
 	{
