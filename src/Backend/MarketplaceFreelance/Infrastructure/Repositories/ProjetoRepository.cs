@@ -23,10 +23,9 @@ public class ProjetoRepository(AppDbContext contexto, IMapper mapper) : IProjeto
 	{
 		return await contexto.Projetos.AsNoTracking().FirstOrDefaultAsync(projeto => projeto.ProjetoId == id && projeto.DataInativacao == null) ?? throw new InvalidOperationException();
 	}
-
-	public async Task<List<Projeto>?> BuscarProjetoPorContratanteId(long id)
+	public async Task<IEnumerable<Projeto>?> BuscarProjetoPorContratanteId(int id)
 	{
-		return await contexto.Projetos.AsNoTracking().Where(projeto => projeto.ContratanteId == id && projeto.DataInativacao == null).ToListAsync() ?? throw new InvalidOperationException();
+		return await contexto.Projetos.AsNoTracking().Where(projeto => projeto.ContratanteId == id && projeto.DataInativacao == null).OrderBy(projeto => projeto.DataRegistro).ToListAsync() ?? throw new InvalidOperationException();
 	}
 
 	public async Task<Projeto> BuscarProjetoPorNome(string nome)
