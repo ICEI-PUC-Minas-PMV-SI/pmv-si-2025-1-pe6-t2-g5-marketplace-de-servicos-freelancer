@@ -53,6 +53,9 @@ namespace Infrastructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
+                    b.Property<long>("FreelancerId")
+                        .HasColumnType("bigint");
+
                     b.Property<long?>("IdPropostaAceita")
                         .HasColumnType("bigint");
 

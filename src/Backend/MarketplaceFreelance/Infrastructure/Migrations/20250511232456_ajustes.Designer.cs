@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250510001525_adicionandoValorNoProjeto")]
-    partial class adicionandoValorNoProjeto
+    [Migration("20250511232456_ajustes")]
+    partial class ajustes
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,6 +55,9 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Escopo")
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
+
+                    b.Property<long>("FreelancerId")
+                        .HasColumnType("bigint");
 
                     b.Property<long?>("IdPropostaAceita")
                         .HasColumnType("bigint");

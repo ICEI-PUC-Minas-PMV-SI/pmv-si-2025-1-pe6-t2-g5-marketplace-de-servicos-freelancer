@@ -1,4 +1,6 @@
-﻿using Core.DTO.Contratante;
+﻿using AutoMapper;
+using Core.DTO.Contratante;
+using Core.DTO.Freelancer;
 using Core.Interfaces;
 using Core.Models;
 using Infrastructure.Data;
@@ -6,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories;
 
-public class ContratanteRepository(AppDbContext contexto) : IContratanteRepository
+public class ContratanteRepository(AppDbContext contexto, IMapper mapper) : IContratanteRepository
 {
 	public async Task<Contratante> InserirContratante(Contratante contratante)
 	{
@@ -41,6 +43,11 @@ public class ContratanteRepository(AppDbContext contexto) : IContratanteReposito
 		       .AsNoTracking()
 		       .FirstOrDefaultAsync(contratante => contratante.Id == id && contratante.DataInativacao == null)
 		       ?? throw new InvalidOperationException();
+	}
+
+	public async Task<FreelancerNomeTelefoneResponseDTO?> BuscarNomeTelefoneFreelancerPorId(int id)
+	{
+		return mapper.Map<FreelancerNomeTelefoneResponseDTO>(await contexto.Usuarios.OfType<Freelancer>().AsNoTracking().FirstOrDefaultAsync(freelancer => freelancer.Id == id && freelancer.DataInativacao == null));
 	}
 
 	public async Task<Contratante> BuscarContratantePorCPF(string cpf)

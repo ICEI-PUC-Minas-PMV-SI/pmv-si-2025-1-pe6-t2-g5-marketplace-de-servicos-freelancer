@@ -1,6 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 using Core.DTO.Contratante;
+using Core.DTO.Freelancer;
 using Core.Interfaces;
 using Core.Models;
 
@@ -17,6 +18,11 @@ public class ContratanteService(IContratanteRepository contratanteRepository)
 	public async Task<Contratante> BuscarContratantePorId(int id)
 	{
 		return await contratanteRepository.BuscarContratantePorId(id);
+	}
+	
+	public async Task<FreelancerNomeTelefoneResponseDTO?> BuscarNomeTelefoneFreelancerPorId(int id)
+	{
+		return await contratanteRepository.BuscarNomeTelefoneFreelancerPorId(id);
 	}
 	public async Task<Contratante> BuscarContratantePorCPF(string cpf)
 	{

@@ -12,6 +12,9 @@ public class Projeto
 
 	[Required]
 	public long ContratanteId { get; set; }
+	
+	[Required]
+	public long FreelancerId { get; set; }
 
 	[ForeignKey(nameof(ContratanteId))]
 	public Contratante? Contratante { get; set; } // Propriedade de navegação

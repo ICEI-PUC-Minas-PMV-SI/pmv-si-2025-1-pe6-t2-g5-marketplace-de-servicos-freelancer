@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class adicionandoValorNoProjeto : Migration
+    public partial class ajustes : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -43,6 +43,7 @@ namespace Infrastructure.Migrations
                     ProjetoId = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     ContratanteId = table.Column<long>(type: "bigint", nullable: false),
+                    FreelancerId = table.Column<long>(type: "bigint", nullable: false),
                     IdPropostaAceita = table.Column<long>(type: "bigint", nullable: true),
                     DataRegistro = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     DataInativacao = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),

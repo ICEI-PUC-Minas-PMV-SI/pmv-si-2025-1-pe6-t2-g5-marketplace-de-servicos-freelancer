@@ -69,12 +69,12 @@ public class ProjetoRepository(AppDbContext contexto, IMapper mapper) : IProjeto
 		contexto.Projetos.Update(entidadeBanco);
 		await contexto.SaveChangesAsync();
 	}
-	public async Task AceitarProjeto(int projetoId, int propostaId)
+	public async Task AceitarProjeto(int projetoId, int freelancerId)
 	{
 		var projeto = await BuscarProjetoPorId(projetoId);
 
 		projeto.Status = ProjetoStatus.EmAndamento;
-		projeto.IdPropostaAceita = propostaId;
+		projeto.FreelancerId = freelancerId;
 		
 		await AtualizarProjeto(projeto, projetoId);
 	}

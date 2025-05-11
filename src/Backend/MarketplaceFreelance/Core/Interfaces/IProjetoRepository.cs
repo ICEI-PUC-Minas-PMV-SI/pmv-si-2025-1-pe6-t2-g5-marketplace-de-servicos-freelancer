@@ -29,5 +29,5 @@ public interface IProjetoRepository
 	
 	//Quem exclui o projeto é o contratante
 	Task ExcluirProjeto(long id); 
-	Task AceitarProjeto(int projetoId, int propostaId);
+	Task AceitarProjeto(int projetoId, int freelancerId);
 }

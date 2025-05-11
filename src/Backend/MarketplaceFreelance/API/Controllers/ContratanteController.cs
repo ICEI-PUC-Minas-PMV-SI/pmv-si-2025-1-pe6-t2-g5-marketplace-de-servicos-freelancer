@@ -40,6 +40,21 @@ public class ContratanteController(ContratanteService contratanteService, IMappe
 		}
 	}
 	
+	
+	[HttpGet("/nometelefonefreelancer/{id}")]
+	[Authorize(Policy = "ContratantePolicy")]
+	public async Task<IActionResult> BuscarNomeTelefoneFreelancerPorId(int id)
+	{
+		try
+		{
+			return Ok(await contratanteService.BuscarNomeTelefoneFreelancerPorId(id));
+		}
+		catch (Exception e)
+		{
+			return NotFound(RetornarModelNotFound(e));
+		}
+	}
+	
 	[HttpGet]
 	[Route("buscar-por-cpf/{cpf}")]
 	[Authorize(Policy = "ContratantePolicy")]
