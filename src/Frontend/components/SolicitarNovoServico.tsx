@@ -1,7 +1,10 @@
 import { Entypo } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useState } from 'react';
 import { View, Text, TextInput, Pressable, ScrollView, TouchableOpacity } from 'react-native';
+import { RootStackParamList } from './ScreenContent';
 
 export const SolicitarNovoServico = ({ path }: { path: string }) => {
   const [form, setForm] = useState({
@@ -87,6 +90,8 @@ export const SolicitarNovoServico = ({ path }: { path: string }) => {
     }
   }
 
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   return (
     <ScrollView className="w-screen bg-purple-500 sm:px-52 sm:py-32">
       <View className="pb-23 relative flex h-full w-full flex-col rounded-sm bg-white p-10 pt-48 sm:p-24">
@@ -95,9 +100,20 @@ export const SolicitarNovoServico = ({ path }: { path: string }) => {
         </View>
         <View className="flex flex-col gap-6 space-y-4">
           <View className="flex flex-col">
-            <Text className="mb-5 w-3/4 border-l-4 border-purple-500 pl-2 text-2xl font-bold text-purple-500">
-              Cadastro de novo projeto
-            </Text>
+            <View className="flex w-full flex-row items-center">
+              <Text className="mb-5 w-3/4 border-l-4 border-purple-500 pl-2 text-2xl font-bold text-purple-500">
+                Cadastrar novo projeto
+              </Text>
+
+              <Pressable
+                onPress={() => {
+                  navigation.navigate('MeusProjetos');
+                }}>
+                <Text className="text-xl font-semibold text-purple-500">
+                  › Acompanhar meus projetos
+                </Text>
+              </Pressable>
+            </View>
             <Text className="text-lg text-purple-500">
               Nesta tela, você pode cadastrar um novo projeto personalizado conforme suas
               necessidades. Basta preencher as informações abaixo para que freelancers qualificados

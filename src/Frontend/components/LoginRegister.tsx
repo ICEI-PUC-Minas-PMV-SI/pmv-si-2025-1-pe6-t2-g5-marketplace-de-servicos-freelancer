@@ -1,4 +1,4 @@
-import { Text, TextInput, TouchableOpacity, View, ImageBackground } from 'react-native';
+import { Text, TextInput, TouchableOpacity, View, ImageBackground, Alert } from 'react-native';
 import { useEffect, useState } from 'react';
 import { Feather, Entypo } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -6,7 +6,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from './ScreenContent';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const LoginRegister = ({ path }: { path: string }) => {
+export const LoginRegister = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [userData, setUserData] = useState<any>(null);
 
@@ -24,7 +24,6 @@ export const LoginRegister = ({ path }: { path: string }) => {
     const obterUserData = async () => {
       try {
         const valor = await AsyncStorage.getItem('userData');
-
         if (valor) {
           setUserData(JSON.parse(valor));
         }
@@ -32,11 +31,15 @@ export const LoginRegister = ({ path }: { path: string }) => {
         console.error('Erro ao buscar token:', e);
       }
     };
-    // AsyncStorage.clear();
+
     obterUserData();
   }, []);
 
-  navigateUser(userData);
+  useEffect(() => {
+    if (userData) {
+      navigateUser(userData);
+    }
+  }, [userData]);
 
   const [loginForm, setLoginForm] = useState({
     email: '',
@@ -78,9 +81,8 @@ export const LoginRegister = ({ path }: { path: string }) => {
       }
 
       const data = await response.json();
-      console.log(data);
+      setUserData(data);
       AsyncStorage.setItem('userData', JSON.stringify(data));
-      navigateUser(data);
       return data;
     } catch (error) {
       console.error('Erro ao enviar os dados:', error);
@@ -88,7 +90,7 @@ export const LoginRegister = ({ path }: { path: string }) => {
     }
   }
 
-  const [registerForm, setRegisterForm] = useState({
+  const initialRegisterForm = {
     userType: 'freela', // ou 'cliente'
     nome: '',
     email: '',
@@ -97,7 +99,9 @@ export const LoginRegister = ({ path }: { path: string }) => {
     senha: '',
     confirmPassword: '',
     dataNascimento: '2002-05-24T00:46:31.412Z',
-  });
+  };
+
+  const [registerForm, setRegisterForm] = useState(initialRegisterForm);
 
   const [registerPage, setRegisterPage] = useState(false);
 
@@ -135,11 +139,13 @@ export const LoginRegister = ({ path }: { path: string }) => {
 
       if (!response.ok) {
         console.error(`Erro: ${response.status} ${response.statusText}`);
+        alert(`Erro: ${response.status} ${response.statusText}`);
+        return;
       }
 
-      const data = await response.json();
-      console.log(data);
-      return data;
+      alert('Usuário cadastrado com sucesso.');
+      setRegisterPage(!registerPage);
+      setRegisterForm(initialRegisterForm);
     } catch (error) {
       console.error('Erro ao enviar os dados:', error);
       return null;
