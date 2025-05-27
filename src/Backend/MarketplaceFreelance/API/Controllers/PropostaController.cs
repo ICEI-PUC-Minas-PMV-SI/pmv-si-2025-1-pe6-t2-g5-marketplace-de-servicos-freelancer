@@ -1,5 +1,6 @@
 using System.Security.Authentication;
 using Application.Services;
+using Core.DTO.Proposta;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

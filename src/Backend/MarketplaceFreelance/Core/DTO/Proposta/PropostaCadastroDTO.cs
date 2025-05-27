@@ -1,3 +1,5 @@
+namespace Core.DTO.Proposta;
+
 public class PropostaCadastroDTO
 {
 	public long ProjetoId { get; set; }

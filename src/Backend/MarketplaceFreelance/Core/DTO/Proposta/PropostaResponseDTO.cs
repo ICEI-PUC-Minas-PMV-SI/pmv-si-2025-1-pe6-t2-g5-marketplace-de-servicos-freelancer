@@ -1,3 +1,5 @@
+namespace Core.DTO.Proposta;
+
 public class PropostaResponseDTO
 {
 	public int PropostaId { get; set; }

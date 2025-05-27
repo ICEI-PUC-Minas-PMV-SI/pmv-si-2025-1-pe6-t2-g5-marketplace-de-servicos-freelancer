@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Core.DTO.Projeto;
+using Core.DTO.Proposta;
 using Core.Models;
 
 namespace Infrastructure.Mapper;

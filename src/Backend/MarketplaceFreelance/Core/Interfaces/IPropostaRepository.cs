@@ -1,4 +1,5 @@
-﻿using Core.Models;
+﻿using Core.DTO.Proposta;
+using Core.Models;
 
 namespace Core.Interfaces;
 

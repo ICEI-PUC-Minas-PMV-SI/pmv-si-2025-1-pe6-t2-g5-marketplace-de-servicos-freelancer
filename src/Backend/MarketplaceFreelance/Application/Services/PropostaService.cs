@@ -1,3 +1,4 @@
+using Core.DTO.Proposta;
 using Core.Enums;
 using Core.Interfaces;
 using Core.Models;
