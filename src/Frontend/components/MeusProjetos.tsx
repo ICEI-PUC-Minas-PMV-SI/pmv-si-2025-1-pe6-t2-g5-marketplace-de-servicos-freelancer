@@ -40,7 +40,7 @@ export default function MeusProjetos() {
 
         try {
           const response = await fetch(
-            `https://41d0-2804-d45-8614-e000-40ba-66e1-2497-51c2.ngrok-free.app/api/projeto/idcontratante/${parsed.id}`,
+            `https://localhost:443/api/projeto/idcontratante/${parsed.id}`,
             {
               method: 'GET',
               headers: {
@@ -79,7 +79,7 @@ export default function MeusProjetos() {
     const fetchFreelancerDetails = async () => {
       try {
         const response = await fetch(
-          `https://41d0-2804-d45-8614-e000-40ba-66e1-2497-51c2.ngrok-free.app/nometelefonefreelancer/${detailedFreelancerId}`,
+          `https://localhost:443/nometelefonefreelancer/${detailedFreelancerId}`,
           {
             method: 'GET',
             headers: {
@@ -178,7 +178,7 @@ export default function MeusProjetos() {
           </View>
         )}
 
-        <View className="absolute top-0 flex h-20 w-full items-center justify-end border-b border-gray-200 pb-5 sm:hidden">
+        <View className="absolute top-0 flex h-20 w-full items-center justify-end border-b border-gray-200 pb-5 hidden">
           <Text className="text-3xl font-light text-purple-500 sm:hidden">Talent Link</Text>
         </View>
 
@@ -303,18 +303,9 @@ export default function MeusProjetos() {
                           <Text className="text-xs text-gray-500">Prazo Estimado</Text>
                           <Text className="text-sm font-medium">{formatDate(listing.dataFim)}</Text>
                         </View>
-                        <View className="w-full">
-                          <Text className="text-xs text-gray-500">Orçamento Disponível</Text>
-                          <Text className="text-sm font-medium">{listing.status}</Text>
-                        </View>
                       </View>
 
                       <View className="flex flex-row gap-2">
-                        <Pressable className="flex-1 rounded-md bg-purple-500 px-2 py-2">
-                          <Text className="text-center text-sm font-semibold text-white">
-                            Ver detalhes
-                          </Text>
-                        </Pressable>
                         <Pressable className="flex-1 rounded-md bg-purple-500 px-2 py-2">
                           <Text className="text-center text-sm font-semibold text-white">
                             Ver detalhes

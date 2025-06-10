@@ -66,7 +66,7 @@ export const SolicitarNovoServico = ({ path }: { path: string }) => {
     }
 
     try {
-      const response = await fetch('https://41d0-2804-d45-8614-e000-40ba-66e1-2497-51c2.ngrok-free.app/api/Projeto', {
+      const response = await fetch('https://localhost:443/api/Projeto', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

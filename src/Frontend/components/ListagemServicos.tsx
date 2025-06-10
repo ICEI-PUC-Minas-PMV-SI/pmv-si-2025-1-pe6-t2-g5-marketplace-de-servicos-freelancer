@@ -23,7 +23,7 @@ export default function FreelancerListing() {
         setUserData(parsed);
 
         try {
-          const response = await fetch('https://41d0-2804-d45-8614-e000-40ba-66e1-2497-51c2.ngrok-free.app/listarpendentes', {
+          const response = await fetch('https://localhost:443/listarpendentes', {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',

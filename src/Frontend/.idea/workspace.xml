@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58e01766-99e8-4859-93c3-42102147ae80" name="Changes" comment="" />
+    <list default="true" id="58e01766-99e8-4859-93c3-42102147ae80" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Backend/MarketplaceFreelance/API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/MarketplaceFreelance/API/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/DatePickerComponent.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ListagemServicos.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ListagemServicos.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/LoginRegister.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/LoginRegister.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/MeusProjetos.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/MeusProjetos.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ScreenContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ScreenContent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/SolicitarNovoServico.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/SolicitarNovoServico.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,28 +38,28 @@
     <option name="showLibraryContents" value="true" />
     <option name="showScratchesAndConsoles" value="false" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "ReactCreateComponentLastSelected": "arrowFunctionComponent",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Users/mrgco/RiderProjects/pmv-si-2025-1-pe6-t2-g5-marketplace-de-servicos-freelancer/src/Frontend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.start.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\mrgco\\RiderProjects\\pmv-si-2025-1-pe6-t2-g5-marketplace-de-servicos-freelancer\\src\\Frontend\\node_modules\\prettier",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "ml.llm.LLMConfigurable",
-    "ts.external.directory.path": "C:\\Users\\mrgco\\RiderProjects\\pmv-si-2025-1-pe6-t2-g5-marketplace-de-servicos-freelancer\\src\\Frontend\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;ReactCreateComponentLastSelected&quot;: &quot;arrowFunctionComponent&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/mrgco/RiderProjects/pmv-si-2025-1-pe6-t2-g5-marketplace-de-servicos-freelancer/src/Frontend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\mrgco\\RiderProjects\\pmv-si-2025-1-pe6-t2-g5-marketplace-de-servicos-freelancer\\src\\Frontend\\node_modules\\prettier&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMConfigurable&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\mrgco\\RiderProjects\\pmv-si-2025-1-pe6-t2-g5-marketplace-de-servicos-freelancer\\src\\Frontend\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -83,10 +95,23 @@
       <workItem from="1747017077369" duration="365000" />
       <workItem from="1747017473591" duration="122000" />
       <workItem from="1747086892495" duration="767000" />
+      <workItem from="1749424351953" duration="1412000" />
+      <workItem from="1749516756811" duration="2701000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
