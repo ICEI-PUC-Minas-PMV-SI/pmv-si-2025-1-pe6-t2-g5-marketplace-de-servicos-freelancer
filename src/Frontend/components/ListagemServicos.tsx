@@ -1,7 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Pressable } from 'react-native';
-import { useWindowDimensions } from 'react-native';
+import {
+  Pressable,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  useWindowDimensions,
+  View,
+} from 'react-native';
 
 export default function FreelancerListing() {
   const { width } = useWindowDimensions();
@@ -12,7 +18,32 @@ export default function FreelancerListing() {
   const [categoryFilter, setCategoryFilter] = useState<any>(null);
   const [filteredProjectList, setFilteredProjectList] = useState<any>(null);
   const [refreshed, setRefreshed] = useState<boolean>(false);
+  useEffect(() => {
+    const fetchRefreshed = async () => {
+      const refreshed = await AsyncStorage.getItem('refreshed');
 
+      if (refreshed) return;
+
+      AsyncStorage.setItem('refreshed', 'true');
+      window.location.reload();
+    };
+
+    fetchRefreshed();
+  }, []);
+
+
+
+  function formatUTCtoBR(dateISO: string) {
+    if (!dateISO) return '';
+
+    const date = new Date(dateISO);
+
+    const day = date.getUTCDate().toString().padStart(2, '0');
+    const month = (date.getUTCMonth() + 1).toString().padStart(2, '0');
+    const year = date.getUTCFullYear();
+
+    return `${day}/${month}/${year}`;
+  }
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -23,7 +54,7 @@ export default function FreelancerListing() {
         setUserData(parsed);
 
         try {
-          const response = await fetch('https://70ba-2804-d45-8614-e000-8848-797a-a4a7-1f2e.ngrok-free.app/listarpendentes', {
+          const response = await fetch('https://localhost:443/listarpendentes', {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -89,7 +120,7 @@ export default function FreelancerListing() {
       const { id, token } = userData;
       console.log(userData);
 
-      const response = await fetch(`https://70ba-2804-d45-8614-e000-8848-797a-a4a7-1f2e.ngrok-free.app/aceitar/${projetoId}/${id}`, {
+      const response = await fetch(`https://localhost:443/aceitar/${projetoId}/${id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -111,9 +142,9 @@ export default function FreelancerListing() {
 
   {
     return (
-      <ScrollView className="w-screen bg-purple-500 sm:px-52 sm:py-32">
-        <View className="pb-23 relative flex h-full w-full flex-col rounded-sm bg-white p-6 pt-48 sm:p-24">
-          <View className="absolute top-0 flex h-32 w-full items-center justify-end border-b border-gray-200 pb-5 sm:hidden">
+      <ScrollView className="w-screen bg-purple-500  sm:px-52 sm:py-32">
+        <View className="pb-23 relative flex h-full w-full flex-col rounded-sm bg-white p-6 pt-48 iphone-xr:pt-10  sm:p-24">
+          <View className="absolute top-0 flex h-32 w-full items-center justify-end border-b border-gray-200 pb-5 iphone-xr:hidden sm:hidden">
             <Text className="text-3xl font-light text-purple-500 sm:hidden">Talent Link</Text>
           </View>
 
@@ -252,11 +283,11 @@ export default function FreelancerListing() {
                         <View className="mb-4 flex flex-row flex-wrap">
                           <View className="mb-2 w-1/2">
                             <Text className="text-xs text-gray-500">Data da publicação</Text>
-                            <Text className="text-sm font-medium">{listing.dataRegistro}</Text>
+                            <Text className="text-sm font-medium">{formatUTCtoBR(listing.dataRegistro)}</Text>
                           </View>
                           <View className="mb-2 w-1/2">
                             <Text className="text-xs text-gray-500">Prazo Estimado</Text>
-                            <Text className="text-sm font-medium">{listing.dataFim}</Text>
+                            <Text className="text-sm font-medium">{formatUTCtoBR(listing.dataFim)}</Text>
                           </View>
                           <View className="w-full">
                             <Text className="text-xs text-gray-500">Orçamento Disponível</Text>
@@ -270,9 +301,11 @@ export default function FreelancerListing() {
                               Ver detalhes
                             </Text>
                           </Pressable>
-                          <Pressable className="flex-1 rounded-md bg-purple-500 px-2 py-2">
+                          <Pressable
+                            className="rounded-md bg-purple-500 px-2 py-2 text-center text-sm font-semibold text-white"
+                            onPress={() => assumirProjeto(listing.projetoId)}>
                             <Text className="text-center text-sm font-semibold text-white">
-                              Ver detalhes
+                              Assumir
                             </Text>
                           </Pressable>
                         </View>

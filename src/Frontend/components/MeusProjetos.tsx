@@ -1,12 +1,19 @@
+import { Entypo } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Pressable } from 'react-native';
-import { useWindowDimensions } from 'react-native';
+import {
+  Alert,
+  Linking,
+  Pressable,
+  ScrollView,
+  Text,
+  useWindowDimensions,
+  View,
+} from 'react-native';
+
 import { RootStackParamList } from './ScreenContent';
-import { Entypo } from '@expo/vector-icons';
-import { Linking, Alert } from 'react-native';
 
 export default function MeusProjetos() {
   const { width } = useWindowDimensions();
@@ -24,7 +31,7 @@ export default function MeusProjetos() {
 
       AsyncStorage.setItem('refreshed', 'true');
       window.location.reload();
-    }
+    };
 
     fetchRefreshed();
   }, []);
@@ -40,7 +47,7 @@ export default function MeusProjetos() {
 
         try {
           const response = await fetch(
-            `https://70ba-2804-d45-8614-e000-8848-797a-a4a7-1f2e.ngrok-free.app/api/projeto/idcontratante/${parsed.id}`,
+            `https://localhost:443/api/projeto/idcontratante/${parsed.id}`,
             {
               method: 'GET',
               headers: {
@@ -79,12 +86,12 @@ export default function MeusProjetos() {
     const fetchFreelancerDetails = async () => {
       try {
         const response = await fetch(
-          `https://70ba-2804-d45-8614-e000-8848-797a-a4a7-1f2e.ngrok-free.app/nometelefonefreelancer/${detailedFreelancerId}`,
+          `https://localhost:443/nometelefonefreelancer/${detailedFreelancerId}`,
           {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
-              
+
               Authorization: `Bearer ${userData.token}`,
             },
           }
@@ -144,7 +151,7 @@ export default function MeusProjetos() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   return (
-    <ScrollView className="w-screen bg-white sm:px-52 sm:py-32">
+    <ScrollView className="w-screen bg-purple-500 sm:px-52 sm:py-32">
       <View className="pb-23 relative flex h-full w-full flex-col rounded-sm bg-white p-6 sm:p-24">
         {freelancerDetails && (
           <View className="absolute left-0 top-0 z-50 h-full w-full items-center justify-center bg-black/40 px-4 py-10">
@@ -177,13 +184,13 @@ export default function MeusProjetos() {
           </View>
         )}
 
-        <View className="absolute top-0 flex h-20 w-full items-center justify-end border-b border-gray-200 pb-5 hidden">
+        <View className="absolute top-0 flex hidden h-20 w-full items-center justify-end border-b border-gray-200 pb-5">
           <Text className="text-3xl font-light text-purple-500 sm:hidden">Talent Link</Text>
         </View>
 
         <View className="flex flex-col gap-10">
-          <View className="w-full flex flex-col sm:flex-row sm:items-center sm:justify-between">
-          <Text className="mb-5 border-l-4 border-purple-500 pl-2 text-2xl font-bold text-purple-500">
+          <View className="mb-5 flex w-full flex-col sm:flex-row sm:items-center sm:justify-between">
+            <Text className="border-l-4 border-purple-500 pl-2 text-2xl font-bold text-purple-500">
               Meus projetos
             </Text>
 
@@ -284,46 +291,50 @@ export default function MeusProjetos() {
                   </View>
                 ) : (
                   projectList.map((listing: any, index: any) => (
-    <View
-      key={index}
-      className="mb-4 rounded-md border border-gray-200 p-4 shadow-sm"
-    >
-      <View className="mb-3 rounded bg-purple-500 px-3 py-2">
-        <Text className="text-sm font-medium text-white">{listing.nome}</Text>
-      </View>
+                    <View
+                      key={index}
+                      className="mb-4 rounded-md border border-gray-200 p-4 shadow-sm">
+                      <View className="mb-3 rounded bg-purple-500 px-3 py-2">
+                        <Text className="text-sm font-medium text-white">{listing.nome}</Text>
+                      </View>
 
-      <View className="mb-2 flex flex-row justify-between">
-        <View className="w-1/2 pr-2">
-          <Text className="text-xs text-gray-500">Data da publicação</Text>
-          <Text className="text-sm font-medium">{formatDate(listing.dataRegistro)}</Text>
-        </View>
-        <View className="w-1/2 pl-2">
-          <Text className="text-xs text-gray-500">Prazo Estimado</Text>
-          <Text className="text-sm font-medium">{formatDate(listing.dataFim)}</Text>
-        </View>
-      </View>
+                      <View className="mb-2 flex flex-row justify-between">
+                        <View className="w-1/2 pr-2">
+                          <Text className="text-xs text-gray-500">Data da publicação</Text>
+                          <Text className="text-sm font-medium">
+                            {formatDate(listing.dataRegistro)}
+                          </Text>
+                        </View>
+                        <View className="w-1/2 pl-2">
+                          <Text className="text-xs text-gray-500">Prazo Estimado</Text>
+                          <Text className="text-sm font-medium">{formatDate(listing.dataFim)}</Text>
+                        </View>
+                      </View>
 
-      <View className="mb-2">
-        <Text className="text-xs text-gray-500">Status</Text>
-        <Text className="text-sm font-medium">
-          {listing.status === 1 ? 'Assumida' : 'Pendente'}
-        </Text>
-      </View>
+                      <View className="mb-2">
+                        <Text className="text-xs text-gray-500">Status</Text>
+                        <Text className="text-sm font-medium">
+                          {listing.status === 1 ? 'Assumida' : 'Pendente'}
+                        </Text>
+                      </View>
 
-      <Pressable
-        className={`rounded-md px-2 py-2 ${
-          listing.status === 1 ? 'bg-purple-500' : 'bg-gray-400'
-        }`}
-        onPress={listing.status === 1 ? () => setDetailedFreelancerId(listing.freelancerId) : undefined}
-        disabled={listing.status !== 1}
-      >
-        <Text className="text-center text-sm font-semibold text-white">
-          Ver detalhes
-        </Text>
-      </Pressable>
-    </View>
-  ))
-)}
+                      <Pressable
+                        className={`rounded-md px-2 py-2 ${
+                          listing.status === 1 ? 'bg-purple-500' : 'bg-gray-400'
+                        }`}
+                        onPress={
+                          listing.status === 1
+                            ? () => setDetailedFreelancerId(listing.freelancerId)
+                            : undefined
+                        }
+                        disabled={listing.status !== 1}>
+                        <Text className="text-center text-sm font-semibold text-white">
+                          Ver detalhes
+                        </Text>
+                      </Pressable>
+                    </View>
+                  ))
+                )}
               </ScrollView>
             )}
           </View>

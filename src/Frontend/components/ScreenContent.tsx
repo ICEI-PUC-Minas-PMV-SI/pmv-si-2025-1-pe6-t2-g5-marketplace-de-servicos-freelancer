@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavigationContainer, useNavigationState } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { View, Text, Pressable, SafeAreaView } from 'react-native';
+import { Pressable, SafeAreaView, Text, View } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { LoginRegister } from './LoginRegister';
@@ -34,7 +34,7 @@ const CustomHeader = ({ onLogout, nome }: { onLogout: () => void; nome?: string 
     <View className="flex-row items-center justify-between border-b border-gray-200 bg-white px-4 py-3">
       <Text className="text-3xl font-bold text-purple-500">TalentLink</Text>
       {nome && (
-      <View className="flex-row flex-wrap items-end space-x-6">
+        <View className="flex-row flex-wrap items-end space-x-6">
           <Pressable onPress={onLogout} className="rounded bg-red-500 px-3 py-1">
             <Text className="text-lg font-semibold text-white">Logout</Text>
           </Pressable>

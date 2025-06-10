@@ -1,9 +1,9 @@
-import { defaultConfig } from '@tamagui/config/v4'
-import { createTamagui } from 'tamagui'
+import { defaultConfig } from '@tamagui/config/v4';
+import { createTamagui } from 'tamagui';
 
-const config = createTamagui(defaultConfig)
+const config = createTamagui(defaultConfig);
 
-type CustomConfig = typeof config
+type CustomConfig = typeof config;
 
 // ensure types work
 declare module 'tamagui' {

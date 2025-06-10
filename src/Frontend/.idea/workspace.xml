@@ -4,18 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58e01766-99e8-4859-93c3-42102147ae80" name="Changes" comment="">
+    <list default="true" id="58e01766-99e8-4859-93c3-42102147ae80" name="Changes" comment="ajustes para melhorias">
       <change beforePath="$PROJECT_DIR$/../Backend/MarketplaceFreelance/API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/MarketplaceFreelance/API/appsettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/DatePickerComponent.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Container.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ListagemServicos.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ListagemServicos.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/LoginRegister.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/LoginRegister.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/MeusProjetos.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/MeusProjetos.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ScreenContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ScreenContent.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/SolicitarNovoServico.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/SolicitarNovoServico.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metro.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/metro.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prettier.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/prettier.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tamagui.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tamagui.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +61,7 @@
     &quot;npm.start.executor&quot;: &quot;Run&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\mrgco\\RiderProjects\\pmv-si-2025-1-pe6-t2-g5-marketplace-de-servicos-freelancer\\src\\Frontend\\node_modules\\prettier&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMConfigurable&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.typescriptcompiler&quot;,
     &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\mrgco\\RiderProjects\\pmv-si-2025-1-pe6-t2-g5-marketplace-de-servicos-freelancer\\src\\Frontend\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -96,8 +102,18 @@
       <workItem from="1747017473591" duration="122000" />
       <workItem from="1747086892495" duration="767000" />
       <workItem from="1749424351953" duration="1412000" />
-      <workItem from="1749516756811" duration="2701000" />
+      <workItem from="1749516756811" duration="2881000" />
+      <workItem from="1749592910329" duration="4254000" />
     </task>
+    <task id="LOCAL-00001" summary="ajustes para melhorias">
+      <option name="closed" value="true" />
+      <created>1749521063572</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1749521063572</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,5 +129,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ajustes para melhorias" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajustes para melhorias" />
   </component>
 </project>

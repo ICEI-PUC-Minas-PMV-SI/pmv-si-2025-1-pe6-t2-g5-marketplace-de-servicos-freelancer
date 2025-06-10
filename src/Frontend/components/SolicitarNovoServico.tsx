@@ -3,16 +3,17 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useState } from 'react';
-import { View, Text, TextInput, Pressable, ScrollView, TouchableOpacity } from 'react-native';
+import { Pressable, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { RootStackParamList } from './ScreenContent';
+import { TextInputMask } from 'react-native-masked-text';
 
 export const SolicitarNovoServico = ({ path }: { path: string }) => {
   const [form, setForm] = useState({
     nome: '',
     descricao: '',
     escopo: '',
-    dataInicio: '2002-05-24T00:46:31.412Z',
-    dataFim: '2002-05-24T00:46:31.412Z',
+    dataInicio: new Date().toISOString(),
+    dataFim: '',
     valor: '',
   });
 
@@ -21,8 +22,8 @@ export const SolicitarNovoServico = ({ path }: { path: string }) => {
       nome: '',
       descricao: '',
       escopo: '',
-      dataInicio: '2002-05-24T00:46:31.412Z',
-      dataFim: '2002-05-24T00:46:31.412Z',
+      dataInicio: new Date().toISOString(),
+      dataFim: '',
       valor: '',
     });
   }
@@ -30,10 +31,34 @@ export const SolicitarNovoServico = ({ path }: { path: string }) => {
   const categorias = ['Desenvolvimento', 'Design', 'SEO e Marketing', 'Consultoria'];
 
   const handleChange = (campo: string, valor: string) => {
-    setForm({
-      ...form,
-      [campo]: valor,
-    });
+    if (campo === 'dataFim') {
+      // Tenta converter DD/MM/YYYY para ISO UTC
+      const [day, month, year] = valor.split('/');
+
+      if (day && month && year && day.length === 2 && month.length === 2 && year.length === 4) {
+        const utcDate = new Date(Date.UTC(
+          parseInt(year, 10),
+          parseInt(month, 10) - 1,
+          parseInt(day, 10)
+        ));
+
+        setForm({
+          ...form,
+          [campo]: utcDate.toISOString(),
+        });
+      } else {
+        // Se estiver incompleto ou inválido, mantém o valor digitado (pra não atrapalhar input)
+        setForm({
+          ...form,
+          [campo]: valor,
+        });
+      }
+    } else {
+      setForm({
+        ...form,
+        [campo]: valor,
+      });
+    }
   };
 
   async function getUserData() {
@@ -47,6 +72,7 @@ export const SolicitarNovoServico = ({ path }: { path: string }) => {
   }
 
   async function submitNewProject(form: any) {
+    console.log(form);
     let validForm = true;
     Object.keys(form).forEach((key) => {
       if (form[key]) return;
@@ -66,7 +92,7 @@ export const SolicitarNovoServico = ({ path }: { path: string }) => {
     }
 
     try {
-      const response = await fetch('https://70ba-2804-d45-8614-e000-8848-797a-a4a7-1f2e.ngrok-free.app/api/Projeto', {
+      const response = await fetch('https://localhost:443/api/Projeto', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -95,14 +121,14 @@ export const SolicitarNovoServico = ({ path }: { path: string }) => {
 
   return (
     <ScrollView className="w-screen bg-purple-500 sm:px-52 sm:py-32">
-      <View className="pb-23 relative flex h-full w-full flex-col rounded-sm bg-white p-10 pt-48 sm:p-24">
-        <View className="absolute top-0 flex h-32 w-screen items-center justify-end border-b border-gray-200 pb-5 sm:hidden">
+      <View className="pb-23 relative flex h-full w-full flex-col rounded-sm bg-white p-10 pt-48 iphone-xr:pt-10 sm:p-24">
+        <View className="absolute top-0 flex h-32 w-screen items-center justify-end border-b border-gray-200 pb-5 iphone-xr:hidden sm:hidden">
           <Text className="text-3xl font-light text-purple-500 sm:hidden">Talent Link</Text>
         </View>
         <View className="flex flex-col gap-6 space-y-4">
-          <View className="flex flex-col">
-            <View className="flex w-full flex-row items-center">
-              <Text className="mb-5 w-3/4 border-l-4 border-purple-500 pl-2 text-2xl font-bold text-purple-500">
+          <View className="flex flex-col iphone-xr:gap-6">
+            <View className="flex w-full flex-row items-center iphone-xr:flex-col iphone-xr:items-start">
+              <Text className="mb-5 w-3/4 border-l-4 border-purple-500 pl-2 text-2xl font-bold text-purple-500 iphone-xr:w-full">
                 Cadastrar novo projeto
               </Text>
 
@@ -178,13 +204,25 @@ export const SolicitarNovoServico = ({ path }: { path: string }) => {
             <Text className="text-lg font-semibold text-purple-500">Data de deadline:</Text>
             <View className="w-full flex-row items-center rounded-md border-2 border-purple-500 bg-white px-4 py-3">
               <Entypo name="calendar" size={20} color="#c084fc" />
-              <TextInput
-                placeholder="Ex: 30 dias"
+              <TextInputMask
+                type={'datetime'}
+                options={{
+                  format: 'DD/MM/YYYY',
+                }}
+                placeholder="Ex: 01/12/2025"
                 placeholderTextColor="#c084fc"
-                className="ml-2 flex-1 text-base text-purple-800 outline-none"
+                className="ml-2 flex-1 text-base text-purple-800 outline-none px-3 py-2"
                 value={form.dataFim}
                 onChangeText={(text) => handleChange('dataFim', text)}
                 keyboardType="numeric"
+                style={{
+                  borderWidth: 0,
+                  fontSize: 16,
+                  flex: 1,
+                  outlineColor: 'transparent',
+                  color: '#c084fc',
+                  marginLeft: 12,
+                }}              
               />
             </View>
           </View>
