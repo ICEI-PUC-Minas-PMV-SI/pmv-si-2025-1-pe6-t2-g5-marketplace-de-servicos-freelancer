@@ -68,7 +68,7 @@ export const LoginRegister = () => {
     }
 
     try {
-      const response = await fetch('https://localhost:443/api/Auth/login', {
+      const response = await fetch('https://70ba-2804-d45-8614-e000-8848-797a-a4a7-1f2e.ngrok-free.app/api/Auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -131,7 +131,7 @@ export const LoginRegister = () => {
     const { confirmPassword, userType, ...payload } = registerForm;
 
     try {
-      const response = await fetch(`https://41d0-2804-d45-8614-e000-40ba-66e1-2497-51c2.ngrok-free.app/api/${apiRoute}`, {
+      const response = await fetch(`https://70ba-2804-d45-8614-e000-8848-797a-a4a7-1f2e.ngrok-free.app/api/${apiRoute}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

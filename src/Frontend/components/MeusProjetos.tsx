@@ -40,7 +40,7 @@ export default function MeusProjetos() {
 
         try {
           const response = await fetch(
-            `https://localhost:443/api/projeto/idcontratante/${parsed.id}`,
+            `https://70ba-2804-d45-8614-e000-8848-797a-a4a7-1f2e.ngrok-free.app/api/projeto/idcontratante/${parsed.id}`,
             {
               method: 'GET',
               headers: {
@@ -79,7 +79,7 @@ export default function MeusProjetos() {
     const fetchFreelancerDetails = async () => {
       try {
         const response = await fetch(
-          `https://localhost:443/nometelefonefreelancer/${detailedFreelancerId}`,
+          `https://70ba-2804-d45-8614-e000-8848-797a-a4a7-1f2e.ngrok-free.app/nometelefonefreelancer/${detailedFreelancerId}`,
           {
             method: 'GET',
             headers: {
@@ -144,8 +144,8 @@ export default function MeusProjetos() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   return (
-    <ScrollView className="w-screen bg-purple-500 sm:px-52 sm:py-32">
-      <View className="pb-23 relative flex h-full w-full flex-col rounded-sm bg-white p-6 pt-36 sm:p-24">
+    <ScrollView className="w-screen bg-white sm:px-52 sm:py-32">
+      <View className="pb-23 relative flex h-full w-full flex-col rounded-sm bg-white p-6 sm:p-24">
         {freelancerDetails && (
           <View className="absolute left-0 top-0 z-50 h-full w-full items-center justify-center bg-black/40 px-4 py-10">
             <View className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
@@ -153,7 +153,6 @@ export default function MeusProjetos() {
                 Detalhes do Freelancer
               </Text>
 
-              {/* Substituir com dados reais depois */}
               <View className="mb-6 space-y-2">
                 <Text className="text-sm text-gray-800">Nome: {freelancerDetails.nome}</Text>
                 <Text className="text-sm text-gray-800">Nota: ⭐ 4.8</Text>
@@ -285,36 +284,46 @@ export default function MeusProjetos() {
                   </View>
                 ) : (
                   projectList.map((listing: any, index: any) => (
-                    <View
-                      key={index}
-                      className="mb-4 rounded-md border border-gray-200 p-4 shadow-sm">
-                      <View className="mb-3">
-                        <View className="mb-3 rounded bg-purple-500 px-3 py-2">
-                          <Text className="text-sm font-medium text-white">{listing.nome}</Text>
-                        </View>
-                      </View>
+    <View
+      key={index}
+      className="mb-4 rounded-md border border-gray-200 p-4 shadow-sm"
+    >
+      <View className="mb-3 rounded bg-purple-500 px-3 py-2">
+        <Text className="text-sm font-medium text-white">{listing.nome}</Text>
+      </View>
 
-                      <View className="mb-4 flex flex-row flex-wrap">
-                        <View className="mb-2 w-1/2">
-                          <Text className="text-xs text-gray-500">Data da publicação</Text>
-                          <Text className="text-sm font-medium">{formatDate(listing.dataRegistro)}</Text>
-                        </View>
-                        <View className="mb-2 w-1/2">
-                          <Text className="text-xs text-gray-500">Prazo Estimado</Text>
-                          <Text className="text-sm font-medium">{formatDate(listing.dataFim)}</Text>
-                        </View>
-                      </View>
+      <View className="mb-2 flex flex-row justify-between">
+        <View className="w-1/2 pr-2">
+          <Text className="text-xs text-gray-500">Data da publicação</Text>
+          <Text className="text-sm font-medium">{formatDate(listing.dataRegistro)}</Text>
+        </View>
+        <View className="w-1/2 pl-2">
+          <Text className="text-xs text-gray-500">Prazo Estimado</Text>
+          <Text className="text-sm font-medium">{formatDate(listing.dataFim)}</Text>
+        </View>
+      </View>
 
-                      <View className="flex flex-row gap-2">
-                        <Pressable className="flex-1 rounded-md bg-purple-500 px-2 py-2">
-                          <Text className="text-center text-sm font-semibold text-white">
-                            Ver detalhes
-                          </Text>
-                        </Pressable>
-                      </View>
-                    </View>
-                  ))
-                )}
+      <View className="mb-2">
+        <Text className="text-xs text-gray-500">Status</Text>
+        <Text className="text-sm font-medium">
+          {listing.status === 1 ? 'Assumida' : 'Pendente'}
+        </Text>
+      </View>
+
+      <Pressable
+        className={`rounded-md px-2 py-2 ${
+          listing.status === 1 ? 'bg-purple-500' : 'bg-gray-400'
+        }`}
+        onPress={listing.status === 1 ? () => setDetailedFreelancerId(listing.freelancerId) : undefined}
+        disabled={listing.status !== 1}
+      >
+        <Text className="text-center text-sm font-semibold text-white">
+          Ver detalhes
+        </Text>
+      </Pressable>
+    </View>
+  ))
+)}
               </ScrollView>
             )}
           </View>

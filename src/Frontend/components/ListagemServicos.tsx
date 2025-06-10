@@ -23,7 +23,7 @@ export default function FreelancerListing() {
         setUserData(parsed);
 
         try {
-          const response = await fetch('https://localhost:443/listarpendentes', {
+          const response = await fetch('https://70ba-2804-d45-8614-e000-8848-797a-a4a7-1f2e.ngrok-free.app/listarpendentes', {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ export default function FreelancerListing() {
       const { id, token } = userData;
       console.log(userData);
 
-      const response = await fetch(`https://41d0-2804-d45-8614-e000-40ba-66e1-2497-51c2.ngrok-free.app/aceitar/${projetoId}/${id}`, {
+      const response = await fetch(`https://70ba-2804-d45-8614-e000-8848-797a-a4a7-1f2e.ngrok-free.app/aceitar/${projetoId}/${id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
