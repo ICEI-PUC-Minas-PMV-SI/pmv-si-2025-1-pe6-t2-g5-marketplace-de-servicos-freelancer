@@ -40,11 +40,12 @@ export default function MeusProjetos() {
 
         try {
           const response = await fetch(
-            `http://localhost:7292/api/projeto/idcontratante/${parsed.id}`,
+            `https://41d0-2804-d45-8614-e000-40ba-66e1-2497-51c2.ngrok-free.app/api/projeto/idcontratante/${parsed.id}`,
             {
               method: 'GET',
               headers: {
                 'Content-Type': 'application/json',
+                'ngrok-skip-browser-warning': 'true',
                 Authorization: `Bearer ${parsed.token}`,
               },
             }
@@ -78,11 +79,12 @@ export default function MeusProjetos() {
     const fetchFreelancerDetails = async () => {
       try {
         const response = await fetch(
-          `http://localhost:7292/nometelefonefreelancer/${detailedFreelancerId}`,
+          `https://41d0-2804-d45-8614-e000-40ba-66e1-2497-51c2.ngrok-free.app/nometelefonefreelancer/${detailedFreelancerId}`,
           {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
+              
               Authorization: `Bearer ${userData.token}`,
             },
           }
@@ -143,7 +145,7 @@ export default function MeusProjetos() {
 
   return (
     <ScrollView className="w-screen bg-purple-500 sm:px-52 sm:py-32">
-      <View className="pb-23 relative flex h-full w-full flex-col rounded-sm bg-white p-6 pt-48 sm:p-24">
+      <View className="pb-23 relative flex h-full w-full flex-col rounded-sm bg-white p-6 pt-36 sm:p-24">
         {freelancerDetails && (
           <View className="absolute left-0 top-0 z-50 h-full w-full items-center justify-center bg-black/40 px-4 py-10">
             <View className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
@@ -176,13 +178,13 @@ export default function MeusProjetos() {
           </View>
         )}
 
-        <View className="absolute top-0 flex h-32 w-full items-center justify-end border-b border-gray-200 pb-5 sm:hidden">
+        <View className="absolute top-0 flex h-20 w-full items-center justify-end border-b border-gray-200 pb-5 sm:hidden">
           <Text className="text-3xl font-light text-purple-500 sm:hidden">Talent Link</Text>
         </View>
 
         <View className="flex flex-col gap-10">
-          <View className="flex w-full flex-row items-center">
-            <Text className="mb-5 w-3/4 border-l-4 border-purple-500 pl-2 text-2xl font-bold text-purple-500">
+          <View className="w-full flex flex-col sm:flex-row sm:items-center sm:justify-between">
+          <Text className="mb-5 border-l-4 border-purple-500 pl-2 text-2xl font-bold text-purple-500">
               Meus projetos
             </Text>
 
@@ -295,11 +297,11 @@ export default function MeusProjetos() {
                       <View className="mb-4 flex flex-row flex-wrap">
                         <View className="mb-2 w-1/2">
                           <Text className="text-xs text-gray-500">Data da publicação</Text>
-                          <Text className="text-sm font-medium">{listing.dataRegistro}</Text>
+                          <Text className="text-sm font-medium">{formatDate(listing.dataRegistro)}</Text>
                         </View>
                         <View className="mb-2 w-1/2">
                           <Text className="text-xs text-gray-500">Prazo Estimado</Text>
-                          <Text className="text-sm font-medium">{listing.dataFim}</Text>
+                          <Text className="text-sm font-medium">{formatDate(listing.dataFim)}</Text>
                         </View>
                         <View className="w-full">
                           <Text className="text-xs text-gray-500">Orçamento Disponível</Text>

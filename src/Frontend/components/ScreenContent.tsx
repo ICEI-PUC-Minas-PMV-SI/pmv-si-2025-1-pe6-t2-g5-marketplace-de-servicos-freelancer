@@ -34,11 +34,11 @@ const CustomHeader = ({ onLogout, nome }: { onLogout: () => void; nome?: string 
     <View className="flex-row items-center justify-between border-b border-gray-200 bg-white px-4 py-3">
       <Text className="text-3xl font-bold text-purple-500">TalentLink</Text>
       {nome && (
-        <View className="flex-row items-end space-x-6">
-          <View className="flex flex-col">
-            <Text className="text-lg text-purple-500">Bem-vindo,</Text>
-            <Text className="text-lg font-semibold text-purple-500">{nome}</Text>
-          </View>
+      <View className="flex-row flex-wrap items-end space-x-6">
+        <View className="flex flex-col min-w-[120px]">
+          <Text className="text-lg text-purple-500">Bem-vindo,</Text>
+          <Text className="text-lg font-semibold text-purple-500">{nome}</Text>
+        </View>
           <Pressable onPress={onLogout} className="rounded bg-red-500 px-3 py-1">
             <Text className="text-lg font-semibold text-white">Logout</Text>
           </Pressable>

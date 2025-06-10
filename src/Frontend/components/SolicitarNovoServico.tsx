@@ -66,10 +66,11 @@ export const SolicitarNovoServico = ({ path }: { path: string }) => {
     }
 
     try {
-      const response = await fetch('http://localhost:7292/api/Projeto', {
+      const response = await fetch('https://41d0-2804-d45-8614-e000-40ba-66e1-2497-51c2.ngrok-free.app/api/Projeto', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': 'true',
           Authorization: `Bearer ${userData.token}`,
         },
         body: JSON.stringify({ ...form, contratanteId: userData.id }),

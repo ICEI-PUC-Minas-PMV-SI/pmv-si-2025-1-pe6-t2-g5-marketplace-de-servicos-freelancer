@@ -1,11 +1,13 @@
 import { ScreenContent } from 'components/ScreenContent';
-
-import './global.css';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import './global.css'; // funciona no Expo Web, não no mobile nativo
 
 export default function App() {
   return (
-    <>
-      <ScreenContent />
-    </>
+    <SafeAreaProvider>
+      <SafeAreaView className="flex-1 bg-white">
+        <ScreenContent />
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }

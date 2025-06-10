@@ -6,7 +6,7 @@
       "dotnetRunMessages": true,
       "launchBrowser": false,
       "launchUrl": "MarketplaceFreelance",
-      "applicationUrl": "http://localhost:7292",
+      "applicationUrl": "https://localhost:443",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
