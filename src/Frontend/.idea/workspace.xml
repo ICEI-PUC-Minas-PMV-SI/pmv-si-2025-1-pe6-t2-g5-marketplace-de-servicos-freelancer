@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="58e01766-99e8-4859-93c3-42102147ae80" name="Changes" comment="Ajustes mbl">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ListagemServicos.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ListagemServicos.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/LoginRegister.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/LoginRegister.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +89,7 @@
       <workItem from="1749424351953" duration="1412000" />
       <workItem from="1749516756811" duration="2881000" />
       <workItem from="1749592910329" duration="4254000" />
-      <workItem from="1749662067142" duration="5917000" />
+      <workItem from="1749662067142" duration="6125000" />
     </task>
     <task id="LOCAL-00001" summary="ajustes para melhorias">
       <option name="closed" value="true" />

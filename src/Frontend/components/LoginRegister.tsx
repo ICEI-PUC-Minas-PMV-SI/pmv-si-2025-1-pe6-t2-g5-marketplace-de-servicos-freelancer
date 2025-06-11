@@ -163,7 +163,7 @@ export const LoginRegister = () => {
           }}
           resizeMode="cover"
           className="relative box-border hidden flex-[2] items-center justify-center gap-8 px-6 py-16 lg:flex lg:flex-col">
-          <View className="p-30 absolute inset-0 z-10 bg-black/30" />
+          <View className="p-30 absolute inset-0 z-10 bg-black/40" />
 
           <View className="relative z-20 rounded-lg p-4">
             <Text className="mx-auto text-center text-5xl font-semibold text-white">
