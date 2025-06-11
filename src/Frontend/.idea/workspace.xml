@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58e01766-99e8-4859-93c3-42102147ae80" name="Changes" comment="ajustes para melhorias">
-      <change afterPath="$PROJECT_DIR$/../Backend/MarketplaceFreelance/Core/DTO/Projeto/ProjetoUpdateDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/MarketplaceFreelance/API/Controllers/ProjetoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/MarketplaceFreelance/API/Controllers/ProjetoController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/MarketplaceFreelance/Application/Services/ProjetoService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/MarketplaceFreelance/Application/Services/ProjetoService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/MarketplaceFreelance/Core/Interfaces/IProjetoRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/MarketplaceFreelance/Core/Interfaces/IProjetoRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/MarketplaceFreelance/Infrastructure/Repositories/ProjetoRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/MarketplaceFreelance/Infrastructure/Repositories/ProjetoRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ListagemServicos.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ListagemServicos.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/LoginRegister.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/LoginRegister.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/MeusProjetos.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/MeusProjetos.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +89,7 @@
       <workItem from="1749424351953" duration="1412000" />
       <workItem from="1749516756811" duration="2881000" />
       <workItem from="1749592910329" duration="4254000" />
-      <workItem from="1749662067142" duration="4946000" />
+      <workItem from="1749662067142" duration="5647000" />
     </task>
     <task id="LOCAL-00001" summary="ajustes para melhorias">
       <option name="closed" value="true" />

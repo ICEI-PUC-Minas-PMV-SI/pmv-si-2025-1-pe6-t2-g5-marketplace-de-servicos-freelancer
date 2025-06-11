@@ -8,13 +8,15 @@ import {
   Linking,
   Pressable,
   ScrollView,
-  Text, TextInput, TouchableOpacity,
+  Text,
+  TextInput,
+  TouchableOpacity,
   useWindowDimensions,
   View,
 } from 'react-native';
+import { TextInputMask } from 'react-native-masked-text';
 
 import { RootStackParamList } from './ScreenContent';
-import {TextInputMask} from "react-native-masked-text";
 
 export default function MeusProjetos() {
   const { width } = useWindowDimensions();
@@ -118,7 +120,7 @@ export default function MeusProjetos() {
     fetchFreelancerDetails();
   }, detailedFreelancerId);
 
-  function formatDate(utcDateString: string | null): string | null  {
+  function formatDate(utcDateString: string | null): string | null {
     if (!utcDateString) return null;
 
     const date = new Date(utcDateString);
@@ -148,17 +150,15 @@ export default function MeusProjetos() {
       valor: null,
     });
   }
-  
-  const handleChange = (campo: string, valor: string) => {
 
+  const handleChange = (campo: string, valor: string) => {
     if (campo === 'dataFim') {
       // Apenas atualiza o valor como string no formato DD/MM/YYYY
       setForm({
         ...form,
         [campo]: valor,
       });
-    }
-    else {
+    } else {
       setForm({
         ...form,
         [campo]: valor,
@@ -169,13 +169,12 @@ export default function MeusProjetos() {
   const categorias = ['Desenvolvimento', 'Design', 'SEO e Marketing', 'Consultoria'];
 
   const edtitProject = async (projectId: string) => {
-
     if (!form.nome || form.nome.trim() === '') {
       Alert.alert('Erro', 'O campo Título do Serviço é obrigatório.');
       alert('O campo "Título do Serviço" é obrigatório.');
       return; // interrompe o envio enquanto não preencher
     }
-    
+
     if (!projectId) {
       Alert.alert('Erro', 'ID do projeto não disponível.');
       Alert.alert('ID do projeto não disponível.');
@@ -188,18 +187,16 @@ export default function MeusProjetos() {
       const [day, month, year] = form.dataFim.split('/');
 
       if (
-          day?.length === 2 &&
-          month?.length === 2 &&
-          year?.length === 4 &&
-          !isNaN(parseInt(day, 10)) &&
-          !isNaN(parseInt(month, 10)) &&
-          !isNaN(parseInt(year, 10))
+        day?.length === 2 &&
+        month?.length === 2 &&
+        year?.length === 4 &&
+        !isNaN(parseInt(day, 10)) &&
+        !isNaN(parseInt(month, 10)) &&
+        !isNaN(parseInt(year, 10))
       ) {
-        const utcDate = new Date(Date.UTC(
-            parseInt(year, 10),
-            parseInt(month, 10) - 1,
-            parseInt(day, 10)
-        ));
+        const utcDate = new Date(
+          Date.UTC(parseInt(year, 10), parseInt(month, 10) - 1, parseInt(day, 10))
+        );
         dataFimUTC = utcDate.toISOString();
       } else {
         // Se não for válido, mantém null ou pode tratar aqui como erro
@@ -241,7 +238,7 @@ export default function MeusProjetos() {
       clearProjetoForm();
     }
   };
-  
+
   const deleteProject = async (projectId: string) => {
     if (!projectId) {
       Alert.alert('Erro', 'ID do projeto não disponível.');
@@ -360,35 +357,33 @@ export default function MeusProjetos() {
                       deleteProject(projectIdToDelete);
                     }
                   }}
-                  className="flex-1 rounded-md bg-green-500 py-2"
-                >
+                  className="flex-1 rounded-md bg-green-500 py-2">
                   <Text className="text-center text-sm font-semibold text-white">Sim</Text>
                 </Pressable>
               </View>
             </View>
           </View>
         )}
-        
-        
+
         {modalEditProject && (
           <View className="absolute left-0 top-0 z-50 h-full w-full items-center justify-center bg-black/40 px-4 py-10">
-            <View className="w-full max-w-md mt-2 rounded-2xl bg-white p-6 shadow-xl">
+            <View className="mt-2 w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
               <Text className="mb-4 text-lg font-semibold text-purple-600">Editar Projeto</Text>
 
               <View className="mb-6">
-
                 <View className="flex flex-col gap-6">
-                  
                   <View className="flex flex-col items-start gap-4">
-                    <Text className="text-lg font-semibold text-purple-500">Título do Serviço:</Text>
+                    <Text className="text-lg font-semibold text-purple-500">
+                      Título do Serviço:
+                    </Text>
                     <View className="w-full flex-row items-center rounded-md border-2 border-purple-500 bg-white px-4 py-3">
                       <Entypo name="feather" size={20} color="#c084fc" />
                       <TextInput
-                          placeholder="Digite o título do serviço"
-                          placeholderTextColor="#c084fc"
-                          className="ml-2 flex-1 text-base text-purple-800 outline-none"
-                          value={form.nome}
-                          onChangeText={(text) => handleChange('nome', text)}
+                        placeholder="Digite o título do serviço"
+                        placeholderTextColor="#c084fc"
+                        className="ml-2 flex-1 text-base text-purple-800 outline-none"
+                        value={form.nome}
+                        onChangeText={(text) => handleChange('nome', text)}
                       />
                     </View>
                   </View>
@@ -398,26 +393,29 @@ export default function MeusProjetos() {
                     <View className="w-full flex-row items-center rounded-md border-2 border-purple-500 bg-white px-4 py-3">
                       <Entypo name="text" size={20} color="#c084fc" />
                       <TextInput
-                          placeholder="Descreva detalhadamente seu serviço"
-                          placeholderTextColor="#c084fc"
-                          className="ml-2 flex-1 text-base text-purple-800 outline-none"
-                          onChangeText={(text) => handleChange('descricao', text)}
-                          value={form.descricao}
-                          multiline
-                          textAlignVertical="top"
+                        placeholder="Descreva detalhadamente seu serviço"
+                        placeholderTextColor="#c084fc"
+                        className="ml-2 flex-1 text-base text-purple-800 outline-none"
+                        onChangeText={(text) => handleChange('descricao', text)}
+                        value={form.descricao}
+                        multiline
+                        textAlignVertical="top"
                       />
                     </View>
                   </View>
 
                   <View className="flex flex-col items-start gap-4">
-                    <Text className="text-lg font-semibold text-purple-500">Selecionar Categoria:</Text>
+                    <Text className="text-lg font-semibold text-purple-500">
+                      Selecionar Categoria:
+                    </Text>
                     <View className="flex flex-row flex-wrap gap-3">
                       {categorias.map((option) => (
-                          
                         <TouchableOpacity
                           key={option}
                           className={`flex-row items-center rounded-md border-2 px-4 py-2 ${
-                            form.escopo === option ? 'border-purple-500 bg-purple-100' : 'border-purple-300'
+                            form.escopo === option
+                              ? 'border-purple-500 bg-purple-100'
+                              : 'border-purple-300'
                           }`}
                           onPress={() => handleChange('escopo', option)}>
                           <View className="mr-2 h-5 w-5 items-center justify-center rounded-full border-2 border-purple-500">
@@ -436,50 +434,51 @@ export default function MeusProjetos() {
                     <View className="w-full flex-row items-center rounded-md border-2 border-purple-500 bg-white px-4 py-3">
                       <Entypo name="calendar" size={20} color="#c084fc" />
                       <TextInputMask
-                          type={'datetime'}
-                          options={{
-                            format: 'DD/MM/YYYY',
-                          }}
-                          placeholder="Ex: 01/12/2025"
-                          placeholderTextColor="#c084fc"
-                          className="ml-2 flex-1 text-base text-purple-800 outline-none px-3 py-2"
-                          onChangeText={(text) => handleChange('dataFim', text)}
-                          keyboardType="numeric"
-                          value={form.dataFim}
-                          style={{
-                            borderWidth: 0,
-                            fontSize: 16,
-                            flex: 1,
-                            outlineColor: 'transparent',
-                            color: '#c084fc',
-                            marginLeft: 12,
-                          }}
+                        type="datetime"
+                        options={{
+                          format: 'DD/MM/YYYY',
+                        }}
+                        placeholder="Ex: 01/12/2025"
+                        placeholderTextColor="#c084fc"
+                        className="ml-2 flex-1 px-3 py-2 text-base text-purple-800 outline-none"
+                        onChangeText={(text) => handleChange('dataFim', text)}
+                        keyboardType="numeric"
+                        value={form.dataFim}
+                        style={{
+                          borderWidth: 0,
+                          fontSize: 16,
+                          flex: 1,
+                          outlineColor: 'transparent',
+                          color: '#c084fc',
+                          marginLeft: 12,
+                        }}
                       />
                     </View>
                   </View>
 
                   <View className="flex flex-col items-start gap-4">
-                    <Text className="text-lg font-semibold text-purple-500">Orçamento Disponível:</Text>
+                    <Text className="text-lg font-semibold text-purple-500">
+                      Orçamento Disponível:
+                    </Text>
                     <View className="w-full flex-row items-center rounded-md border-2 border-purple-500 bg-white px-4 py-3">
                       <Entypo name="credit" size={20} color="#c084fc" />
                       <TextInput
-                          placeholder="Ex: R$ 500,00"
-                          placeholderTextColor="#c084fc"
-                          className="ml-2 flex-1 text-base text-purple-800 outline-none"
-                          onChangeText={(text) => handleChange('valor', text)}
-                          keyboardType="numeric"
-                          value={form.valor}
+                        placeholder="Ex: R$ 500,00"
+                        placeholderTextColor="#c084fc"
+                        className="ml-2 flex-1 text-base text-purple-800 outline-none"
+                        onChangeText={(text) => handleChange('valor', text)}
+                        keyboardType="numeric"
+                        value={form.valor}
                       />
                     </View>
                   </View>
                 </View>
-                
               </View>
 
               <View className="flex w-full flex-row gap-2">
                 <Pressable
                   onPress={() => {
-                    setModalEditProject(false)
+                    setModalEditProject(false);
                     setProjectIdToEdit(null);
                     clearProjetoForm();
                   }}
@@ -492,8 +491,7 @@ export default function MeusProjetos() {
                       edtitProject(projectIdToEdit);
                     }
                   }}
-                  className="flex-1 rounded-md bg-green-500 py-2"
-                >
+                  className="flex-1 rounded-md bg-green-500 py-2">
                   <Text className="text-center text-sm font-semibold text-white">Sim</Text>
                 </Pressable>
               </View>
@@ -601,44 +599,51 @@ export default function MeusProjetos() {
                       </View>
                       <View className="flex-1">
                         {listing.status === 1 ? (
-                            <Pressable
-                                className="flex items-center cursor-default">
-                              <Entypo name="edit" size={20} color="#6b7280" className={`cursor-default`} />
-                            </Pressable>
+                          <Pressable className="flex cursor-default items-center">
+                            <Entypo
+                              name="edit"
+                              size={20}
+                              color="#6b7280"
+                              className="cursor-default"
+                            />
+                          </Pressable>
                         ) : (
-                            <Pressable
-                                className="flex items-center"
-                                onPress={() => {
-                                  setModalEditProject(true);
-                                  setProjectIdToEdit(listing.projetoId)
-                                    setForm({
-                                        nome: listing.nome,
-                                        descricao: listing.descricao,
-                                        escopo: listing.escopo,
-                                        dataFim: formatDate(listing.dataFim),
-                                        valor: listing.valor,
-                                    });
-                                }}>
-                              <Entypo name="edit" size={20} color="#f7b813" />
-                            </Pressable>
+                          <Pressable
+                            className="flex items-center"
+                            onPress={() => {
+                              setModalEditProject(true);
+                              setProjectIdToEdit(listing.projetoId);
+                              setForm({
+                                nome: listing.nome,
+                                descricao: listing.descricao,
+                                escopo: listing.escopo,
+                                dataFim: formatDate(listing.dataFim),
+                                valor: listing.valor,
+                              });
+                            }}>
+                            <Entypo name="edit" size={20} color="#f7b813" />
+                          </Pressable>
                         )}
                       </View>
                       <View className="flex-1">
-
                         {listing.status === 1 ? (
-                            <Pressable
-                                className="flex items-center cursor-default">
-                                <Entypo name="trash" size={20} color="#6b7280" className={`cursor-default`} />
-                            </Pressable>
+                          <Pressable className="flex cursor-default items-center">
+                            <Entypo
+                              name="trash"
+                              size={20}
+                              color="#6b7280"
+                              className="cursor-default"
+                            />
+                          </Pressable>
                         ) : (
-                            <Pressable
-                                className="flex items-center"
-                                onPress={() => {
-                                  setModalDeleteProject(true);
-                                  setProjectIdToDelete(listing.projetoId)
-                                }}>
-                              <Entypo name="trash" size={20} color="#F70E12" />
-                            </Pressable>
+                          <Pressable
+                            className="flex items-center"
+                            onPress={() => {
+                              setModalDeleteProject(true);
+                              setProjectIdToDelete(listing.projetoId);
+                            }}>
+                            <Entypo name="trash" size={20} color="#F70E12" />
+                          </Pressable>
                         )}
                       </View>
                     </View>
@@ -697,11 +702,68 @@ export default function MeusProjetos() {
                           Ver detalhes
                         </Text>
                       </Pressable>
+
+                      <View className="mt-3 flex flex-row items-center justify-between gap-2 ">
+                        {listing.status === 1 ? (
+                          <View className="flex w-1/2 flex-row items-center justify-center py-1 rounded-md space-x-2 bg-[#6b7280]">
+                            <Pressable className="flex cursor-default items-center">
+                              <Entypo
+                                name="edit"
+                                size={20}
+                                color="white"
+                                className="cursor-default"
+                              />
+                            </Pressable>
+                          </View>
+                        ) : (
+                          <View className="flex w-1/2 flex-row items-center justify-center py-1 rounded-md space-x-2 bg-[#f7b813]">
+                            <Pressable
+                              className="flex items-center"
+                              onPress={() => {
+                                setModalEditProject(true);
+                                setProjectIdToEdit(listing.projetoId);
+                                setForm({
+                                  nome: listing.nome,
+                                  descricao: listing.descricao,
+                                  escopo: listing.escopo,
+                                  dataFim: formatDate(listing.dataFim),
+                                  valor: listing.valor,
+                                });
+                              }}>
+                              <Entypo name="edit" size={20} color="white" />
+                            </Pressable>
+                          </View>
+                        )}
+
+                        {listing.status === 1 ? (
+                          <View className="flex w-1/2 flex-row items-center justify-center py-1 rounded-md space-x-2 bg-[#6b7280]">
+                            <Pressable className="flex cursor-default items-center">
+                              <Entypo
+                                name="trash"
+                                size={20}
+                                color="white"
+                                className="cursor-default"
+                              />
+                            </Pressable>
+                          </View>
+                        ) : (
+                          <View className="flex w-1/2 flex-row items-center justify-center py-1 rounded-md space-x-2 bg-[#F70E12]">
+                            <Pressable
+                              className="flex items-center"
+                              onPress={() => {
+                                setModalDeleteProject(true);
+                                setProjectIdToDelete(listing.projetoId);
+                              }}>
+                              <Entypo name="trash" size={20} color="white" />
+                            </Pressable>
+                          </View>
+                        )}
+                      </View>
                     </View>
                   ))
                 )}
               </ScrollView>
-            )}
+            )}  
           </View>
         </View>
       </View>
