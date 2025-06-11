@@ -160,7 +160,7 @@ public class ProjetoController(ProjetoService projetoService) : BaseController
     
     [HttpPatch("{id}")]
     [Authorize]
-    public async Task<IActionResult> AtualizarProjeto(Projeto projeto, int id)
+    public async Task<IActionResult> AtualizarProjeto(ProjetoUpdateDTO projeto, int id)
     {
         try
         {

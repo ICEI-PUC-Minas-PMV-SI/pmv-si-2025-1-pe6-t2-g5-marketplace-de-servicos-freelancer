@@ -341,10 +341,6 @@ export const LoginRegister = () => {
               />
             </View>
 
-            <TouchableOpacity className="mb-6 w-3/4 flex-row items-center justify-center">
-              <Text className="text-gray-400">Esqueci a senha</Text>
-            </TouchableOpacity>
-
             <View className="mx-auto flex flex-col items-center justify-center gap-5 md:flex-row">
               <TouchableOpacity onPress={() => setRegisterPage(!registerPage)}>
                 <Text className="text-lg font-semibold text-purple-500">Registrar</Text>

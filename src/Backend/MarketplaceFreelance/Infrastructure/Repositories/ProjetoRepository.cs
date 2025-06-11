@@ -47,7 +47,7 @@ public class ProjetoRepository(AppDbContext contexto, IMapper mapper) : IProjeto
 		return await contexto.Projetos.AsNoTracking().Where(projeto => projeto.Escopo == categoria && projeto.Status == ProjetoStatus.Pendente && projeto.DataInativacao == null).OrderBy(projeto => projeto.ProjetoId).ToListAsync() ?? throw new InvalidOperationException();
 	}
 
-	public async Task<Projeto> AtualizarProjeto(Projeto projeto, int id)
+	public async Task<Projeto> AtualizarProjeto(ProjetoUpdateDTO projeto, int id)
 	{
 		Projeto entidadeBanco = await BuscarProjetoPorId(id);
 
@@ -76,6 +76,6 @@ public class ProjetoRepository(AppDbContext contexto, IMapper mapper) : IProjeto
 		projeto.Status = ProjetoStatus.EmAndamento;
 		projeto.FreelancerId = freelancerId;
 		
-		await AtualizarProjeto(projeto, projetoId);
+		await AtualizarProjeto(mapper.Map<ProjetoUpdateDTO>(projeto), projetoId);
 	}
 }

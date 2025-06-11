@@ -25,7 +25,7 @@ public interface IProjetoRepository
 	Task<List<Projeto>> BuscarProjetosPorCategoria(string categoria); 
 	
 	//Quem atualiza o projeto é o contratante
-	Task<Projeto> AtualizarProjeto(Projeto projeto, int id); 
+	Task<Projeto> AtualizarProjeto(ProjetoUpdateDTO projeto, int id); 
 	
 	//Quem exclui o projeto é o contratante
 	Task ExcluirProjeto(long id); 

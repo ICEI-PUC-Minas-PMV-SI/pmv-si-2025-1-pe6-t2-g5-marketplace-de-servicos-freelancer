@@ -56,7 +56,7 @@ public class ProjetoService(IProjetoRepository projetoRepository, IPropostaRepos
 		// await propostaRepository.AceitarProposta(proposta.PropostaId, projetoId);
 		await projetoRepository.AceitarProjeto(projetoId, freelancerId);
 	}
-	public async Task<Projeto> AtualizarProjeto(Projeto projeto, int id)
+	public async Task<Projeto> AtualizarProjeto(ProjetoUpdateDTO projeto, int id)
 	{
 		return await projetoRepository.AtualizarProjeto(projeto, id);
 	}	

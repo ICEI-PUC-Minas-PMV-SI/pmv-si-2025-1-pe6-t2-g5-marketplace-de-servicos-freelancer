@@ -18,6 +18,8 @@ export default function FreelancerListing() {
   const [categoryFilter, setCategoryFilter] = useState<any>(null);
   const [filteredProjectList, setFilteredProjectList] = useState<any>(null);
   const [refreshed, setRefreshed] = useState<boolean>(false);
+  
+  
   useEffect(() => {
     const fetchRefreshed = async () => {
       const refreshed = await AsyncStorage.getItem('refreshed');
