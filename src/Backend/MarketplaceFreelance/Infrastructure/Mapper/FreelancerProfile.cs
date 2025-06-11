@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Core.DTO.Contratante;
 using Core.DTO.Freelancer;
 using Core.Models;
 
@@ -11,6 +10,5 @@ public class FreelancerProfile : Profile
 	{
 		CreateMap<Freelancer, UsuarioBase>().ReverseMap();
 		CreateMap<Freelancer, FreelancerNomeTelefoneResponseDTO>().ReverseMap();
-		
 	}
 }

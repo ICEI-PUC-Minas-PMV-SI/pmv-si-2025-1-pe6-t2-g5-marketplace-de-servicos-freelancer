@@ -1,5 +1,4 @@
 using Core.DTO.Proposta;
-using Core.Enums;
 using Core.Interfaces;
 using Core.Models;
 
@@ -16,7 +15,7 @@ public class PropostaService(IPropostaRepository propostaRepository)
 	{
 		return await propostaRepository.BuscarPropostaPorFreelancer(nomeFreelancer, nomeProjeto);
 	}
-	
+
 	public async Task<List<Proposta>> BuscarProposta()
 	{
 		return await propostaRepository.BuscarPropostas();

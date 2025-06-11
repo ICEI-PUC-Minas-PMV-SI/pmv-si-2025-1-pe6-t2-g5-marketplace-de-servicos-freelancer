@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Core.Enums;
-
-namespace Core.DTO.Projeto;
+﻿namespace Core.DTO.Projeto;
 
 public class ProjetoCadastroDTO
 {

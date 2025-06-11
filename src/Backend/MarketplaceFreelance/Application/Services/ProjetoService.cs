@@ -10,32 +10,37 @@ public class ProjetoService(IProjetoRepository projetoRepository, IPropostaRepos
 	{
 		return await projetoRepository.CadastrarProjeto(projeto);
 	}
+
 	public async Task<Projeto> BuscarProjetoPorId(long id)
 	{
 		return await projetoRepository.BuscarProjetoPorId(id);
 	}
-	
+
 	public async Task<IEnumerable<Projeto>?> BuscaProjetoPorContratanteId(int id)
 	{
 		return await projetoRepository.BuscarProjetoPorContratanteId(id);
 	}
+
 	public async Task<Projeto> BuscarProjetoPorNome(string nome)
 	{
 		return await projetoRepository.BuscarProjetoPorNome(nome);
 	}
+
 	public async Task<IEnumerable<Projeto>> BuscarProjetosPorCategoria(string categoria)
 	{
 		return await projetoRepository.BuscarProjetosPorCategoria(categoria);
 	}
+
 	public async Task<IEnumerable<Projeto>> ListarProjetos()
 	{
 		return await projetoRepository.ListarProjetos();
 	}
-	
+
 	public async Task<IEnumerable<Projeto>> ListarProjetosPendentes()
 	{
 		return await projetoRepository.ListarProjetosPendentes();
-	}	
+	}
+
 	public async Task AceitarProjeto(int projetoId, int freelancerId)
 	{
 		// var projeto = await projetoRepository.BuscarProjetoPorId(projetoId);
@@ -56,10 +61,12 @@ public class ProjetoService(IProjetoRepository projetoRepository, IPropostaRepos
 		// await propostaRepository.AceitarProposta(proposta.PropostaId, projetoId);
 		await projetoRepository.AceitarProjeto(projetoId, freelancerId);
 	}
+
 	public async Task<Projeto> AtualizarProjeto(ProjetoUpdateDTO projeto, int id)
 	{
 		return await projetoRepository.AtualizarProjeto(projeto, id);
-	}	
+	}
+
 	public async Task ExcluirProjeto(long id)
 	{
 		await projetoRepository.ExcluirProjeto(id);

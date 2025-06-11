@@ -3,6 +3,7 @@
 [Inclua uma breve descrição do projeto e seus objetivos.]
 
 ## Projeto da Interface
+
 [Descreva o projeto da interface móvel da aplicação, incluindo o design visual, layout das páginas, interações do usuário e outros aspectos relevantes.]
 
 ### Wireframes
@@ -43,7 +44,8 @@
 2. Implemente testes unitários para testar unidades individuais de código, como funções e classes.
 3. Realize testes de integração para verificar a interação correta entre os componentes da aplicação.
 4. Execute testes de carga para avaliar o desempenho da aplicação sob carga significativa.
-5. Utilize ferramentas de teste adequadas, como frameworks de teste e ferramentas de automação de teste, para agilizar o processo de teste.
+5. Utilize ferramentas de teste adequadas, como frameworks de teste e ferramentas de automação de teste, para agilizar o
+   processo de teste.
 
 # Referências
 

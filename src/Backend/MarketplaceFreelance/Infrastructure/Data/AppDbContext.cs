@@ -5,13 +5,13 @@ namespace Infrastructure.Data;
 
 public class AppDbContext : DbContext
 {
-	public DbSet<UsuarioBase> Usuarios { get; set; }
-	public DbSet<Projeto> Projetos { get; set; }
-	public DbSet<Proposta> Propostas { get; set; } // Agora no plural
-
 	public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
 	{
 	}
+
+	public DbSet<UsuarioBase> Usuarios { get; set; }
+	public DbSet<Projeto> Projetos { get; set; }
+	public DbSet<Proposta> Propostas { get; set; } // Agora no plural
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
@@ -55,7 +55,7 @@ public class AppDbContext : DbContext
 		.WithMany()
 		.HasForeignKey(p => p.IdPropostaAceita)
 		.OnDelete(DeleteBehavior.Restrict);
-		
+
 		modelBuilder.Entity<UsuarioBase>()
 		.HasQueryFilter(u => u.DataInativacao == null);
 	}

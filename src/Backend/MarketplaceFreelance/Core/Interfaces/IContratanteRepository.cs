@@ -6,7 +6,7 @@ namespace Core.Interfaces;
 
 public interface IContratanteRepository
 {
-	Task<Contratante> InserirContratante(Contratante contratante);	
+	Task<Contratante> InserirContratante(Contratante contratante);
 	Task<Contratante> BuscarContratantePorId(int id);
 	Task<FreelancerNomeTelefoneResponseDTO?> BuscarNomeTelefoneFreelancerPorId(int id);
 	Task<Contratante> BuscarContratantePorCPF(string cpf);

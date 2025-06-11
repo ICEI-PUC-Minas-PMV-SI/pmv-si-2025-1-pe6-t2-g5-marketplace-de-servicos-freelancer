@@ -2,22 +2,21 @@
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-namespace Infrastructure.Data
+namespace Infrastructure.Data;
+
+public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
 {
-	public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
+	public AppDbContext CreateDbContext(string[] args)
 	{
-		public AppDbContext CreateDbContext(string[] args)
-		{
-			var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            
-			// Obtém a string de conexão do arquivo appsettings.json ou de outro lugar
-			var configuration = new ConfigurationBuilder().SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../API"))
-														  .AddJsonFile("appsettings.json")
-														  .Build();
+		var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
 
-			optionsBuilder.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
+		// Obtém a string de conexão do arquivo appsettings.json ou de outro lugar
+		var configuration = new ConfigurationBuilder().SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../API"))
+		.AddJsonFile("appsettings.json")
+		.Build();
 
-			return new AppDbContext(optionsBuilder.Options);
-		}
+		optionsBuilder.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
+
+		return new AppDbContext(optionsBuilder.Options);
 	}
 }

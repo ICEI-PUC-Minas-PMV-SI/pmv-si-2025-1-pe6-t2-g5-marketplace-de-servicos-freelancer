@@ -12,10 +12,7 @@ public class UsuarioRepository(AppDbContext contexto) : IUsuarioRepository
 		.Where(c => c.Email == email && c.DataInativacao == null)
 		.FirstOrDefaultAsync();
 
-		if (usuarioExistente != null)
-		{
-			return usuarioExistente.TipoUsuario;
-		}		
+		if (usuarioExistente != null) return usuarioExistente.TipoUsuario;
 		throw new InvalidOperationException($"Usuário não encontrado com o email informado! Email informado: {email}");
 	}
 }

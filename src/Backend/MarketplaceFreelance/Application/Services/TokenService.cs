@@ -14,7 +14,7 @@ public class TokenService(IConfiguration configuration)
 		var tokenHandler = new JwtSecurityTokenHandler();
 		var key = Encoding.UTF8.GetBytes(configuration["KeySecret"] ?? throw new InvalidOperationException());
 
-		var tokenDescriptor = new SecurityTokenDescriptor()
+		var tokenDescriptor = new SecurityTokenDescriptor
 		{
 		Subject = new ClaimsIdentity(new[]
 		{

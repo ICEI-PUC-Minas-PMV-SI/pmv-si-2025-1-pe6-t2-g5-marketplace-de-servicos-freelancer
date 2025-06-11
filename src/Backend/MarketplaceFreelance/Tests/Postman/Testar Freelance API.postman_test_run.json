@@ -1,724 +1,724 @@
 {
-	"id": "f82f874e-0ec1-4ff6-9100-0b05ce619d9e",
-	"name": "Testar Freelance API",
-	"timestamp": "2025-04-06T22:39:48.211Z",
-	"collection_id": "7750654-9a6cbe82-6d88-43f8-9140-57080b91a823",
-	"folder_id": 0,
-	"environment_id": "7750654-63ad7754-ac78-414d-8e64-6fa2e295a71c",
-	"totalPass": 42,
-	"delay": 0,
-	"persist": true,
-	"status": "finished",
-	"startedAt": "2025-04-06T22:39:47.529Z",
-	"totalFail": 0,
-	"results": [
-		{
-			"id": "8329b100-56a6-465d-8bbd-fbc9c35b727f",
-			"name": "Contratante Criar",
-			"url": "http://localhost:5204/api/Contratante",
-			"time": 8,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Código de retorno é 200.": true,
-				"Retorno possui um Contratante ID valido.": true
-			},
-			"testPassFailCounts": {
-				"Código de retorno é 200.": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui um Contratante ID valido.": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				8
-			],
-			"allTests": [
-				{
-					"Código de retorno é 200.": true,
-					"Retorno possui um Contratante ID valido.": true
-				}
-			]
-		},
-		{
-			"id": "7ac095d2-7c24-46c0-849f-f5cd562aa9fd",
-			"name": "Contratante Login",
-			"url": "http://localhost:5204/api/Contratante/login",
-			"time": 6,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Código de retorno é 200.": true,
-				"Retorno possui um Token valido.": true
-			},
-			"testPassFailCounts": {
-				"Código de retorno é 200.": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui um Token valido.": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				6
-			],
-			"allTests": [
-				{
-					"Código de retorno é 200.": true,
-					"Retorno possui um Token valido.": true
-				}
-			]
-		},
-		{
-			"id": "f3a64787-334c-4408-9782-16fbff0a0767",
-			"name": "Contratante",
-			"url": "http://localhost:5204/api/Contratante/21",
-			"time": 5,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Código de retorno é 200.": true,
-				"Retorno possui um ID valido.": true
-			},
-			"testPassFailCounts": {
-				"Código de retorno é 200.": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui um ID valido.": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				5
-			],
-			"allTests": [
-				{
-					"Código de retorno é 200.": true,
-					"Retorno possui um ID valido.": true
-				}
-			]
-		},
-		{
-			"id": "d3ddcac6-69e6-4c67-95c1-f69d4d8fea33",
-			"name": "Contratante Busca CPF",
-			"url": "http://localhost:5204/api/Contratante/buscar-por-cpf/123456789",
-			"time": 4,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Código de retorno é 200.": true,
-				"Retorno possui um ID valido.": true
-			},
-			"testPassFailCounts": {
-				"Código de retorno é 200.": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui um ID valido.": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				4
-			],
-			"allTests": [
-				{
-					"Código de retorno é 200.": true,
-					"Retorno possui um ID valido.": true
-				}
-			]
-		},
-		{
-			"id": "20be042f-0c6c-45af-86fe-52c663d4e4b3",
-			"name": "Contratante Update",
-			"url": "http://localhost:5204/api/Contratante/21",
-			"time": 6,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Código de retorno é 200.": true,
-				"Retorno possui nome alterado": true,
-				"Retorno possui email alterado": true,
-				"Retorno possui telefone alterado": true,
-				"Retorno possui senha alterado": true
-			},
-			"testPassFailCounts": {
-				"Código de retorno é 200.": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui nome alterado": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui email alterado": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui telefone alterado": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui senha alterado": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				6
-			],
-			"allTests": [
-				{
-					"Código de retorno é 200.": true,
-					"Retorno possui nome alterado": true,
-					"Retorno possui email alterado": true,
-					"Retorno possui telefone alterado": true,
-					"Retorno possui senha alterado": true
-				}
-			]
-		},
-		{
-			"id": "5e6b90cb-5586-4068-a6af-2bf326b7a333",
-			"name": "Freelancer Criar",
-			"url": "http://localhost:5204/api/Freelancer",
-			"time": 13,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Código de retorno é 200.": true,
-				"Retorno possui um Freelancer ID valido.": true
-			},
-			"testPassFailCounts": {
-				"Código de retorno é 200.": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui um Freelancer ID valido.": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				13
-			],
-			"allTests": [
-				{
-					"Código de retorno é 200.": true,
-					"Retorno possui um Freelancer ID valido.": true
-				}
-			]
-		},
-		{
-			"id": "9c3bdfd8-946f-4b19-a986-7fba3f4d921e",
-			"name": "Freelancer Login",
-			"url": "http://localhost:5204/api/Freelancer/login",
-			"time": 9,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Código de retorno é 200.": true,
-				"Retorno possui um Token valido.": true
-			},
-			"testPassFailCounts": {
-				"Código de retorno é 200.": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui um Token valido.": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				9
-			],
-			"allTests": [
-				{
-					"Código de retorno é 200.": true,
-					"Retorno possui um Token valido.": true
-				}
-			]
-		},
-		{
-			"id": "57cc01cf-1ef9-4be3-a1fe-99633b9df270",
-			"name": "Freelancer",
-			"url": "http://localhost:5204/api/Freelancer/15",
-			"time": 11,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Código de retorno é 200.": true,
-				"Retorno possui um ID valido.": true
-			},
-			"testPassFailCounts": {
-				"Código de retorno é 200.": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui um ID valido.": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				11
-			],
-			"allTests": [
-				{
-					"Código de retorno é 200.": true,
-					"Retorno possui um ID valido.": true
-				}
-			]
-		},
-		{
-			"id": "a60ceb0f-a1ac-4be7-bb93-1947aba34d1d",
-			"name": "Freelancer Buscar Email",
-			"url": "http://localhost:5204/api/Freelancer/buscar-por-email/freelancer@teste.com",
-			"time": 3,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Código de retorno é 200.": true,
-				"Retorno possui um ID valido.": true
-			},
-			"testPassFailCounts": {
-				"Código de retorno é 200.": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui um ID valido.": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				3
-			],
-			"allTests": [
-				{
-					"Código de retorno é 200.": true,
-					"Retorno possui um ID valido.": true
-				}
-			]
-		},
-		{
-			"id": "4958673a-5dba-4e00-9314-03ba40dc3a38",
-			"name": "Freelancer Update",
-			"url": "http://localhost:5204/api/Freelancer/15",
-			"time": 7,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Código de retorno é 200.": true,
-				"Retorno possui nome alterado": true,
-				"Retorno possui email alterado": true,
-				"Retorno possui telefone alterado": true,
-				"Retorno possui senha alterado": true
-			},
-			"testPassFailCounts": {
-				"Código de retorno é 200.": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui nome alterado": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui email alterado": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui telefone alterado": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui senha alterado": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				7
-			],
-			"allTests": [
-				{
-					"Código de retorno é 200.": true,
-					"Retorno possui nome alterado": true,
-					"Retorno possui email alterado": true,
-					"Retorno possui telefone alterado": true,
-					"Retorno possui senha alterado": true
-				}
-			]
-		},
-		{
-			"id": "ef9fdb79-b82d-4b75-ba61-b3bb472af1f5",
-			"name": "Projeto Criar",
-			"url": "http://localhost:5204/api/Projeto",
-			"time": 6,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Código de retorno é 200.": true,
-				"Retorno possui um Projeto ID valido.": true
-			},
-			"testPassFailCounts": {
-				"Código de retorno é 200.": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui um Projeto ID valido.": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				6
-			],
-			"allTests": [
-				{
-					"Código de retorno é 200.": true,
-					"Retorno possui um Projeto ID valido.": true
-				}
-			]
-		},
-		{
-			"id": "5e845753-9919-4ac2-b65f-6dd3f54bbef9",
-			"name": "Projeto Update",
-			"url": "http://localhost:5204/api/Projeto/20",
-			"time": 6,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Código de retorno é 200.": true,
-				"Retorno possui nome alterado": true
-			},
-			"testPassFailCounts": {
-				"Código de retorno é 200.": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui nome alterado": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				6
-			],
-			"allTests": [
-				{
-					"Código de retorno é 200.": true,
-					"Retorno possui nome alterado": true
-				}
-			]
-		},
-		{
-			"id": "99e8c5fa-e0ee-4ebf-9638-5e7e1cf89ae8",
-			"name": "Projeto Buscar Nome",
-			"url": "http://localhost:5204/api/Projeto/nome/Novo Nome",
-			"time": 4,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Código de retorno é 200.": true,
-				"Retorno possui nome alterado": true
-			},
-			"testPassFailCounts": {
-				"Código de retorno é 200.": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui nome alterado": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				4
-			],
-			"allTests": [
-				{
-					"Código de retorno é 200.": true,
-					"Retorno possui nome alterado": true
-				}
-			]
-		},
-		{
-			"id": "61e88736-e22c-46fd-9fb9-5717d5d73048",
-			"name": "Proposta Criar",
-			"url": "http://localhost:5204/api/Proposta",
-			"time": 5,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Código de retorno é 200.": true,
-				"Retorno possui um Projeto ID valido.": true,
-				"Retorno possui um Freelancer ID valido.": true,
-				"Retorno possui um Proposta ID valido.": true
-			},
-			"testPassFailCounts": {
-				"Código de retorno é 200.": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui um Projeto ID valido.": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui um Freelancer ID valido.": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui um Proposta ID valido.": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				5
-			],
-			"allTests": [
-				{
-					"Código de retorno é 200.": true,
-					"Retorno possui um Projeto ID valido.": true,
-					"Retorno possui um Freelancer ID valido.": true,
-					"Retorno possui um Proposta ID valido.": true
-				}
-			]
-		},
-		{
-			"id": "d99742c8-fda8-48ac-aedd-76c1961947a7",
-			"name": "Proposta Aceitar",
-			"url": "http://localhost:5204/api/Proposta/aceitar-proposta/11",
-			"time": 5,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Código de retorno é 200.": true,
-				"Retorno possui um Projeto ID valido.": true,
-				"Retorno possui um Freelancer ID valido.": true
-			},
-			"testPassFailCounts": {
-				"Código de retorno é 200.": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui um Projeto ID valido.": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Retorno possui um Freelancer ID valido.": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				5
-			],
-			"allTests": [
-				{
-					"Código de retorno é 200.": true,
-					"Retorno possui um Projeto ID valido.": true,
-					"Retorno possui um Freelancer ID valido.": true
-				}
-			]
-		},
-		{
-			"id": "77e4d4d5-df39-48c8-a5f3-27d067626ce4",
-			"name": "Projeto Delete",
-			"url": "http://localhost:5204/api/Projeto/20",
-			"time": 4,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Código de retorno é 200.": true
-			},
-			"testPassFailCounts": {
-				"Código de retorno é 200.": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				4
-			],
-			"allTests": [
-				{
-					"Código de retorno é 200.": true
-				}
-			]
-		},
-		{
-			"id": "a1dbd5b8-9dc2-4cf4-923c-4fb9b31a7273",
-			"name": "Contratante Delete",
-			"url": "http://localhost:5204/api/Contratante/21",
-			"time": 4,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Código de retorno é 200.": true
-			},
-			"testPassFailCounts": {
-				"Código de retorno é 200.": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				4
-			],
-			"allTests": [
-				{
-					"Código de retorno é 200.": true
-				}
-			]
-		},
-		{
-			"id": "59c81a96-13f3-449f-a3b2-b7ff5fb2f847",
-			"name": "Freelancer Delete",
-			"url": "http://localhost:5204/api/Freelancer/15",
-			"time": 5,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Código de retorno é 200.": true
-			},
-			"testPassFailCounts": {
-				"Código de retorno é 200.": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				5
-			],
-			"allTests": [
-				{
-					"Código de retorno é 200.": true
-				}
-			]
-		}
-	],
-	"count": 1,
-	"totalTime": 111,
-	"collection": {
-		"requests": [
-			{
-				"id": "8329b100-56a6-465d-8bbd-fbc9c35b727f",
-				"method": "POST"
-			},
-			{
-				"id": "7ac095d2-7c24-46c0-849f-f5cd562aa9fd",
-				"method": "POST"
-			},
-			{
-				"id": "f3a64787-334c-4408-9782-16fbff0a0767",
-				"method": "GET"
-			},
-			{
-				"id": "d3ddcac6-69e6-4c67-95c1-f69d4d8fea33",
-				"method": "GET"
-			},
-			{
-				"id": "20be042f-0c6c-45af-86fe-52c663d4e4b3",
-				"method": "PUT"
-			},
-			{
-				"id": "5e6b90cb-5586-4068-a6af-2bf326b7a333",
-				"method": "POST"
-			},
-			{
-				"id": "9c3bdfd8-946f-4b19-a986-7fba3f4d921e",
-				"method": "POST"
-			},
-			{
-				"id": "57cc01cf-1ef9-4be3-a1fe-99633b9df270",
-				"method": "GET"
-			},
-			{
-				"id": "a60ceb0f-a1ac-4be7-bb93-1947aba34d1d",
-				"method": "GET"
-			},
-			{
-				"id": "4958673a-5dba-4e00-9314-03ba40dc3a38",
-				"method": "PUT"
-			},
-			{
-				"id": "ef9fdb79-b82d-4b75-ba61-b3bb472af1f5",
-				"method": "POST"
-			},
-			{
-				"id": "5e845753-9919-4ac2-b65f-6dd3f54bbef9",
-				"method": "PUT"
-			},
-			{
-				"id": "99e8c5fa-e0ee-4ebf-9638-5e7e1cf89ae8",
-				"method": "GET"
-			},
-			{
-				"id": "61e88736-e22c-46fd-9fb9-5717d5d73048",
-				"method": "POST"
-			},
-			{
-				"id": "d99742c8-fda8-48ac-aedd-76c1961947a7",
-				"method": "PUT"
-			},
-			{
-				"id": "77e4d4d5-df39-48c8-a5f3-27d067626ce4",
-				"method": "DELETE"
-			},
-			{
-				"id": "a1dbd5b8-9dc2-4cf4-923c-4fb9b31a7273",
-				"method": "DELETE"
-			},
-			{
-				"id": "59c81a96-13f3-449f-a3b2-b7ff5fb2f847",
-				"method": "DELETE"
-			}
-		]
-	}
+  "id": "f82f874e-0ec1-4ff6-9100-0b05ce619d9e",
+  "name": "Testar Freelance API",
+  "timestamp": "2025-04-06T22:39:48.211Z",
+  "collection_id": "7750654-9a6cbe82-6d88-43f8-9140-57080b91a823",
+  "folder_id": 0,
+  "environment_id": "7750654-63ad7754-ac78-414d-8e64-6fa2e295a71c",
+  "totalPass": 42,
+  "delay": 0,
+  "persist": true,
+  "status": "finished",
+  "startedAt": "2025-04-06T22:39:47.529Z",
+  "totalFail": 0,
+  "results": [
+    {
+      "id": "8329b100-56a6-465d-8bbd-fbc9c35b727f",
+      "name": "Contratante Criar",
+      "url": "http://localhost:5204/api/Contratante",
+      "time": 8,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Código de retorno é 200.": true,
+        "Retorno possui um Contratante ID valido.": true
+      },
+      "testPassFailCounts": {
+        "Código de retorno é 200.": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui um Contratante ID valido.": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        8
+      ],
+      "allTests": [
+        {
+          "Código de retorno é 200.": true,
+          "Retorno possui um Contratante ID valido.": true
+        }
+      ]
+    },
+    {
+      "id": "7ac095d2-7c24-46c0-849f-f5cd562aa9fd",
+      "name": "Contratante Login",
+      "url": "http://localhost:5204/api/Contratante/login",
+      "time": 6,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Código de retorno é 200.": true,
+        "Retorno possui um Token valido.": true
+      },
+      "testPassFailCounts": {
+        "Código de retorno é 200.": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui um Token valido.": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        6
+      ],
+      "allTests": [
+        {
+          "Código de retorno é 200.": true,
+          "Retorno possui um Token valido.": true
+        }
+      ]
+    },
+    {
+      "id": "f3a64787-334c-4408-9782-16fbff0a0767",
+      "name": "Contratante",
+      "url": "http://localhost:5204/api/Contratante/21",
+      "time": 5,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Código de retorno é 200.": true,
+        "Retorno possui um ID valido.": true
+      },
+      "testPassFailCounts": {
+        "Código de retorno é 200.": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui um ID valido.": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        5
+      ],
+      "allTests": [
+        {
+          "Código de retorno é 200.": true,
+          "Retorno possui um ID valido.": true
+        }
+      ]
+    },
+    {
+      "id": "d3ddcac6-69e6-4c67-95c1-f69d4d8fea33",
+      "name": "Contratante Busca CPF",
+      "url": "http://localhost:5204/api/Contratante/buscar-por-cpf/123456789",
+      "time": 4,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Código de retorno é 200.": true,
+        "Retorno possui um ID valido.": true
+      },
+      "testPassFailCounts": {
+        "Código de retorno é 200.": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui um ID valido.": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        4
+      ],
+      "allTests": [
+        {
+          "Código de retorno é 200.": true,
+          "Retorno possui um ID valido.": true
+        }
+      ]
+    },
+    {
+      "id": "20be042f-0c6c-45af-86fe-52c663d4e4b3",
+      "name": "Contratante Update",
+      "url": "http://localhost:5204/api/Contratante/21",
+      "time": 6,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Código de retorno é 200.": true,
+        "Retorno possui nome alterado": true,
+        "Retorno possui email alterado": true,
+        "Retorno possui telefone alterado": true,
+        "Retorno possui senha alterado": true
+      },
+      "testPassFailCounts": {
+        "Código de retorno é 200.": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui nome alterado": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui email alterado": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui telefone alterado": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui senha alterado": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        6
+      ],
+      "allTests": [
+        {
+          "Código de retorno é 200.": true,
+          "Retorno possui nome alterado": true,
+          "Retorno possui email alterado": true,
+          "Retorno possui telefone alterado": true,
+          "Retorno possui senha alterado": true
+        }
+      ]
+    },
+    {
+      "id": "5e6b90cb-5586-4068-a6af-2bf326b7a333",
+      "name": "Freelancer Criar",
+      "url": "http://localhost:5204/api/Freelancer",
+      "time": 13,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Código de retorno é 200.": true,
+        "Retorno possui um Freelancer ID valido.": true
+      },
+      "testPassFailCounts": {
+        "Código de retorno é 200.": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui um Freelancer ID valido.": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        13
+      ],
+      "allTests": [
+        {
+          "Código de retorno é 200.": true,
+          "Retorno possui um Freelancer ID valido.": true
+        }
+      ]
+    },
+    {
+      "id": "9c3bdfd8-946f-4b19-a986-7fba3f4d921e",
+      "name": "Freelancer Login",
+      "url": "http://localhost:5204/api/Freelancer/login",
+      "time": 9,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Código de retorno é 200.": true,
+        "Retorno possui um Token valido.": true
+      },
+      "testPassFailCounts": {
+        "Código de retorno é 200.": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui um Token valido.": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        9
+      ],
+      "allTests": [
+        {
+          "Código de retorno é 200.": true,
+          "Retorno possui um Token valido.": true
+        }
+      ]
+    },
+    {
+      "id": "57cc01cf-1ef9-4be3-a1fe-99633b9df270",
+      "name": "Freelancer",
+      "url": "http://localhost:5204/api/Freelancer/15",
+      "time": 11,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Código de retorno é 200.": true,
+        "Retorno possui um ID valido.": true
+      },
+      "testPassFailCounts": {
+        "Código de retorno é 200.": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui um ID valido.": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        11
+      ],
+      "allTests": [
+        {
+          "Código de retorno é 200.": true,
+          "Retorno possui um ID valido.": true
+        }
+      ]
+    },
+    {
+      "id": "a60ceb0f-a1ac-4be7-bb93-1947aba34d1d",
+      "name": "Freelancer Buscar Email",
+      "url": "http://localhost:5204/api/Freelancer/buscar-por-email/freelancer@teste.com",
+      "time": 3,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Código de retorno é 200.": true,
+        "Retorno possui um ID valido.": true
+      },
+      "testPassFailCounts": {
+        "Código de retorno é 200.": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui um ID valido.": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        3
+      ],
+      "allTests": [
+        {
+          "Código de retorno é 200.": true,
+          "Retorno possui um ID valido.": true
+        }
+      ]
+    },
+    {
+      "id": "4958673a-5dba-4e00-9314-03ba40dc3a38",
+      "name": "Freelancer Update",
+      "url": "http://localhost:5204/api/Freelancer/15",
+      "time": 7,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Código de retorno é 200.": true,
+        "Retorno possui nome alterado": true,
+        "Retorno possui email alterado": true,
+        "Retorno possui telefone alterado": true,
+        "Retorno possui senha alterado": true
+      },
+      "testPassFailCounts": {
+        "Código de retorno é 200.": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui nome alterado": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui email alterado": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui telefone alterado": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui senha alterado": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        7
+      ],
+      "allTests": [
+        {
+          "Código de retorno é 200.": true,
+          "Retorno possui nome alterado": true,
+          "Retorno possui email alterado": true,
+          "Retorno possui telefone alterado": true,
+          "Retorno possui senha alterado": true
+        }
+      ]
+    },
+    {
+      "id": "ef9fdb79-b82d-4b75-ba61-b3bb472af1f5",
+      "name": "Projeto Criar",
+      "url": "http://localhost:5204/api/Projeto",
+      "time": 6,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Código de retorno é 200.": true,
+        "Retorno possui um Projeto ID valido.": true
+      },
+      "testPassFailCounts": {
+        "Código de retorno é 200.": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui um Projeto ID valido.": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        6
+      ],
+      "allTests": [
+        {
+          "Código de retorno é 200.": true,
+          "Retorno possui um Projeto ID valido.": true
+        }
+      ]
+    },
+    {
+      "id": "5e845753-9919-4ac2-b65f-6dd3f54bbef9",
+      "name": "Projeto Update",
+      "url": "http://localhost:5204/api/Projeto/20",
+      "time": 6,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Código de retorno é 200.": true,
+        "Retorno possui nome alterado": true
+      },
+      "testPassFailCounts": {
+        "Código de retorno é 200.": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui nome alterado": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        6
+      ],
+      "allTests": [
+        {
+          "Código de retorno é 200.": true,
+          "Retorno possui nome alterado": true
+        }
+      ]
+    },
+    {
+      "id": "99e8c5fa-e0ee-4ebf-9638-5e7e1cf89ae8",
+      "name": "Projeto Buscar Nome",
+      "url": "http://localhost:5204/api/Projeto/nome/Novo Nome",
+      "time": 4,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Código de retorno é 200.": true,
+        "Retorno possui nome alterado": true
+      },
+      "testPassFailCounts": {
+        "Código de retorno é 200.": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui nome alterado": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        4
+      ],
+      "allTests": [
+        {
+          "Código de retorno é 200.": true,
+          "Retorno possui nome alterado": true
+        }
+      ]
+    },
+    {
+      "id": "61e88736-e22c-46fd-9fb9-5717d5d73048",
+      "name": "Proposta Criar",
+      "url": "http://localhost:5204/api/Proposta",
+      "time": 5,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Código de retorno é 200.": true,
+        "Retorno possui um Projeto ID valido.": true,
+        "Retorno possui um Freelancer ID valido.": true,
+        "Retorno possui um Proposta ID valido.": true
+      },
+      "testPassFailCounts": {
+        "Código de retorno é 200.": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui um Projeto ID valido.": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui um Freelancer ID valido.": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui um Proposta ID valido.": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        5
+      ],
+      "allTests": [
+        {
+          "Código de retorno é 200.": true,
+          "Retorno possui um Projeto ID valido.": true,
+          "Retorno possui um Freelancer ID valido.": true,
+          "Retorno possui um Proposta ID valido.": true
+        }
+      ]
+    },
+    {
+      "id": "d99742c8-fda8-48ac-aedd-76c1961947a7",
+      "name": "Proposta Aceitar",
+      "url": "http://localhost:5204/api/Proposta/aceitar-proposta/11",
+      "time": 5,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Código de retorno é 200.": true,
+        "Retorno possui um Projeto ID valido.": true,
+        "Retorno possui um Freelancer ID valido.": true
+      },
+      "testPassFailCounts": {
+        "Código de retorno é 200.": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui um Projeto ID valido.": {
+          "pass": 1,
+          "fail": 0
+        },
+        "Retorno possui um Freelancer ID valido.": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        5
+      ],
+      "allTests": [
+        {
+          "Código de retorno é 200.": true,
+          "Retorno possui um Projeto ID valido.": true,
+          "Retorno possui um Freelancer ID valido.": true
+        }
+      ]
+    },
+    {
+      "id": "77e4d4d5-df39-48c8-a5f3-27d067626ce4",
+      "name": "Projeto Delete",
+      "url": "http://localhost:5204/api/Projeto/20",
+      "time": 4,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Código de retorno é 200.": true
+      },
+      "testPassFailCounts": {
+        "Código de retorno é 200.": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        4
+      ],
+      "allTests": [
+        {
+          "Código de retorno é 200.": true
+        }
+      ]
+    },
+    {
+      "id": "a1dbd5b8-9dc2-4cf4-923c-4fb9b31a7273",
+      "name": "Contratante Delete",
+      "url": "http://localhost:5204/api/Contratante/21",
+      "time": 4,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Código de retorno é 200.": true
+      },
+      "testPassFailCounts": {
+        "Código de retorno é 200.": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        4
+      ],
+      "allTests": [
+        {
+          "Código de retorno é 200.": true
+        }
+      ]
+    },
+    {
+      "id": "59c81a96-13f3-449f-a3b2-b7ff5fb2f847",
+      "name": "Freelancer Delete",
+      "url": "http://localhost:5204/api/Freelancer/15",
+      "time": 5,
+      "responseCode": {
+        "code": 200,
+        "name": "OK"
+      },
+      "tests": {
+        "Código de retorno é 200.": true
+      },
+      "testPassFailCounts": {
+        "Código de retorno é 200.": {
+          "pass": 1,
+          "fail": 0
+        }
+      },
+      "times": [
+        5
+      ],
+      "allTests": [
+        {
+          "Código de retorno é 200.": true
+        }
+      ]
+    }
+  ],
+  "count": 1,
+  "totalTime": 111,
+  "collection": {
+    "requests": [
+      {
+        "id": "8329b100-56a6-465d-8bbd-fbc9c35b727f",
+        "method": "POST"
+      },
+      {
+        "id": "7ac095d2-7c24-46c0-849f-f5cd562aa9fd",
+        "method": "POST"
+      },
+      {
+        "id": "f3a64787-334c-4408-9782-16fbff0a0767",
+        "method": "GET"
+      },
+      {
+        "id": "d3ddcac6-69e6-4c67-95c1-f69d4d8fea33",
+        "method": "GET"
+      },
+      {
+        "id": "20be042f-0c6c-45af-86fe-52c663d4e4b3",
+        "method": "PUT"
+      },
+      {
+        "id": "5e6b90cb-5586-4068-a6af-2bf326b7a333",
+        "method": "POST"
+      },
+      {
+        "id": "9c3bdfd8-946f-4b19-a986-7fba3f4d921e",
+        "method": "POST"
+      },
+      {
+        "id": "57cc01cf-1ef9-4be3-a1fe-99633b9df270",
+        "method": "GET"
+      },
+      {
+        "id": "a60ceb0f-a1ac-4be7-bb93-1947aba34d1d",
+        "method": "GET"
+      },
+      {
+        "id": "4958673a-5dba-4e00-9314-03ba40dc3a38",
+        "method": "PUT"
+      },
+      {
+        "id": "ef9fdb79-b82d-4b75-ba61-b3bb472af1f5",
+        "method": "POST"
+      },
+      {
+        "id": "5e845753-9919-4ac2-b65f-6dd3f54bbef9",
+        "method": "PUT"
+      },
+      {
+        "id": "99e8c5fa-e0ee-4ebf-9638-5e7e1cf89ae8",
+        "method": "GET"
+      },
+      {
+        "id": "61e88736-e22c-46fd-9fb9-5717d5d73048",
+        "method": "POST"
+      },
+      {
+        "id": "d99742c8-fda8-48ac-aedd-76c1961947a7",
+        "method": "PUT"
+      },
+      {
+        "id": "77e4d4d5-df39-48c8-a5f3-27d067626ce4",
+        "method": "DELETE"
+      },
+      {
+        "id": "a1dbd5b8-9dc2-4cf4-923c-4fb9b31a7273",
+        "method": "DELETE"
+      },
+      {
+        "id": "59c81a96-13f3-449f-a3b2-b7ff5fb2f847",
+        "method": "DELETE"
+      }
+    ]
+  }
 }

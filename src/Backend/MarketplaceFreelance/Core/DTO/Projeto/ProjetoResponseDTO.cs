@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Core.Enums;
+﻿using Core.Enums;
 
 namespace Core.DTO.Projeto;
 

@@ -17,15 +17,9 @@ public class FreelancerRepository(AppDbContext contexto) : IFreelancerRepository
 
 		if (usuarioExistente != null)
 		{
-			if (usuarioExistente.CPF == freelancer.CPF)
-			{
-				throw new InvalidOperationException($"Já há um usuário cadastrado com esse CPF");
-			}
-        
-			if (usuarioExistente.Email == freelancer.Email)
-			{
-				throw new InvalidOperationException($"Já há um usuário cadastrado com esse e-mail");
-			}
+			if (usuarioExistente.CPF == freelancer.CPF) throw new InvalidOperationException("Já há um usuário cadastrado com esse CPF");
+
+			if (usuarioExistente.Email == freelancer.Email) throw new InvalidOperationException("Já há um usuário cadastrado com esse e-mail");
 		}
 
 		await contexto.AddAsync(freelancer);
@@ -67,12 +61,13 @@ public class FreelancerRepository(AppDbContext contexto) : IFreelancerRepository
 		.AsNoTracking()
 		.Where(freelancer => freelancer.Especialidade == habilidade && freelancer.DataInativacao == null)
 		.OrderBy(freelancer => freelancer.Id)
-		.ToListAsync() ?? throw new InvalidOperationException();;
+		.ToListAsync() ?? throw new InvalidOperationException();
+		;
 	}
 
-    public async Task<Freelancer> EditarFreelancer(FreelancerUpdateDTO freelancer, int id)
-    {
-        Freelancer entidadeBanco = await BuscarFreelancerPorId(id);
+	public async Task<Freelancer> EditarFreelancer(FreelancerUpdateDTO freelancer, int id)
+	{
+		var entidadeBanco = await BuscarFreelancerPorId(id);
 
 		contexto.Usuarios.Entry(entidadeBanco).CurrentValues.SetValues(freelancer);
 		contexto.Usuarios.Update(entidadeBanco);
@@ -80,16 +75,16 @@ public class FreelancerRepository(AppDbContext contexto) : IFreelancerRepository
 		await contexto.SaveChangesAsync();
 
 		return await BuscarFreelancerPorEmail(freelancer.Email);
-    }
+	}
 
-    public async Task ExcluirFreelancer(int id)
-    {
-        Freelancer entidadeBanco = await BuscarFreelancerPorId(id);
+	public async Task ExcluirFreelancer(int id)
+	{
+		var entidadeBanco = await BuscarFreelancerPorId(id);
 
 		entidadeBanco.DataInativacao = DateTime.UtcNow;
 
 		contexto.Usuarios.Entry(entidadeBanco).CurrentValues.SetValues(entidadeBanco);
 		contexto.Usuarios.Update(entidadeBanco);
 		await contexto.SaveChangesAsync();
-    }
+	}
 }

@@ -1,6 +1,4 @@
-﻿using Core.Models;
-
-namespace Core.Interfaces;
+﻿namespace Core.Interfaces;
 
 public interface IUsuarioRepository
 {

@@ -8,7 +8,7 @@ namespace Application.Services;
 
 public class FreelancerService(IFreelancerRepository freelancerRepository)
 {
-    public async Task<Freelancer> CadastrarFreelancer(Freelancer freelancer)
+	public async Task<Freelancer> CadastrarFreelancer(Freelancer freelancer)
 	{
 		freelancer.Senha = GerarHashSenha(freelancer.Senha);
 		freelancer.TipoUsuario = "F";
@@ -41,12 +41,12 @@ public class FreelancerService(IFreelancerRepository freelancerRepository)
 		await freelancerRepository.ExcluirFreelancer(id);
 	}
 
-    protected internal string GerarHashSenha(string usuarioSenha)
+	protected internal string GerarHashSenha(string usuarioSenha)
 	{
-		using (SHA256 sha256 = SHA256.Create())
+		using (var sha256 = SHA256.Create())
 		{
-			byte[] bytesSenha = Encoding.UTF8.GetBytes(usuarioSenha);
-			byte[] bytesHashSenha = sha256.ComputeHash(bytesSenha);
+			var bytesSenha = Encoding.UTF8.GetBytes(usuarioSenha);
+			var bytesHashSenha = sha256.ComputeHash(bytesSenha);
 			return BitConverter.ToString(bytesHashSenha).Replace("-", "").ToLower();
 		}
 	}

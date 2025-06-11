@@ -25,7 +25,7 @@ public class ContratanteController(ContratanteService contratanteService, IMappe
 			return BadRequest(e);
 		}
 	}
-	
+
 	[HttpGet("{id}")]
 	[Authorize(Policy = "ContratantePolicy")]
 	public async Task<IActionResult> BuscarContratantePorId(int id)
@@ -39,8 +39,8 @@ public class ContratanteController(ContratanteService contratanteService, IMappe
 			return NotFound(RetornarModelNotFound(e));
 		}
 	}
-	
-	
+
+
 	[HttpGet("/nometelefonefreelancer/{id}")]
 	[Authorize(Policy = "ContratantePolicy")]
 	public async Task<IActionResult> BuscarNomeTelefoneFreelancerPorId(int id)
@@ -54,7 +54,7 @@ public class ContratanteController(ContratanteService contratanteService, IMappe
 			return NotFound(RetornarModelNotFound(e));
 		}
 	}
-	
+
 	[HttpGet]
 	[Route("buscar-por-cpf/{cpf}")]
 	[Authorize(Policy = "ContratantePolicy")]
@@ -69,7 +69,7 @@ public class ContratanteController(ContratanteService contratanteService, IMappe
 			return NotFound(RetornarModelNotFound(e));
 		}
 	}
-	
+
 	[HttpGet]
 	[Authorize(Policy = "ContratantePolicy")]
 	public async Task<IActionResult> ListarContratantes()
@@ -83,7 +83,7 @@ public class ContratanteController(ContratanteService contratanteService, IMappe
 			return NotFound(RetornarModelNotFound(e));
 		}
 	}
-	
+
 	[HttpPatch("{id}")]
 	[Authorize(Policy = "ContratantePolicy")]
 	public async Task<IActionResult> AtualizarContratante(ContratanteUpdateDTO contratante, int id)
@@ -97,7 +97,7 @@ public class ContratanteController(ContratanteService contratanteService, IMappe
 			return BadRequest(RetornarModelBadRequest(e));
 		}
 	}
-	
+
 	[HttpDelete("{id}")]
 	[Authorize(Policy = "ContratantePolicy")]
 	public async Task<IActionResult> ExcluirContratante(int id)
@@ -112,5 +112,4 @@ public class ContratanteController(ContratanteService contratanteService, IMappe
 			return BadRequest(RetornarModelBadRequest(e));
 		}
 	}
-	
 }

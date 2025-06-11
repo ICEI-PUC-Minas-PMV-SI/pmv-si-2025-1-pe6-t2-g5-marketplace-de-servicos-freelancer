@@ -12,7 +12,7 @@ public interface IFreelancerRepository
 
 	//Quem busca o freelancer é o contratante
 	Task<Freelancer> BuscarFreelancerPorId(long id);
-	
+
 	//Quem busca o freelancer é o contratante
 	Task<Freelancer> BuscarFreelancerPorEmail(string email);
 

@@ -81,7 +81,7 @@ public class ContratanteRepository(AppDbContext contexto, IMapper mapper) : ICon
 
 	public async Task<Contratante> EditarContratante(ContratanteUpdateDTO contratante, int id)
 	{
-		Contratante entidadeBanco = await BuscarContratantePorId(id);
+		var entidadeBanco = await BuscarContratantePorId(id);
 
 		contexto.Usuarios.Entry(entidadeBanco).CurrentValues.SetValues(contratante);
 		contexto.Usuarios.Update(entidadeBanco);
@@ -93,7 +93,7 @@ public class ContratanteRepository(AppDbContext contexto, IMapper mapper) : ICon
 
 	public async Task ExcluirContratante(int id)
 	{
-		Contratante entidadeBanco = await BuscarContratantePorId(id);
+		var entidadeBanco = await BuscarContratantePorId(id);
 
 		entidadeBanco.DataInativacao = DateTime.UtcNow;
 

@@ -1,6 +1,7 @@
 # Instruções de configuração do Backend
 
 # -Instalação
+
 # Opção 1: Instalação manual
 
 ## Programas
@@ -13,9 +14,11 @@
 
 # Opção 2: Instalação automática
 
-- Execute o arquivo `Setup-back.bat` nesta pasta. Este arquivo irá instalar o .NET SDK, PostgreSQL e pgAdmin automaticamente.
+- Execute o arquivo `Setup-back.bat` nesta pasta. Este arquivo irá instalar o .NET SDK, PostgreSQL e pgAdmin
+  automaticamente.
 
 # -Execução
+
 ## Passo a passo
 
 1. Na pasta `src/Backend/MarketplaceFreelance/Infraestructure`, execute o comando:

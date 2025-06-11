@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Core.DTO.Contratante;
 using Core.Models;
 
 namespace Infrastructure.Mapper;

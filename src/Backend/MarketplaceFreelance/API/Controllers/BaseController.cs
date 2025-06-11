@@ -7,7 +7,7 @@ public class BaseController : ControllerBase
 {
 	protected CustomException RetornarModelBadRequest(Exception e)
 	{
-		return new CustomException()
+		return new CustomException
 		{
 		StatusCode = 400,
 		Title = "Bad Request",
@@ -15,7 +15,7 @@ public class BaseController : ControllerBase
 		Date = DateTime.UtcNow
 		};
 	}
-	
+
 	protected CustomException RetornarModelNotFound(Exception e)
 	{
 		return new CustomException
@@ -26,7 +26,7 @@ public class BaseController : ControllerBase
 		Date = DateTime.UtcNow
 		};
 	}
-	
+
 	protected CustomException RetornarModelUnauthorized(Exception e)
 	{
 		return new CustomException
@@ -37,8 +37,8 @@ public class BaseController : ControllerBase
 		Date = DateTime.UtcNow
 		};
 	}
-	
-	
+
+
 	protected CustomException RetornarModeInternalServerError(Exception e)
 	{
 		return new CustomException

@@ -13,33 +13,29 @@ public class AuthService(UsuarioService usuarioService, ContratanteService contr
 
 		var user = userType switch
 		{
-			"C" => await contratanteService.BuscarContratantePorEmail(usuario.Email),
-			"F" => await freelancerService.BuscarFreelancerPorEmail(usuario.Email) as UsuarioBase,
-			_ => throw new AuthenticationException("Tipo de usuário inválido")
+		"C" => await contratanteService.BuscarContratantePorEmail(usuario.Email),
+		"F" => await freelancerService.BuscarFreelancerPorEmail(usuario.Email) as UsuarioBase,
+		_ => throw new AuthenticationException("Tipo de usuário inválido")
 		};
 
 		var hashSenhaDigitada = contratanteService.GerarHashSenha(usuario.Senha);
 
-		if (user.Senha != hashSenhaDigitada)
-		{
-			throw new AuthenticationException("Usuário ou senha inválidos.");
-		}
+		if (user.Senha != hashSenhaDigitada) throw new AuthenticationException("Usuário ou senha inválidos.");
 
-		string token = userType switch
+		var token = userType switch
 		{
-			"C" => tokenService.GerarToken<Contratante>(mapper.Map<UsuarioBase>(user)),
-			"F" => tokenService.GerarToken<Freelancer>(mapper.Map<UsuarioBase>(user)),
-			_ => throw new AuthenticationException("Tipo de usuário inválido")
+		"C" => tokenService.GerarToken<Contratante>(mapper.Map<UsuarioBase>(user)),
+		"F" => tokenService.GerarToken<Freelancer>(mapper.Map<UsuarioBase>(user)),
+		_ => throw new AuthenticationException("Tipo de usuário inválido")
 		};
-		
+
 		return new LoginResponse
 		{
-			Nome = user.Nome,
-			TipoUsuario = user.TipoUsuario,
-			Id = user.Id,
-			Email = user.Email,
-			Token = token
+		Nome = user.Nome,
+		TipoUsuario = user.TipoUsuario,
+		Id = user.Id,
+		Email = user.Email,
+		Token = token
 		};
 	}
-
 }

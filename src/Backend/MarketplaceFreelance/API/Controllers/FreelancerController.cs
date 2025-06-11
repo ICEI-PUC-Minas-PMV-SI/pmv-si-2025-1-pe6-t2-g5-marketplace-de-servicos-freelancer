@@ -1,8 +1,6 @@
-using System.Security.Authentication;
 using Application.Services;
 using AutoMapper;
 using Core.DTO.Freelancer;
-using Core.DTO.Universal;
 using Core.DTO.Usuario;
 using Core.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -14,7 +12,7 @@ namespace API.Controllers;
 [Route("api/[controller]")]
 public class FreelancerController(FreelancerService freelancerService, IMapper mapper) : BaseController
 {
-    [HttpPost]
+	[HttpPost]
 	// [Authorize]
 	public async Task<IActionResult> CadastrarFreelancer(UsuarioDTO freelancer)
 	{
@@ -41,7 +39,7 @@ public class FreelancerController(FreelancerService freelancerService, IMapper m
 			return NotFound(RetornarModelNotFound(e));
 		}
 	}
-	
+
 	[HttpGet("buscar-por-email/{email}")]
 	[Authorize(Policy = "FreelancerPolicy")]
 	public async Task<IActionResult> BuscarFreelancerPorEmail(string email)
@@ -55,7 +53,7 @@ public class FreelancerController(FreelancerService freelancerService, IMapper m
 			return NotFound(RetornarModelNotFound(e));
 		}
 	}
-	
+
 	[HttpGet]
 	[Authorize(Policy = "FreelancerPolicy")]
 	public async Task<IActionResult> ListarFreelancers()
@@ -69,7 +67,7 @@ public class FreelancerController(FreelancerService freelancerService, IMapper m
 			return NotFound(RetornarModelNotFound(e));
 		}
 	}
-	
+
 	[HttpPatch("{id}")]
 	[Authorize(Policy = "FreelancerPolicy")]
 	public async Task<IActionResult> AtualizarFreelancer(FreelancerUpdateDTO freelancer, int id)
@@ -83,7 +81,7 @@ public class FreelancerController(FreelancerService freelancerService, IMapper m
 			return BadRequest(RetornarModelBadRequest(e));
 		}
 	}
-	
+
 	[HttpDelete("{id}")]
 	[Authorize(Policy = "FreelancerPolicy")]
 	public async Task<IActionResult> ExcluirFreelancer(int id)

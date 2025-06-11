@@ -1,6 +1,6 @@
 ﻿namespace Core.Models;
 
-public class Contratante : UsuarioBase  
+public class Contratante : UsuarioBase
 {
-    public ICollection<Projeto>? Projetos { get; set; }
+	public ICollection<Projeto>? Projetos { get; set; }
 }
