@@ -76,6 +76,8 @@ public class ProjetoRepository(AppDbContext contexto, IMapper mapper) : IProjeto
 		projeto.Status = ProjetoStatus.EmAndamento;
 		projeto.FreelancerId = freelancerId;
 		
-		await AtualizarProjeto(mapper.Map<ProjetoUpdateDTO>(projeto), projetoId);
+		contexto.Projetos.Entry(projeto).CurrentValues.SetValues(projeto);
+		contexto.Projetos.Update(projeto);
+		await contexto.SaveChangesAsync();
 	}
 }

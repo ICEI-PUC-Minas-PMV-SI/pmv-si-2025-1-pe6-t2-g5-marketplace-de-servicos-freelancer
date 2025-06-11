@@ -243,13 +243,6 @@ export default function FreelancerListing() {
                           <Text className="text-sm">{listing.valor}</Text>
                         </View>
                         <View className="flex-1 px-2">
-                          <Pressable className="rounded-md bg-purple-500 px-2 py-2 text-center text-sm font-semibold text-white">
-                            <Text className="text-center text-sm font-semibold text-white">
-                              Ver detalhes
-                            </Text>
-                          </Pressable>
-                        </View>
-                        <View className="flex-1 px-2">
                           <Pressable
                             className="rounded-md bg-purple-500 px-2 py-2 text-center text-sm font-semibold text-white"
                             onPress={() => assumirProjeto(listing.projetoId)}>
@@ -298,13 +291,8 @@ export default function FreelancerListing() {
                         </View>
 
                         <View className="flex flex-row gap-2">
-                          <Pressable className="flex-1 rounded-md bg-purple-500 px-2 py-2">
-                            <Text className="text-center text-sm font-semibold text-white">
-                              Ver detalhes
-                            </Text>
-                          </Pressable>
                           <Pressable
-                            className="rounded-md bg-purple-500 px-2 py-2 text-center text-sm font-semibold text-white"
+                            className="rounded-md bg-purple-500 px-2 py-2 text-center text-sm font-semibold text-white w-full"
                             onPress={() => assumirProjeto(listing.projetoId)}>
                             <Text className="text-center text-sm font-semibold text-white">
                               Assumir
