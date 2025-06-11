@@ -621,7 +621,7 @@ export default function MeusProjetos() {
                                 valor: listing.valor,
                               });
                             }}>
-                            <Entypo name="edit" size={20} color="#f7b813" />
+                            <Entypo name="edit" size={20} color="#EFD64A" />
                           </Pressable>
                         )}
                       </View>
@@ -642,7 +642,7 @@ export default function MeusProjetos() {
                               setModalDeleteProject(true);
                               setProjectIdToDelete(listing.projetoId);
                             }}>
-                            <Entypo name="trash" size={20} color="#F70E12" />
+                            <Entypo name="trash" size={20} color="#ef4444" />
                           </Pressable>
                         )}
                       </View>
@@ -716,7 +716,7 @@ export default function MeusProjetos() {
                             </Pressable>
                           </View>
                         ) : (
-                          <View className="flex w-1/2 flex-row items-center justify-center py-1 rounded-md space-x-2 bg-[#f7b813]">
+                          <View className="flex w-1/2 flex-row items-center justify-center py-1 rounded-md space-x-2 bg-[#EFD64A]">
                             <Pressable
                               className="flex items-center"
                               onPress={() => {
@@ -747,7 +747,7 @@ export default function MeusProjetos() {
                             </Pressable>
                           </View>
                         ) : (
-                          <View className="flex w-1/2 flex-row items-center justify-center py-1 rounded-md space-x-2 bg-[#F70E12]">
+                          <View className="flex w-1/2 flex-row items-center justify-center py-1 rounded-md space-x-2 bg-[#ef4444]">
                             <Pressable
                               className="flex items-center"
                               onPress={() => {
