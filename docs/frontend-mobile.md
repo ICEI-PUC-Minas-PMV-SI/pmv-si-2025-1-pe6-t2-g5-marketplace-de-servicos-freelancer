@@ -17,23 +17,60 @@ Sendo então as páginas principais:
 
 ### Wireframes
 
-[Inclua os wireframes das páginas principais da interface, mostrando a disposição dos elementos na página.]
+- Tela de login e registro, respectivamente:
+
+![image](https://github.com/user-attachments/assets/07b8aec0-7ab4-462f-a894-bb95aec66c76)
+![image](https://github.com/user-attachments/assets/ba717887-e1e1-4997-8430-0956788fca1a)
+
+- Tela de Meus projetos (contratante) e Tela de Solicitar novos serviços (Contratante), respectivamente;
+
+![image](https://github.com/user-attachments/assets/e3660f06-bafc-447c-bf5b-4b9d404aa90e)
+![image](https://github.com/user-attachments/assets/0fd22e18-8c10-4839-9545-5a391d500907)
+
+- Tela de Dashboard de projetos disponíveis (freelancer) e Modal de comunicação por Whatsaapp (contratante), respectivamente:
+
+![image](https://github.com/user-attachments/assets/f52a5b41-8ca2-4825-9ad9-38bc74619b52)
+![image](https://github.com/user-attachments/assets/7f5aa74f-cf52-4b49-a545-e5f1076b63e0)
+
+
 
 ### Design Visual
 
-[Descreva o estilo visual da interface, incluindo paleta de cores, tipografia, ícones e outros elementos gráficos.]
+Esquema de cores:
+- Roxo com duas variações sutis (#a855f7 e #9333ea): Usado em títulos, botões de destaque (a habilitados) e fundo de páginas.
+- Cinza (#6b7280): Aplicado em botões desabilitados.
+- Branco: Fundo dos formulários e campos de entrada.
+- Preto: Textos simples como informação do modal de comunicação entre freelancer e contratante.
+
+Elementos:
+- Nossos elementos de interface são dimensionados para facilitar o toque e a interação.
+- Apresentamos formulários e informações centralizadas verticalmente.
 
 ## Fluxo de Dados
 
 [Diagrama ou descrição do fluxo de dados na aplicação.]
 
 ## Tecnologias Utilizadas
-
-[Lista das tecnologias principais que serão utilizadas no projeto.]
+- React Native;
+- Tailwind: Framework de estrutura CSS;
+- Expo: Ambiente para desenvolvimento e build;
+- React Navigation: Transição navegável entre telas no react;
+- Ngrok: Expondo API para viabilizar testes;
+- TypeScript: Linguagem de programação utilizada no front.
 
 ## Considerações de Segurança
+Autenticação e Gestão de Acesso:
+- Validação de Sessão com JWT: Utilizamos JSON Web Tokens (JWT) para gerenciar as sessões dos usuários. Isso assegura que cada sessão seja autenticada, tenha uma validade controlada e expiração definida, minimizando riscos de acesso não autorizado.
+- Armazenamento Seguro de Tokens: Para proteção contra exposições inadvertidas, os tokens de autenticação são armazenados de forma criptografada no AsyncStorage do dispositivo móvel.
+Proteção de Dados Sensíveis.
 
-[Discuta as considerações de segurança relevantes para a aplicação distribuída, como autenticação, autorização, proteção contra ataques, etc.]
+Criptografia de Credenciais: 
+- As informações de senha e confirmação de senha são submetidas a um processo robusto de criptografia antes de qualquer transmissão ou armazenamento, garantindo a confidencialidade e integridade das suas credenciais.
+
+Compromisso com a Segurança e Atualização Tecnológica:
+
+
+- Garantimos que todas as tecnologias, pacotes e bibliotecas empregados em nosso projeto são meticulosamente mantidos em suas versões recentes. Essa prática assegura a incorporação das últimas atualizações de segurança,
 
 ## Implantação
 
@@ -60,6 +97,7 @@ Sendo então as páginas principais:
 | RF-005 | Permitir que o contratante edite e exclua seus projetos                                    | ALTA       | A definir    |
 | RF-006 | Permitir a busca de projetos por necessidade do contratante (freelancer)               | ALTA       | A definir    |
 | RF-007 | Possibilitar conexão entre contratante e freelancer por meio de projetos assumidos                     | MÉDIA      | A definir    |
+| RF-008 | Não permitir edição ou exclusão de projetos já assumidos por freelancers                     | MÉDIA      |
 
 ### Requisitos Não Funcionais
 
@@ -79,4 +117,10 @@ Sendo então as páginas principais:
 
 # Referências
 
-Inclua todas as referências (livros, artigos, sites, etc) utilizados no desenvolvimento do trabalho.
+Documentações oficiais das tecnologias utilizadas:
+- React Native: https://reactnative.dev/docs/intro-react-native-components
+- Tailwind: https://v2.tailwindcss.com/docs
+- Ngrok: https://ngrok.com/docs/
+- Expo: https://docs.expo.dev/
+- TypeScript: https://www.typescriptlang.org/docs/
+
