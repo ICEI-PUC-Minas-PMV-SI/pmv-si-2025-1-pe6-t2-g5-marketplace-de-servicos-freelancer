@@ -1,10 +1,19 @@
 # Front-end Móvel
 
-[Inclua uma breve descrição do projeto e seus objetivos.]
+Nosso aplicativo móvel foi projetado para ser um portal intuitivo e de fácil acesso, unindo contratantes que buscam desenvolver projetos e freelancers em busca de novas oportunidades. Acreditamos na democratização do acesso ao trabalho remoto, eliminando as barreiras de entrada e conectando talentos a demandas de forma eficiente.
+
+Desenvolvido em React Native, nosso app garante compatibilidade tanto com dispositivos Android quanto iOS, permitindo que você gerencie seus projetos ou encontre trabalho de onde estiver. Nosso foco primordial é a experiência do usuário, unindo usabilidade com velocidade de processamento e criptografia dos dados.
 
 ## Projeto da Interface
 
-[Descreva o projeto da interface móvel da aplicação, incluindo o design visual, layout das páginas, interações do usuário e outros aspectos relevantes.]
+A aplicação foi desenvolvida pensando em uma experiência fluída, garantindo uma navegação intuitiva e acessível para público geral.
+Sendo então as páginas principais:
+- Login;
+- Registro;
+- Tela de Meus projetos (contratante);
+- Tela de Solicitar novos serviços (Contratante);
+- Tela de Dashboard de projetos disponíveis (freelancer);
+- Modal de comunicação por Whatsaapp (contratante).
 
 ### Wireframes
 
@@ -40,17 +49,17 @@
 
 [Descreva a estratégia de teste, incluindo os tipos de teste a serem realizados (unitários, integração, carga, etc.) e as ferramentas a serem utilizadas.]
 
+### Requisitos Funcionais
+
 | ID     | Descrição do Requisito                                                                 | Prioridade | Responsáveis |
 |--------|----------------------------------------------------------------------------------------|------------|--------------|
 | RF-001 | Permitir a autenticação de usuários                                                    | ALTA       | A definir    |   
 | RF-002 | Permitir o cadastro de freelancers                                                     | ALTA       | A definir    |   
 | RF-003 | Permitir o cadastro de contratantes                                                    | ALTA       | A definir    |
 | RF-004 | Permitir o cadastro dos projetos                                                       | ALTA       | A definir    |
-| RF-005 | Gerenciar cadastros (freelancers, contratantes e projetos)                             | ALTA       | A definir    |
-| RF-006 | Permitir a busca por freelancers por habilidade do prestador de serviços (contratante) | ALTA       | A definir    |
-| RF-007 | Permitir a busca de projetos por necessidade do contratante (freelancer)               | ALTA       | A definir    |
-| RF-008 | Implementar um sistema de favoritos para que usuários possam salvar perfis e projetos  | MÉDIA      | A definir    |
-| RF-009 | Criar um Match Temporário entre Prestador de Serviço e Contratante                     | MÉDIA      | A definir    |
+| RF-005 | Permitir que o contratante edite e exclua seus projetos                                    | ALTA       | A definir    |
+| RF-006 | Permitir a busca de projetos por necessidade do contratante (freelancer)               | ALTA       | A definir    |
+| RF-007 | Possibilitar conexão entre contratante e freelancer por meio de projetos assumidos                     | MÉDIA      | A definir    |
 
 ### Requisitos Não Funcionais
 
@@ -60,7 +69,6 @@
 | RNF-002 | O tempo de resposta para busca deve ser inferior a 2s                                      | MÉDIA      |
 | RNF-003 | A plataforma deve garantir segurança na autenticação dos usuários                          | ALTA       |
 | RNF-004 | O sistema deve ser intuitivo e fácil de usar, garantindo uma boa experiência aos usuários. | MÉDIA      |
-| RNF-005 | Implementar um modo escuro para melhor acessibilidade e conforto visual                    | MÉDIA      |
 
 1. Crie casos de teste para cobrir todos os requisitos funcionais e não funcionais da aplicação.
 2. Implemente testes unitários para testar unidades individuais de código, como funções e classes.
