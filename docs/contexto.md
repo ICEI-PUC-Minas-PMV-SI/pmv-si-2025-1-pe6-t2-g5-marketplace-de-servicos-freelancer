@@ -73,15 +73,15 @@ intuitiva e acessível, garantindo uma experiência fluida para todos.
 
 ### Requisitos Funcionais
 
-| ID     | Descrição do Requisito                                                                 | Prioridade | Responsáveis |
-|--------|----------------------------------------------------------------------------------------|------------|--------------|
-| RF-001 | Permitir a autenticação de usuários                                                    | ALTA       | A definir    |   
-| RF-002 | Permitir o cadastro de freelancers                                                     | ALTA       | A definir    |   
-| RF-003 | Permitir o cadastro de contratantes                                                    | ALTA       | A definir    |
-| RF-004 | Permitir o cadastro dos projetos                                                       | ALTA       | A definir    |
-| RF-005 | Permitir que o contratante edite e exclua seus projetos                                    | ALTA       | A definir    |
-| RF-006 | Permitir a busca de projetos por necessidade do contratante (freelancer)               | ALTA       | A definir    |
-| RF-007 | Possibilitar conexão entre contratante e freelancer por meio de projetos assumidos                     | MÉDIA      | A definir    |
+| ID     | Descrição do Requisito                                                                 | Prioridade |
+|--------|----------------------------------------------------------------------------------------|------------|
+| RF-001 | Permitir a autenticação de usuários                                                    | ALTA       |  
+| RF-002 | Permitir o cadastro de freelancers                                                     | ALTA       | 
+| RF-003 | Permitir o cadastro de contratantes                                                    | ALTA       |
+| RF-004 | Permitir o cadastro dos projetos                                                       | ALTA       |
+| RF-005 | Permitir que o contratante edite e exclua seus projetos                                    | ALTA       |
+| RF-006 | Permitir a busca de projetos por necessidade do contratante (freelancer)               | ALTA       |
+| RF-007 | Possibilitar conexão entre contratante e freelancer por meio de projetos assumidos                     | MÉDIA      |
 
 ### Requisitos Não Funcionais
 
