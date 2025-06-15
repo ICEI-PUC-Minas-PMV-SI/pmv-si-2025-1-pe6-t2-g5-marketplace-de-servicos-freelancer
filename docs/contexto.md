@@ -81,7 +81,7 @@ intuitiva e acessível, garantindo uma experiência fluida para todos.
 | RF-004 | Permitir o cadastro dos projetos                                                       | ALTA       | A definir    |
 | RF-005 | Permitir que o contratante edite e exclua seus projetos                                    | ALTA       | A definir    |
 | RF-006 | Permitir a busca de projetos por necessidade do contratante (freelancer)               | ALTA       | A definir    |
-| RF-007 | Possibilitar conexão entre contratante e freelancer por meio de projetos assumido                     | MÉDIA      | A definir    |
+| RF-007 | Possibilitar conexão entre contratante e freelancer por meio de projetos assumidos                     | MÉDIA      | A definir    |
 
 ### Requisitos Não Funcionais
 
