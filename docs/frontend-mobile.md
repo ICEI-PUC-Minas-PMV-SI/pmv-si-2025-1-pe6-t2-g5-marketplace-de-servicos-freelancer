@@ -106,32 +106,29 @@ Frontend Mobile:
 
 | ID     | Cenários de testes                                                            | Tipo | Resultado Esperado | Evidência |
 |--------|----------------------------------------------------------------------------------------|------------|--------------|--------------|
-| CT-001 | Registro de usuário com dados válidos     (RF-002)                                               | Usabilidade     | A definir    | [EV-001](https://github.com/user-attachments/assets/998f436c-f107-470c-af76-25ab277ae9b5)              |    
-| CT-002 |                                               | ALTA       | A definir    |  A definir    |    
-| CT-003 | Permitir o cadastro de contratantes                                                    | ALTA       | A definir    | A definir    | 
-| CT-004 | Permitir o cadastro dos projetos                                                       | ALTA       | A definir    | A definir    | 
-| CT-005 | Permitir que o contratante edite e exclua seus projetos                                    | ALTA       | A definir    | A definir    | 
-| CT-006 | Permitir a busca de projetos por necessidade do contratante (freelancer)               | ALTA       | A definir    | A definir    | 
-| CT-007 | Possibilitar conexão entre contratante e freelancer por meio de projetos assumidos                     | MÉDIA      | A definir    |
-| CT-008 | Não permitir edição ou exclusão de projetos já assumidos por freelancers                     | MÉDIA      | A definir    | 
+| CT-001 | Registro de usuário com dados válidos     (RF-002)                                               | Unitário/Integração    | O usuário criado com os dados armazenados   | [EV-001](https://github.com/user-attachments/assets/998f436c-f107-470c-af76-25ab277ae9b5)              |    
+| CT-002 | Autenticação de login falho  (RF-001)                                         | Segurança      | Falha ao logar, por erro de senha/Email    |  [EV-002](https://github.com/user-attachments/assets/b62e5d8f-63ed-488f-be80-033996585611)   |
+| CT-003 | Autenticação de login válido (RF-001)                                                   | Segurança      | Dados de login validados e acesso liberado a plataforma   | [EV-003](https://github.com/user-attachments/assets/f3923048-60a9-4a8d-8728-32fd6e81e8b8)    | 
+| CT-004 | Cadastro de Projeto (RF-003)                                                      | Unitário/Integração     | O projeto é cadastrado com sucesso e disponibilizado para os freelancers    | [EV-004](https://github.com/user-attachments/assets/480272ef-78ce-4a13-80bd-68ad7806973a)  | 
+| CT-005 | Exclusão de projeto (RF-005)                                | Unitário/Integração      | O projeto é excluído da lista de projetos do contratante e não aparece mais para os freelancers   | [EV-005](https://github.com/user-attachments/assets/7cf082fd-5dc0-438f-ba7c-30d5f47b34f3)   | 
+| CT-006 | Freelancer assume projeto    (RF-006)               | Unitário/Integração       |Ao assumir o projeto, o contratante recebe os dados para contat, o projeto não pode ser assumido por outro freelancer| [EV-006](https://github.com/user-attachments/assets/14f4c051-6a04-462a-84a5-b4d64e570c73) |
+| CT-007 | Busca de projetos por filtro                |  Unitário e Usabilidade     | Ao selecionar o tipo de projeto, o freelancer visualiza somente os projetos da categoria escolhida |[EV-007](https://github.com/user-attachments/assets/e716fc74-a62b-413e-b43c-d29c42cd0ad3)  | 
+| CT-008 | Modal de contato com os dados do freelancer   (RF-006)                 | Unitário/Integração      | Após um projeto assumido, o contratante tem acesso ao whatsapp do freelancer | [EV-008](https://github.com/user-attachments/assets/40d808da-30e5-404e-a0f3-a1f7210adcfc) | 
+| CT-009 |                 |       | |  | 
 
 ### Requisitos Não Funcionais
 
-| ID      | Descrição do Requisito                                                                     | Prioridade |
-|---------|--------------------------------------------------------------------------------------------|------------|
-| RNF-001 | O sistema deve ser responsivo para dispositivos móveis                                     | ALTA       |
-| RNF-002 | O tempo de resposta para busca deve ser inferior a 2s                                      | MÉDIA      |
-| RNF-003 | A plataforma deve garantir segurança na autenticação dos usuários                          | ALTA       |
-| RNF-004 | O sistema deve ser intuitivo e fácil de usar, garantindo uma boa experiência aos usuários. | MÉDIA      |
 
-1. Crie casos de teste para cobrir todos os requisitos funcionais e não funcionais da aplicação.
-2. Implemente testes unitários para testar unidades individuais de código, como funções e classes.
-3. Realize testes de integração para verificar a interação correta entre os componentes da aplicação.
+a aplicação.
 4. Execute testes de carga para avaliar o desempenho da aplicação sob carga significativa.
 5. Utilize ferramentas de teste adequadas, como frameworks de teste e ferramentas de automação de teste, para agilizar o
    processo de teste.
 
 # Referências
+
+
+
+
 
 Documentações oficiais das tecnologias utilizadas:
 - React Native: https://reactnative.dev/docs/intro-react-native-components
@@ -139,5 +136,6 @@ Documentações oficiais das tecnologias utilizadas:
 - Ngrok: https://ngrok.com/docs/
 - Expo: https://docs.expo.dev/
 - TypeScript: https://www.typescriptlang.org/docs/
+
 
 
