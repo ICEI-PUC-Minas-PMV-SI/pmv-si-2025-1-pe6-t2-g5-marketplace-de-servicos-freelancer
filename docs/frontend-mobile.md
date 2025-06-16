@@ -112,9 +112,10 @@ Frontend Mobile:
 | CT-004 | Cadastro de Projeto (RF-003)                                                      | Unitário/Integração     | O projeto é cadastrado com sucesso e disponibilizado para os freelancers    | [EV-004](https://github.com/user-attachments/assets/480272ef-78ce-4a13-80bd-68ad7806973a)  | 
 | CT-005 | Exclusão de projeto (RF-005)                                | Unitário/Integração      | O projeto é excluído da lista de projetos do contratante e não aparece mais para os freelancers   | [EV-005](https://github.com/user-attachments/assets/7cf082fd-5dc0-438f-ba7c-30d5f47b34f3)   | 
 | CT-006 | Freelancer assume projeto    (RF-006)               | Unitário/Integração       |Ao assumir o projeto, o contratante recebe os dados para contat, o projeto não pode ser assumido por outro freelancer| [EV-006](https://github.com/user-attachments/assets/14f4c051-6a04-462a-84a5-b4d64e570c73) |
-| CT-007 | Busca de projetos por filtro                |  Unitário e Usabilidade     | Ao selecionar o tipo de projeto, o freelancer visualiza somente os projetos da categoria escolhida |[EV-007](https://github.com/user-attachments/assets/e716fc74-a62b-413e-b43c-d29c42cd0ad3)  | 
+| CT-007 | Busca de projetos por filtro  (RF-005)              |  Unitário e Usabilidade     | Ao selecionar o tipo de projeto, o freelancer visualiza somente os projetos da categoria escolhida |[EV-007](https://github.com/user-attachments/assets/e716fc74-a62b-413e-b43c-d29c42cd0ad3)  | 
 | CT-008 | Modal de contato com os dados do freelancer   (RF-006)                 | Unitário/Integração      | Após um projeto assumido, o contratante tem acesso ao whatsapp do freelancer | [EV-008](https://github.com/user-attachments/assets/40d808da-30e5-404e-a0f3-a1f7210adcfc) | 
-| CT-009 |                 |       | |  | 
+| CT-009 | Logout da plataforma               |  Usabilidade e Segurança     |O usuário tem sua sessão devidamente encerrada, preservando o acesso seguro da sua conta |[EV-009](https://github.com/user-attachments/assets/0641599d-9827-4bda-815a-4b7581bc661c)  | 
+| CT-010 | Edição de projeto              |      |O usuário tem sua sessão devidamente encerrada, preservando o acesso seguro da sua conta | | 
 
 ### Requisitos Não Funcionais
 
@@ -125,6 +126,7 @@ a aplicação.
    processo de teste.
 
 # Referências
+
 
 
 
