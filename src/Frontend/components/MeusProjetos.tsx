@@ -699,7 +699,7 @@ export default function MeusProjetos() {
                         }
                         disabled={listing.status !== 1}>
                         <Text className="text-center text-sm font-semibold text-white">
-                          Ver detalhes
+                          Entrar em contato
                         </Text>
                       </Pressable>
 

@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="58e01766-99e8-4859-93c3-42102147ae80" name="Changes" comment="Ajustes mbl">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/LoginRegister.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/LoginRegister.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ListagemServicos.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ListagemServicos.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/MeusProjetos.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/MeusProjetos.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ScreenContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ScreenContent.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

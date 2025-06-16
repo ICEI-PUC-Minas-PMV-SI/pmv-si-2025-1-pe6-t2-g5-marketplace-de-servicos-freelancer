@@ -208,8 +208,9 @@ export default function FreelancerListing() {
                     <View className="flex-1 items-center px-2">
                       <Text className="text-sm font-semibold text-purple-500">Orçamento</Text>
                     </View>
-                    <View className="flex-1 px-2"></View>
-                    <View className="flex-1 px-2"></View>
+                    <View className="flex-1 items-center px-2">
+                      <Text className="text-sm font-semibold text-purple-500">Ação</Text>
+                    </View>
                   </View>
 
                   {/* Table Rows */}
