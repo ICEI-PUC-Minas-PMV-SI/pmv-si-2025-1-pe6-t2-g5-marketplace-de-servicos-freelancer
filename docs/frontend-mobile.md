@@ -104,16 +104,16 @@ Frontend Mobile:
 
 ### Requisitos Funcionais
 
-| ID     | Descrição do Requisito                                                                 | Prioridade | Responsáveis |
-|--------|----------------------------------------------------------------------------------------|------------|--------------|
-| RF-001 | Permitir a autenticação de usuários                                                    | ALTA       | A definir    |   
-| RF-002 | Permitir o cadastro de freelancers                                                     | ALTA       | A definir    |   
-| RF-003 | Permitir o cadastro de contratantes                                                    | ALTA       | A definir    |
-| RF-004 | Permitir o cadastro dos projetos                                                       | ALTA       | A definir    |
-| RF-005 | Permitir que o contratante edite e exclua seus projetos                                    | ALTA       | A definir    |
-| RF-006 | Permitir a busca de projetos por necessidade do contratante (freelancer)               | ALTA       | A definir    |
-| RF-007 | Possibilitar conexão entre contratante e freelancer por meio de projetos assumidos                     | MÉDIA      | A definir    |
-| RF-008 | Não permitir edição ou exclusão de projetos já assumidos por freelancers                     | MÉDIA      |
+| ID     | Cenários de testes                                                            | Tipo | Resultado Esperado | Evidência |
+|--------|----------------------------------------------------------------------------------------|------------|--------------|--------------|
+| CT-001 | Registro de usuário com dados válidos     (RF-002)                                               | Usabilidade     | A definir    | [EV-001](https://github.com/user-attachments/assets/998f436c-f107-470c-af76-25ab277ae9b5)              |    
+| CT-002 |                                               | ALTA       | A definir    |  A definir    |    
+| CT-003 | Permitir o cadastro de contratantes                                                    | ALTA       | A definir    | A definir    | 
+| CT-004 | Permitir o cadastro dos projetos                                                       | ALTA       | A definir    | A definir    | 
+| CT-005 | Permitir que o contratante edite e exclua seus projetos                                    | ALTA       | A definir    | A definir    | 
+| CT-006 | Permitir a busca de projetos por necessidade do contratante (freelancer)               | ALTA       | A definir    | A definir    | 
+| CT-007 | Possibilitar conexão entre contratante e freelancer por meio de projetos assumidos                     | MÉDIA      | A definir    |
+| CT-008 | Não permitir edição ou exclusão de projetos já assumidos por freelancers                     | MÉDIA      | A definir    | 
 
 ### Requisitos Não Funcionais
 
@@ -139,4 +139,5 @@ Documentações oficiais das tecnologias utilizadas:
 - Ngrok: https://ngrok.com/docs/
 - Expo: https://docs.expo.dev/
 - TypeScript: https://www.typescriptlang.org/docs/
+
 
