@@ -74,13 +74,29 @@ Compromisso com a Segurança e Atualização Tecnológica:
 
 ## Implantação
 
-[Instruções para implantar a aplicação distribuída em um ambiente de produção.]
+Sistema Operacional:
+- Ubuntu 22.04 LTS (ou Amazon Linux 2023)
 
-1. Defina os requisitos de hardware e software necessários para implantar a aplicação em um ambiente de produção.
-2. Escolha uma plataforma de hospedagem adequada, como um provedor de nuvem ou um servidor dedicado.
-3. Configure o ambiente de implantação, incluindo a instalação de dependências e configuração de variáveis de ambiente.
-4. Faça o deploy da aplicação no ambiente escolhido, seguindo as instruções específicas da plataforma de hospedagem.
-5. Realize testes para garantir que a aplicação esteja funcionando corretamente no ambiente de produção.
+Instância EC2 mínima recomendada:
+- t3.medium (2 vCPUs, 4 GB RAM)
+
+Armazenamento:
+- 20 GB SSD (gp3 ou gp2)
+
+Runtime:
+- .NET 8 (ou 7, dependendo do seu projeto)
+
+Servidor Web:
+- Nginx (como reverse proxy) ou usar o próprio Kestrel direto (se quiser simplificar)
+
+Banco de dados:
+- Amazon RDS (PostgreSQL)
+
+Frontend Mobile:
+- O app será compilado e distribuído via Expo ou Google Play / App Store
+- Expo CLI instalado
+- Conta no Expo
+- EAS Build
 
 ## Testes
 
