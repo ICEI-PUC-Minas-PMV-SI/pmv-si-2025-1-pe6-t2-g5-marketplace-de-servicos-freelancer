@@ -76,13 +76,12 @@ intuitiva e acessível, garantindo uma experiência fluida para todos.
 | ID     | Descrição do Requisito                                                                 | Prioridade |
 |--------|----------------------------------------------------------------------------------------|------------|
 | RF-001 | Permitir a autenticação de usuários                                                    | ALTA       |  
-| RF-002 | Permitir o cadastro de freelancers                                                     | ALTA       | 
-| RF-003 | Permitir o cadastro de contratantes                                                    | ALTA       |
-| RF-004 | Permitir o cadastro dos projetos                                                       | ALTA       |
-| RF-005 | Permitir que o contratante edite e exclua seus projetos                                    | ALTA       |
-| RF-006 | Permitir a busca de projetos por necessidade do contratante (freelancer)               | ALTA       |
-| RF-007 | Possibilitar conexão entre contratante e freelancer por meio de projetos assumidos                     | MÉDIA      |
-| RF-008 | Não permitir edição ou exclusão de projetos já assumidos por freelancers                     | MÉDIA      |
+| RF-002 | Permitir o cadastro de usuários (Contratantes e freelancers)                                                     | ALTA       | 
+| RF-003 | Permitir o cadastro dos projetos                                                       | ALTA       |
+| RF-004 | Permitir que o contratante edite e exclua seus projetos                                    | ALTA       |
+| RF-005 | Permitir a busca de projetos por necessidade do contratante (freelancer)               | ALTA       |
+| RF-006 | Possibilitar conexão entre contratante e freelancer por meio de projetos assumidos                     | MÉDIA      |
+| RF-007 | Não permitir edição ou exclusão de projetos já assumidos por freelancers                     | MÉDIA      |
 
 ### Requisitos Não Funcionais
 
