@@ -47,8 +47,7 @@ Elementos:
 - Apresentamos formulários e informações centralizadas verticalmente.
 
 ## Fluxo de Dados
-
-[Diagrama ou descrição do fluxo de dados na aplicação.]
+![fluxo](https://github.com/user-attachments/assets/62c11494-9d0b-4e33-a67a-6e30f25557f9)
 
 ## Tecnologias Utilizadas
 - React Native;
@@ -100,9 +99,7 @@ Frontend Mobile:
 
 ## Testes
 
-[Descreva a estratégia de teste, incluindo os tipos de teste a serem realizados (unitários, integração, carga, etc.) e as ferramentas a serem utilizadas.]
-
-### Requisitos Funcionais
+### Casos de testes
 
 | ID     | Cenários de testes                                                            | Tipo | Resultado Esperado | Evidência |
 |--------|----------------------------------------------------------------------------------------|------------|--------------|--------------|
@@ -115,22 +112,10 @@ Frontend Mobile:
 | CT-007 | Busca de projetos por filtro  (RF-005)              |  Unitário e Usabilidade     | Ao selecionar o tipo de projeto, o freelancer visualiza somente os projetos da categoria escolhida |[EV-007](https://github.com/user-attachments/assets/e716fc74-a62b-413e-b43c-d29c42cd0ad3)  | 
 | CT-008 | Modal de contato com os dados do freelancer   (RF-006)                 | Unitário/Integração      | Após um projeto assumido, o contratante tem acesso ao whatsapp do freelancer | [EV-008](https://github.com/user-attachments/assets/40d808da-30e5-404e-a0f3-a1f7210adcfc) | 
 | CT-009 | Logout da plataforma               |  Usabilidade e Segurança     |O usuário tem sua sessão devidamente encerrada, preservando o acesso seguro da sua conta |[EV-009](https://github.com/user-attachments/assets/0641599d-9827-4bda-815a-4b7581bc661c)  | 
-| CT-010 | Edição de projeto              |      |O usuário tem sua sessão devidamente encerrada, preservando o acesso seguro da sua conta | | 
+| CT-010 | Edição de projeto              | Unitário/Integração     |O projeto tem suas infromações alteradas e apresentadas de forma atualizada para os freelancers |[EV-010](https://github.com/user-attachments/assets/39320124-b6ab-4f08-a992-b9c65a96062d) | 
 
-### Requisitos Não Funcionais
-
-
-a aplicação.
-4. Execute testes de carga para avaliar o desempenho da aplicação sob carga significativa.
-5. Utilize ferramentas de teste adequadas, como frameworks de teste e ferramentas de automação de teste, para agilizar o
-   processo de teste.
 
 # Referências
-
-
-
-
-
 
 Documentações oficiais das tecnologias utilizadas:
 - React Native: https://reactnative.dev/docs/intro-react-native-components
