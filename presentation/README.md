@@ -1,4 +1,6 @@
 # Apresentação da Solução
 
-Faça uma apresentação de um resumo de todos o processo de desenvolvimento e no final apresente a solução desenvolvida,
-usando um pequeno vídeo.
+
+[Apresentação final do projeto](https://github.com/user-attachments/files/20875179/Etapa.4.PUC.Minas.1.pdf)
+
+[Vídeo da apresentação](https://drive.google.com/file/d/1c-W3DDpXz7SMu7KPAk2sZoYZZB8Zki9i/view?usp=sharing)
