@@ -25,7 +25,7 @@ public class Projeto
 
 	public DateTime? DataInativacao { get; set; }
 
-	[Required] [MaxLength(20)] public required string Nome { get; set; } = string.Empty;
+	[Required] [MaxLength(100)] public required string Nome { get; set; } = string.Empty;
 
 	[Required] public ProjetoStatus Status { get; set; }
 

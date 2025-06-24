@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import {
   Alert,
   Linking,
+  Modal,
   Pressable,
   ScrollView,
   Text,
@@ -303,200 +304,207 @@ export default function MeusProjetos() {
     <ScrollView className="w-screen bg-purple-500 sm:px-52 sm:py-32">
       <View className="pb-23 relative flex h-full w-full flex-col rounded-sm bg-white p-6 sm:p-24">
         {freelancerDetails && (
-          <View className="absolute left-0 top-0 z-50 h-full w-full items-center justify-center bg-black/40 px-4 py-10">
-            <View className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
-              <Text className="mb-4 text-lg font-semibold text-purple-600">
-                Detalhes do Freelancer
-              </Text>
-
-              <View className="mb-6 space-y-2">
-                <Text className="text-sm text-gray-800">Nome: {freelancerDetails.nome}</Text>
-                <Text className="text-sm text-gray-800">Nota: ⭐ 4.8</Text>
-                <Text className="text-sm text-gray-800">
-                  Telefone: {freelancerDetails.telefone}
+          <Modal transparent visible={freelancerDetails} animationType="fade">
+            <View className="flex-1 items-center justify-center bg-black/50">
+              <View className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
+                <Text className="mb-4 text-lg font-semibold text-purple-600">
+                  Detalhes do Freelancer
                 </Text>
-              </View>
 
-              <View className="flex w-full flex-row gap-2">
-                <Pressable
-                  onPress={() => setDetailedFreelancerId(null)}
-                  className="flex-1 rounded-md bg-purple-500 py-2">
-                  <Text className="text-center text-sm font-semibold text-white">Fechar</Text>
-                </Pressable>
-                <Pressable
-                  onPress={() => abrirWhatsapp(freelancerDetails.telefone)}
-                  className="flex-1 rounded-md bg-green-500 py-2">
-                  <Text className="text-center text-sm font-semibold text-white">Whatsapp</Text>
-                </Pressable>
+                <View className="mb-6 space-y-2">
+                  <Text className="text-sm text-gray-800">Nome: {freelancerDetails.nome}</Text>
+                  <Text className="text-sm text-gray-800">
+                    Telefone: {freelancerDetails.telefone}
+                  </Text>
+                </View>
+
+                <View className="flex w-full flex-row gap-2">
+                  <Pressable
+                    onPress={() => setDetailedFreelancerId(null)}
+                    className="flex-1 rounded-md bg-purple-500 py-2">
+                    <Text className="text-center text-sm font-semibold text-white">Fechar</Text>
+                  </Pressable>
+                  <Pressable
+                    onPress={() => abrirWhatsapp(freelancerDetails.telefone)}
+                    className="flex-1 rounded-md bg-green-500 py-2">
+                    <Text className="text-center text-sm font-semibold text-white">Whatsapp</Text>
+                  </Pressable>
+                </View>
               </View>
             </View>
-          </View>
+          </Modal>
         )}
 
         {modalDeleteProject && (
-          <View className="absolute left-0 top-0 z-50 h-full w-full items-center justify-center bg-black/40 px-4 py-10">
-            <View className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
-              <Text className="mb-4 text-lg font-semibold text-purple-600">Excluir Projeto</Text>
+          <Modal transparent visible={modalDeleteProject} animationType="fade">
+            <View className="flex-1 items-center justify-center bg-black/50">
+              <View className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
+                <Text className="mb-4 text-lg font-semibold text-purple-600">Excluir Projeto</Text>
 
-              <View className="mb-6 space-y-2">
-                <Text className="text-lg text-gray-800">
-                  Você tem certeza que deseja excluir o projeto?
-                </Text>
-                <Text className="text-lg text-gray-700">Esta ação não é reversível!</Text>
-              </View>
+                <View className="mb-6 space-y-2">
+                  <Text className="text-lg text-gray-800">
+                    Você tem certeza que deseja excluir o projeto?
+                  </Text>
+                  <Text className="text-lg text-gray-700">Esta ação não é reversível!</Text>
+                </View>
 
-              <View className="flex w-full flex-row gap-2">
-                <Pressable
-                  onPress={() => setModalDeleteProject(false)}
-                  className="flex-1 rounded-md bg-purple-500 py-2">
-                  <Text className="text-center text-sm font-semibold text-white">Fechar</Text>
-                </Pressable>
-                <Pressable
-                  onPress={() => {
-                    if (projectIdToDelete) {
-                      deleteProject(projectIdToDelete);
-                    }
-                  }}
-                  className="flex-1 rounded-md bg-green-500 py-2">
-                  <Text className="text-center text-sm font-semibold text-white">Sim</Text>
-                </Pressable>
+                <View className="flex w-full flex-row gap-2">
+                  <Pressable
+                    onPress={() => setModalDeleteProject(false)}
+                    className="flex-1 rounded-md bg-purple-500 py-2">
+                    <Text className="text-center text-sm font-semibold text-white">Fechar</Text>
+                  </Pressable>
+                  <Pressable
+                    onPress={() => {
+                      if (projectIdToDelete) {
+                        deleteProject(projectIdToDelete);
+                      }
+                    }}
+                    className="flex-1 rounded-md bg-green-500 py-2">
+                    <Text className="text-center text-sm font-semibold text-white">Sim</Text>
+                  </Pressable>
+                </View>
               </View>
             </View>
-          </View>
+          </Modal>
         )}
 
         {modalEditProject && (
-          <View className="absolute left-0 top-0 z-50 h-full w-full items-center justify-center bg-black/40 px-4 py-10">
-            <View className="mt-2 w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
-              <Text className="mb-4 text-lg font-semibold text-purple-600">Editar Projeto</Text>
+          <Modal transparent visible={modalEditProject} animationType="fade">
+            <View className="flex-1 items-center justify-center bg-black/50">
+              <View className="mt-2 w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
+                <Text className="mb-4 text-lg font-semibold text-purple-600">Editar Projeto</Text>
 
-              <View className="mb-6">
-                <View className="flex flex-col gap-6">
-                  <View className="flex flex-col items-start gap-4">
-                    <Text className="text-lg font-semibold text-purple-500">
-                      Título do Serviço:
-                    </Text>
-                    <View className="w-full flex-row items-center rounded-md border-2 border-purple-500 bg-white px-4 py-3">
-                      <Entypo name="feather" size={20} color="#c084fc" />
-                      <TextInput
-                        placeholder="Digite o título do serviço"
-                        placeholderTextColor="#c084fc"
-                        className="ml-2 flex-1 text-base text-purple-800 outline-none"
-                        value={form.nome}
-                        onChangeText={(text) => handleChange('nome', text)}
-                      />
+                <View className="mb-6">
+                  <View className="flex flex-col gap-6">
+                    <View className="flex flex-col items-start gap-4">
+                      <Text className="text-lg font-semibold text-purple-500">
+                        Título do Serviço:
+                      </Text>
+                      <View className="w-full flex-row items-center rounded-md border-2 border-purple-500 bg-white px-4 py-3">
+                        <Entypo name="feather" size={20} color="#c084fc" />
+                        <TextInput
+                          placeholder="Digite o título do serviço"
+                          placeholderTextColor="#c084fc"
+                          className="ml-2 flex-1 text-base text-purple-800 outline-none"
+                          value={form.nome}
+                          onChangeText={(text) => handleChange('nome', text)}
+                        />
+                      </View>
                     </View>
-                  </View>
 
-                  <View className="flex flex-col items-start gap-4">
-                    <Text className="text-lg font-semibold text-purple-500">Descrição:</Text>
-                    <View className="w-full flex-row items-center rounded-md border-2 border-purple-500 bg-white px-4 py-3">
-                      <Entypo name="text" size={20} color="#c084fc" />
-                      <TextInput
-                        placeholder="Descreva detalhadamente seu serviço"
-                        placeholderTextColor="#c084fc"
-                        className="ml-2 flex-1 text-base text-purple-800 outline-none"
-                        onChangeText={(text) => handleChange('descricao', text)}
-                        value={form.descricao}
-                        multiline
-                        textAlignVertical="top"
-                      />
+                    <View className="flex flex-col items-start gap-4">
+                      <Text className="text-lg font-semibold text-purple-500">Descrição:</Text>
+                      <View className="w-full flex-row items-center rounded-md border-2 border-purple-500 bg-white px-4 py-3">
+                        <Entypo name="text" size={20} color="#c084fc" />
+                        <TextInput
+                          placeholder="Descreva detalhadamente seu serviço"
+                          placeholderTextColor="#c084fc"
+                          className="ml-2 flex-1 text-base text-purple-800 outline-none"
+                          onChangeText={(text) => handleChange('descricao', text)}
+                          value={form.descricao}
+                          multiline
+                          textAlignVertical="top"
+                        />
+                      </View>
                     </View>
-                  </View>
 
-                  <View className="flex flex-col items-start gap-4">
-                    <Text className="text-lg font-semibold text-purple-500">
-                      Selecionar Categoria:
-                    </Text>
-                    <View className="flex flex-row flex-wrap gap-3">
-                      {categorias.map((option) => (
-                        <TouchableOpacity
-                          key={option}
-                          className={`flex-row items-center rounded-md border-2 px-4 py-2 ${
-                            form.escopo === option
-                              ? 'border-purple-500 bg-purple-100'
-                              : 'border-purple-300'
-                          }`}
-                          onPress={() => handleChange('escopo', option)}>
-                          <View className="mr-2 h-5 w-5 items-center justify-center rounded-full border-2 border-purple-500">
-                            {form.escopo === option && (
-                              <View className="h-2.5 w-2.5 rounded-full bg-purple-500" />
-                            )}
-                          </View>
-                          <Text className="text-base capitalize text-purple-500">{option}</Text>
-                        </TouchableOpacity>
-                      ))}
+                    <View className="flex flex-col items-start gap-4">
+                      <Text className="text-lg font-semibold text-purple-500">
+                        Selecionar Categoria:
+                      </Text>
+                      <View className="flex flex-row flex-wrap gap-3">
+                        {categorias.map((option) => (
+                          <TouchableOpacity
+                            key={option}
+                            className={`flex-row items-center rounded-md border-2 px-4 py-2 ${
+                              form.escopo === option
+                                ? 'border-purple-500 bg-purple-100'
+                                : 'border-purple-300'
+                            }`}
+                            onPress={() => handleChange('escopo', option)}>
+                            <View className="mr-2 h-5 w-5 items-center justify-center rounded-full border-2 border-purple-500">
+                              {form.escopo === option && (
+                                <View className="h-2.5 w-2.5 rounded-full bg-purple-500" />
+                              )}
+                            </View>
+                            <Text className="text-base capitalize text-purple-500">{option}</Text>
+                          </TouchableOpacity>
+                        ))}
+                      </View>
                     </View>
-                  </View>
 
-                  <View className="flex flex-col items-start gap-4">
-                    <Text className="text-lg font-semibold text-purple-500">Data de deadline:</Text>
-                    <View className="w-full flex-row items-center rounded-md border-2 border-purple-500 bg-white px-4 py-3">
-                      <Entypo name="calendar" size={20} color="#c084fc" />
-                      <TextInputMask
-                        type="datetime"
-                        options={{
-                          format: 'DD/MM/YYYY',
-                        }}
-                        placeholder="Ex: 01/12/2025"
-                        placeholderTextColor="#c084fc"
-                        className="ml-2 flex-1 px-3 py-2 text-base text-purple-800 outline-none"
-                        onChangeText={(text) => handleChange('dataFim', text)}
-                        keyboardType="numeric"
-                        value={form.dataFim}
-                        style={{
-                          borderWidth: 0,
-                          fontSize: 16,
-                          flex: 1,
-                          outlineColor: 'transparent',
-                          color: '#c084fc',
-                          marginLeft: 12,
-                        }}
-                      />
+                    <View className="flex flex-col items-start gap-4">
+                      <Text className="text-lg font-semibold text-purple-500">
+                        Data de deadline:
+                      </Text>
+                      <View className="w-full flex-row items-center rounded-md border-2 border-purple-500 bg-white px-4 py-3">
+                        <Entypo name="calendar" size={20} color="#c084fc" />
+                        <TextInputMask
+                          type="datetime"
+                          options={{
+                            format: 'DD/MM/YYYY',
+                          }}
+                          placeholder="Ex: 01/12/2025"
+                          placeholderTextColor="#c084fc"
+                          className="ml-2 flex-1 px-3 py-2 text-base text-purple-800 outline-none"
+                          onChangeText={(text) => handleChange('dataFim', text)}
+                          keyboardType="numeric"
+                          value={form.dataFim}
+                          style={{
+                            borderWidth: 0,
+                            fontSize: 16,
+                            flex: 1,
+                            outlineColor: 'transparent',
+                            color: '#c084fc',
+                            marginLeft: 12,
+                          }}
+                        />
+                      </View>
                     </View>
-                  </View>
 
-                  <View className="flex flex-col items-start gap-4">
-                    <Text className="text-lg font-semibold text-purple-500">
-                      Orçamento Disponível:
-                    </Text>
-                    <View className="w-full flex-row items-center rounded-md border-2 border-purple-500 bg-white px-4 py-3">
-                      <Entypo name="credit" size={20} color="#c084fc" />
-                      <TextInput
-                        placeholder="Ex: R$ 500,00"
-                        placeholderTextColor="#c084fc"
-                        className="ml-2 flex-1 text-base text-purple-800 outline-none"
-                        onChangeText={(text) => handleChange('valor', text)}
-                        keyboardType="numeric"
-                        value={form.valor}
-                      />
+                    <View className="flex flex-col items-start gap-4">
+                      <Text className="text-lg font-semibold text-purple-500">
+                        Orçamento Disponível:
+                      </Text>
+                      <View className="w-full flex-row items-center rounded-md border-2 border-purple-500 bg-white px-4 py-3">
+                        <Entypo name="credit" size={20} color="#c084fc" />
+                        <TextInput
+                          placeholder="Ex: R$ 500,00"
+                          placeholderTextColor="#c084fc"
+                          className="ml-2 flex-1 text-base text-purple-800 outline-none"
+                          onChangeText={(text) => handleChange('valor', text)}
+                          keyboardType="numeric"
+                          value={form.valor}
+                        />
+                      </View>
                     </View>
                   </View>
                 </View>
-              </View>
 
-              <View className="flex w-full flex-row gap-2">
-                <Pressable
-                  onPress={() => {
-                    setModalEditProject(false);
-                    setProjectIdToEdit(null);
-                    clearProjetoForm();
-                  }}
-                  className="flex-1 rounded-md bg-purple-500 py-2">
-                  <Text className="text-center text-sm font-semibold text-white">Fechar</Text>
-                </Pressable>
-                <Pressable
-                  onPress={() => {
-                    if (projectIdToEdit) {
-                      edtitProject(projectIdToEdit);
-                    }
-                  }}
-                  className="flex-1 rounded-md bg-green-500 py-2">
-                  <Text className="text-center text-sm font-semibold text-white">Sim</Text>
-                </Pressable>
+                <View className="flex w-full flex-row gap-2">
+                  <Pressable
+                    onPress={() => {
+                      setModalEditProject(false);
+                      setProjectIdToEdit(null);
+                      clearProjetoForm();
+                    }}
+                    className="flex-1 rounded-md bg-purple-500 py-2">
+                    <Text className="text-center text-sm font-semibold text-white">Fechar</Text>
+                  </Pressable>
+                  <Pressable
+                    onPress={() => {
+                      if (projectIdToEdit) {
+                        edtitProject(projectIdToEdit);
+                      }
+                    }}
+                    className="flex-1 rounded-md bg-green-500 py-2">
+                    <Text className="text-center text-sm font-semibold text-white">Sim</Text>
+                  </Pressable>
+                </View>
               </View>
             </View>
-          </View>
+          </Modal>
         )}
 
         <View className="absolute top-0 flex hidden h-20 w-full items-center justify-end border-b border-gray-200 pb-5">
