@@ -153,7 +153,7 @@ A solução será estruturada nos seguintes componentes:
 3. **Aplicativo Mobile** – Oferece acessibilidade e mobilidade para os usuários, permitindo a gestão dos serviços de
    forma eficiente.
 
-![arq](https://github.com/user-attachments/assets/b9402e05-8445-47c3-9d47-f11696e38a3d)
+![Arquitetura](https://github.com/user-attachments/assets/d9e5fb98-08c2-4e46-9a48-60fd2865213a)
 
 ## Tecnologias Utilizadas
 
